@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Oxygen&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <title>SciCo - Scientific Community</title>
+</head>
+
+<body class="landing">
+    <!-- header starts -->
+    <header>
+        <div class="logo">
+            <a href="../index.html"> <i class="fas fa-satellite"></i>SciCo</a>
+        </div>
+    </header>
+    <!-- header ends -->
+
+    <!-- main section starts -->
+    <main id="signup">
+        <div class="form">
+            <form>
+                <div>
+                    <div>
+                        <input type="text" placeholder="Name" id="name" name="name">
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Surname" id="surname" name="surname">
+                    </div>
+                </div>
+                <div>
+                    <input type="text" placeholder="Username" id="userName" name="userName">
+                </div>
+                <div>
+                    <input type="email" placeholder="Email@example.com" id="email" name="email">
+                </div>
+                <div>
+                    <input type="password" placeholder="Password" id="signPassword" name="signPassword">
+                </div>
+                <div>
+                    <label for="birthday">Enter your birthday:</label> <br />
+                    <input type="date" id="birthday" name="birthday">
+                </div>
+                <div id="agreement">
+                    <input type="checkbox" id="terms" name="terms">
+                    <label for="terms">I accept the Terms and Conditions of SciCo.</label>
+                </div>
+                <div id="agreeTerms">You must agree with Terms and Conditions of our Company to continue sign up process!</div>
+                <div>
+                    <button type="submit">Sign Up<i class="fas fa-user-plus" style="padding-left: 10px;"></i> </button>
+                </div>
+            </form>
+        </div>
+    </main>
+    <!-- main section ends -->
+
+    <script src="https://kit.fontawesome.com/3f7e3de7b3.js" crossorigin="anonymous"></script>
+    <script src="../js/signup.js"></script>
+</body>
+</html>
