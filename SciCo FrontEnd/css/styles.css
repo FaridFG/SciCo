@@ -73,6 +73,61 @@ header {
     padding-right: 10px;
 }
 
+.blueBack {
+    background-color: #3500d3;
+}
+
+.pinkBack {
+    background-color: #f30e66;
+}
+
+.purpleBack {
+    background-color: #a722c9;
+}
+
+.pink {
+    color: #f30e66;
+}
+
+.black {
+    color: #000000;
+}
+
+.orange {
+    color: #ff3e2f;
+}
+
+.green {
+    color: #0eca27;
+}
+
+.blue {
+    color: #3500d3;
+}
+
+.violet {
+    color: #f024df;
+}
+
+.red {
+    color: #df1507;
+}
+
+.purple {
+    color: #850870;
+}
+
+.tomato {
+    color: #ee6055;
+}
+
+.brown {
+    color: #663507;
+}
+
+header .show {
+    display: block !important;
+}
 /* landing page starts */
 .landing header {
     display: flex;
@@ -650,3 +705,664 @@ header {
     }
 }
 /* signup page ends */
+
+/* account page starts */
+.account header {
+    display: grid;
+    grid-template-columns: 18% 30% auto 25%;
+    align-items: center;
+}
+
+.account header > div {
+    height: 100%;
+}
+
+.account header .logo a {
+    font-size: 30px;
+}
+
+#search {
+    height: 100%;
+    font-size: 22px;
+}
+
+#search > div {
+    height: 100%;
+    position: relative;
+}
+
+#search input {
+    background-color: rgb(73, 76, 98);
+    color: #fff;
+    width: 100%;
+}
+
+#search input[placeholder] {
+    padding-left: 25px;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance:none;
+}
+
+#search a {
+    color: gray;
+    position: absolute;
+    top: 30%;
+    right: 25px;
+}
+
+#incoming > ul {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#incoming > ul > li {
+    padding: 0 25px;
+    position: relative;
+}
+
+#incoming > ul > li > a {
+    font-size: 25px;
+    color: #fff;
+    position: relative;
+}
+
+#incoming > ul > li > div:nth-child(2) {
+    position: absolute;
+    background-color: #fff;
+    box-shadow: -2px -2px 8px 2px rgba(50, 51, 63, 0.4), 2px 2px 8px 2px rgba(50, 51, 63, 0.4);
+    display: none;
+    border-radius: 5px;
+    top: 53px;
+    right: -210px;
+    width: 500px;
+    max-height: 500px;
+    overflow: auto;
+}
+
+#incoming > ul > li > div:nth-child(3) {
+    box-shadow: none;
+    display: none;
+    text-align: center;
+    height: 0;
+    position: absolute;
+    top: 35px;
+}
+
+#incoming li > div > i {
+    color: #fff;
+    font-size: 35px;
+}
+
+#incoming li > div > div {
+    border: thin solid rgb(173, 175, 197);
+    padding: 15px 10px;
+    display: flex;
+    align-items: center;
+}
+
+#incoming li > div img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 0 15px;
+}
+
+.viewAll {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    position: sticky;
+    bottom: 0;
+}
+
+.viewAll a {
+    color: #fff;
+    font-size: 18px;
+    letter-spacing: 1.3px;
+}
+
+#incoming a > span {
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 2px 7px;
+    position: absolute;
+    top: -8px;
+    right: -18px;
+    border: thin solid rgb(173, 175, 197);
+}
+
+.requestSender {
+    justify-content: space-between;
+}
+
+.requestSender > div {
+    display: flex;
+    align-items: center;
+}
+
+.requestSender > div a {
+    color: #515365;
+    font-size: 14px;
+}
+
+.requestSender > div:nth-child(1) a:hover {
+    font-weight: bold;
+}
+
+.requestSender > div:nth-child(2) a {
+    padding: 12px;
+    border-radius: 50%;
+}
+
+.requestSender ul {
+    display: flex;
+    align-items: center;
+}
+
+.requestSender li {
+    padding: 0 15px;
+}
+
+.requestSender li:nth-child(1) a {
+    background-color: #0d8128;
+}
+
+.requestSender li:nth-child(2) a {
+    background-color: #e7091f;
+}
+
+.requestSender i {
+    color: #fff;
+    font-size: 16px;
+}
+
+.message p > a {
+    color: #515365;
+}
+
+.message p:nth-child(1) > a {
+    font-weight: bold;
+}
+
+.message p:nth-child(2) > a {
+    font-size: 13px;
+}
+
+.notification p {
+    color: #515365;
+    font-size: 14px;
+}
+
+.notification a {
+    font-size: 15px;
+    font-weight: bold;
+    color: #515365;
+    letter-spacing: 1px;
+}
+
+.notification a:hover {
+    text-decoration: underline;
+}
+
+.notification div > p:nth-child(2) {
+    color: #515365;
+    font-size: 11px;
+    margin-top: 5px;
+}
+
+#user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#user .profilePhoto {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: thin solid #fff;
+    padding: 3px;
+}
+
+#user img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+#user > ul {
+    display: flex;
+}
+
+#user a {
+    color: #fff;
+}
+
+#user > ul > li:nth-child(1) a {
+    padding-left: 15px;
+    font-size: 14px;
+}
+
+#logOut {
+    position: relative;
+}
+
+#logOut > a > i {
+    font-size: 12px;
+    padding: 8px 0 0 10px;
+}
+
+#logOut ul {
+    width: 220px;
+    position: absolute;
+    right: -10px;
+    top: 49px;
+    background-color: #fff;
+    display: none;
+    box-shadow: -2px -2px 8px 2px rgba(50, 51, 63, 0.4), 2px 2px 8px 2px rgba(50, 51, 63, 0.4);
+    border-radius: 5px;
+}
+
+#logOut li {
+    padding: 15px 25px;
+}
+
+#logOut li > a {
+    color: #515365;
+    font-size: 13px;
+}
+
+#logOut li > a:hover {
+    font-weight: bold;
+}
+
+#logOut > ul i {
+    padding-right: 25px;
+}
+
+aside {
+    width: 18%;
+    position: fixed;
+    top: 15%;
+    z-index: 100;
+}
+
+aside.left > div {
+    border-right: 5px solid rgb(73, 76, 98);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    transform: translateX(-70%);
+    box-shadow: 0 3px 3px 3px rgba(50, 51, 63, 0.2);
+}
+
+aside.left a {
+    letter-spacing: 0.2em;
+    font-size: 18px;
+    font-weight: bold;
+    padding-left: 25px;
+}
+
+aside.left i {
+    font-size: 30px;
+    padding: 15px 10px 15px 0;
+}
+/* responsive account page starts */
+@media only screen and (max-width: 1244px) {
+    .account header {
+        grid-template-columns: 20% 30% auto 20%;
+    }
+    
+    .account header .logo a {
+        font-size: 25px;
+    }
+    
+    #search {
+        font-size: 17px;
+    }
+    
+    #search a {
+        top: 25px;
+        right: 15px;
+    }
+
+    #incoming > ul > li > a {
+        font-size: 22px;
+    }
+
+    #incoming > ul > li > div:nth-child(2) {
+        top: 51px;
+        right: -185px;
+        width: 450px;
+        max-height: 450px;
+    }
+    
+    #incoming > ul > li > div:nth-child(3) {
+        top: 32px;
+    }
+    
+    #incoming li > div > i {
+        font-size: 35px;
+    }
+
+    #incoming li > div > div {
+        padding: 10px 10px;
+    }
+    
+    #incoming li > div img {
+        width: 45px;
+        height: 45px;
+        margin: 0 10px;
+    }
+
+    #incoming a > span {
+        font-size: 11px;
+    }
+
+    .requestSender > div a {
+        font-size: 13px;
+    }
+    
+    .requestSender > div:nth-child(1) a:hover {
+        font-weight: bold;
+    }
+    
+    .requestSender i {
+        font-size: 15px;
+    }
+
+    .message p > a {
+        font-size: 14px;
+    }
+    
+    .message p:nth-child(2) > a {
+        font-size: 13px;
+    }
+
+    .notification p {
+        font-size: 13px;
+    }
+    
+    .notification a {
+        font-size: 14px;
+    }
+
+    #user .profilePhoto {
+        width: 45px;
+        height: 45px;
+        padding: 3px;
+    }
+
+    #user > ul > li:nth-child(1) a {
+        font-size: 13px;
+    }
+
+    #logOut > a > i {
+        font-size: 11px;
+        padding: 9px 0 0 10px;
+    }
+
+    #logOut ul {
+        width: 200px;
+    }
+    
+    #logOut li {
+        padding: 12px 25px;
+    }
+
+    aside.left {
+        width: 20%;
+    }
+
+    aside.left a {
+        font-size: 18px;
+    }
+
+    aside.left i {
+        font-size: 25px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .account header {
+        grid-template-columns: 30% 0 auto 30%;
+    }
+    
+    #search {
+        display: none;
+    }
+
+    aside.left {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .account header {
+        grid-template-columns: 25% 0 auto 15%;
+    }
+    
+    .account header .logo a {
+        font-size: 20px;
+    }
+
+    #search {
+        display: none;
+    }
+
+    #incoming > ul > li > a {
+        font-size: 20px;
+    }
+
+    #incoming > ul > li > div:nth-child(2) {
+        top: 51px;
+        width: 400px;
+        max-height: 400px;
+    }
+    
+    #incoming > ul > li > div:nth-child(3) {
+        top: 32px;
+    }
+    
+    #incoming li > div > i {
+        font-size: 35px;
+    }
+
+    #incoming li > div img {
+        width: 40px;
+        height: 40px;
+        margin: 0 10px;
+    }
+
+    #incoming a > span {
+        font-size: 10px;
+    }
+
+    .requestSender > div a {
+        font-size: 13px;
+    }
+    
+    .requestSender > div:nth-child(1) a:hover {
+        font-weight: bold;
+    }
+    
+    .requestSender i {
+        font-size: 15px;
+    }
+
+    .message p > a {
+        font-size: 13px;
+    }
+    
+    .message p:nth-child(2) > a {
+        font-size: 12px;
+    }
+
+    #notifications {
+        right: -100px !important;
+    }
+
+    .notification p {
+        font-size: 13px;
+    }
+    
+    .notification a {
+        font-size: 12px;
+    }
+
+    #user .profilePhoto {
+        width: 40px;
+        height: 40px;
+    }
+
+    #user > ul > li:nth-child(1) a {
+        display: none;
+    }
+
+    #logOut > a > i {
+        font-size: 16px;
+        padding: 25px 0 0 15px;
+    }
+
+    #logOut ul {
+        width: 200px;
+        top: 59px;
+        right: 0;
+    }
+    
+    #logOut li {
+        padding: 12px 25px;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .account header {
+        height: 60px;
+        grid-template-columns: 30% 0 auto 15%;
+    }
+    
+    .account header .logo a {
+        font-size: 15px;
+    }
+
+    #incoming > ul > li {
+        padding: 0 20px;
+    }
+
+    #incoming > ul > li > a {
+        font-size: 16px;
+    }
+
+    #incoming > ul > li > div:nth-child(2) {
+        top: 40px;
+        width: 280px;
+        max-height: 300px;
+    }
+    
+    #incoming > ul > li > div:nth-child(3) {
+        top: 25px;
+    }
+    
+    #incoming li > div > i {
+        font-size: 30px;
+    }
+
+    #incoming li > div img {
+        width: 30px;
+        height: 30px;
+        margin: 0 10px 0 0;
+    }
+
+    #incoming a > span {
+        font-size: 9px;
+        padding: 1.5px 5px;
+    }
+
+    #requests {
+        right: -150px !important;
+    }
+
+    .requestSender > div a {
+        font-size: 11px;
+    }
+    
+    .requestSender li {
+        padding: 0 5px;
+    }
+    
+    .requestSender i {
+        font-size: 13px;
+    }
+
+    #inbox {
+        right: -90px !important;
+    }
+
+    .message p > a {
+        font-size: 12px;
+    }
+    
+    .message p:nth-child(2) > a {
+        font-size: 11px;
+    }
+
+    #notifications {
+        right: -30px !important;
+    }
+
+    .notification p {
+        font-size: 12px;
+    }
+    
+    .notification a {
+        font-size: 11px;
+    }
+
+    .notification > div > p:nth-child(2) {
+        font-size: 10px;
+    }
+
+    .viewAll {
+        height: 40px;
+    }
+    
+    .viewAll a {
+        font-size: 16px;
+        letter-spacing: 1px;
+    }
+
+    #user .profilePhoto {
+        display: none;
+    }
+
+    #user > ul > li:nth-child(1) a {
+        display: none;
+    }
+
+    #logOut > a > i {
+        font-size: 14px;
+        padding: 15px 0 0 0;
+    }
+
+    #logOut ul {
+        width: 160px;
+        top: 46px;
+        right: 0;
+    }
+    
+    #logOut li {
+        padding: 10px 10px;
+    }
+
+    #logOut li a {
+        font-size: 12px;
+    }
+}
+/* account page ends */
