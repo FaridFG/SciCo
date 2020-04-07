@@ -9,6 +9,8 @@ namespace SciCo.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<SettingsDataModel> Settings { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options):base(options)
         {
         }

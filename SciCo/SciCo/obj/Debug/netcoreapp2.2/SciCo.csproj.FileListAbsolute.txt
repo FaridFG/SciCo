@@ -16,8 +16,6 @@ C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\SciCo.AssemblyI
 C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\SciCo.TagHelpers.input.cache
 C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\SciCo.TagHelpers.output.cache
 C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\SciCo.RazorCoreGenerate.cache
-C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Views\Home\Index.cshtml.g.cs
-C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
 C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Layout.cshtml.g.cs
@@ -30,3 +28,5 @@ C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\SciCo.Views.pdb
 C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\SciCo.dll
 C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\SciCo.pdb
 C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\SciCo.csproj.CopyComplete
+C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Views\User\Index.cshtml.g.cs
+C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Views\User\SignUp.cshtml.g.cs
