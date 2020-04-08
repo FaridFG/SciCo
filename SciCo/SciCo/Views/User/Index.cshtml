@@ -1,53 +1,59 @@
-﻿@model SciCo.ViewModels.LoginVM
+﻿@model LoginVM
 @{
     ViewData["Title"] = "Index";
 }
 
-<main>
-    <!-- description section starts -->
-    <section id="description">
-        <div>
-            <p>Welcome to <span>SciCo</span>, which connects Scientists and Students who are studying Natural Sciences all over the world !</p>
-        </div>
-        <div>
-            <ul>
-                <li> <i class="fas fa-camera"></i>Share your photos with friends.</li>
-                <li> <i class="fas fa-pen"></i>Discuss Global Scientific Problems with famous Scientists.</li>
-                <li> <i class="fas fa-atlas"></i>Order Signed Books of your favourite writer.</li>
-            </ul>
-        </div>
-    </section>
-    <!-- description section ends -->
-    <!-- login section starts -->
-    <section id="login">
-        <div class="form">
-            <form>
-                <div>
-                    <label for="email">Enter your email:</label> <br>
-                    <input type="email" placeholder="Email@example.com" id="username" name="username">
-                </div>
-                <div>
-                    <label for="password">Enter your password:</label> <br>
-                    <input type="password" placeholder="Password" id="password" name="password">
-                </div>
-                <div id="passwordOptions">
-                    <div>
-                        <input type="checkbox" id="remember" name="remember">
-                        <label for="remember">Remember Me</label>
-                    </div>
-                    <div>
-                        <a href="#">Forgot Password?</a>
-                    </div>
-                </div>
-                <div>
-                    <button type="submit">Login<i class="fas fa-sign-in-alt" style="padding-left: 10px;"></i> </button>
-                </div>
-            </form>
+    <main>
+        <!-- description section starts -->
+        <section id="description">
             <div>
-                <p>Don't have an account?</p>
-                <a asp-action="SignUp">Sign Up<i class="fas fa-user-plus" style="padding-left: 10px;"></i> </a>
+                <p>Welcome to <span>SciCo</span>, which connects Scientists and Students who are studying Natural Sciences all over the world !</p>
             </div>
-        </div>
-    </section>
-    <!-- login section ends -->
-</main>
+            <div>
+                <ul>
+                    <li> <i class="fas fa-camera"></i>Share your photos with friends.</li>
+                    <li> <i class="fas fa-pen"></i>Discuss Global Scientific Problems with famous Scientists.</li>
+                    <li> <i class="fas fa-atlas"></i>Order Signed Books of your favourite writer.</li>
+                </ul>
+            </div>
+        </section>
+        <!-- description section ends -->
+        <!-- login section starts -->
+        <section id="login">
+            <div class="form">
+                <form method="post">
+                    <div>
+                        <label asp-for="Email">Enter your email:</label> <br>
+                        <input asp-for="Email" placeholder="Email@example.com">
+                        <span asp-validation-for="Email"></span>
+                    </div>
+                    <div>
+                        <label asp-for="Password">Enter your password:</label> <br>
+                        <input asp-for="Password" placeholder="Password">
+                        <span asp-validation-for="Password"></span>
+                    </div>
+                    <div id="passwordOptions">
+                        <div>
+                            <input asp-for="RememberMe">
+                            <label asp-for="RememberMe">Remember Me</label>
+                        </div>
+                        <div>
+                            <a href="#">Forgot Password?</a>
+                        </div>
+                    </div>
+                    <div>
+                        <button type="submit">Login<i class="fas fa-sign-in-alt" style="padding-left: 10px;"></i> </button>
+                    </div>
+                </form>
+                <div>
+                    <p>Don't have an account?</p>
+                    <a asp-action="SignUp">Sign Up<i class="fas fa-user-plus" style="padding-left: 10px;"></i> </a>
+                </div>
+            </div>
+        </section>
+        <!-- login section ends -->
+    </main>
+
+@section Scripts{ 
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -10,6 +10,7 @@ namespace SciCo.ViewModels
     {
         [Required, StringLength(255), EmailAddress, DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+
         [Required, StringLength(255), MinLength(7), DataType(DataType.Password)]
         public string Password { get; set; }
         public bool RememberMe { get; set; }

@@ -4,62 +4,37 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using SciCo.Data;
+using SciCo.Helpers;
+using SciCo.Models;
+using SciCo.ViewModels;
 
 namespace SciCo.Controllers
 {
     public class UserController : Controller
     {
-        protected ApplicationDbContext _context;
-        protected UserManager<ApplicationUser> _userManager;
-        protected SignInManager<ApplicationUser> _signInManager;
-        public UserController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        private UserManager<AppUser> _userManager;
+        private SignInManager<AppUser> _signInManager;
+        private RoleManager<IdentityRole> _roleManager;
+
+        public UserController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, RoleManager<IdentityRole> roleManager)
         {
-            _context = context;
             _userManager = userManager;
             _signInManager = signInManager;
+            _roleManager = roleManager;
         }
 
-        //private RoleManager<IdentityRole> _roleManager;
-        //public UserController(RoleManager<IdentityRole> roleManager)
-        //{
-        //    _roleManager = roleManager;
-        //}
-
-        //public async Task RoleSeed()
-        //{
-        //    if (!await _roleManager.RoleExistsAsync(UserRoles.AdminRole))
-        //        await _roleManager.CreateAsync(new IdentityRole(UserRoles.AdminRole));
-        //    if (!await _roleManager.RoleExistsAsync(UserRoles.ManagerRole))
-        //        await _roleManager.CreateAsync(new IdentityRole(UserRoles.ManagerRole));
-        //    if (!await _roleManager.RoleExistsAsync(UserRoles.MemberRole))
-        //        await _roleManager.CreateAsync(new IdentityRole(UserRoles.MemberRole));
-        //}
+        public async Task RoleSeed()
+        {
+            if (!await _roleManager.RoleExistsAsync(UserRoles.AdminRole))
+                await _roleManager.CreateAsync(new IdentityRole(UserRoles.AdminRole));
+            if (!await _roleManager.RoleExistsAsync(UserRoles.ManagerRole))
+                await _roleManager.CreateAsync(new IdentityRole(UserRoles.ManagerRole));
+            if (!await _roleManager.RoleExistsAsync(UserRoles.MemberRole))
+                await _roleManager.CreateAsync(new IdentityRole(UserRoles.MemberRole));
+        }
 
         public IActionResult Index()
         {
-            _context.Database.EnsureCreated();
-
-            if (!_context.Settings.Any())
-            {
-                _context.Settings.Add(new SettingsDataModel
-                {
-                    Name = "BackgroundColor",
-                    Value = "Red"
-                });
-
-                var settingsLocally = _context.Settings.Local.Count();
-                var settingsDatabase = _context.Settings.Count();
-                var firstLocal = _context.Settings.Local.FirstOrDefault();
-                var firstDatabase = _context.Settings.FirstOrDefault();
-
-                _context.SaveChanges();
-
-                settingsLocally = _context.Settings.Local.Count();
-                settingsDatabase = _context.Settings.Count();
-                firstLocal = _context.Settings.Local.FirstOrDefault();
-                firstDatabase = _context.Settings.FirstOrDefault();
-            }
             return View();
         }
 
@@ -68,10 +43,63 @@ namespace SciCo.Controllers
             return View();
         }
 
-        //public async Task<IActionResult> LogOut()
-        //{
-        //    await _signInManager.SignOutAsync();
-        //    return RedirectToAction("Index", "User");
-        //}
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> SignUp(SignUpVM user)
+        {
+            if (!ModelState.IsValid) return View(user);
+
+            AppUser appUser = new AppUser
+            {
+                Name = user.Name,
+                Surname = user.Surname,
+                UserName = user.Username,
+                Email = user.Email,
+                Birthday = user.Birthday
+            };
+
+            IdentityResult result = await _userManager.CreateAsync(appUser, user.Password);
+
+            if (!result.Succeeded)
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+                return View(user);
+            }
+
+            await _userManager.AddToRoleAsync(appUser, UserRoles.AdminRole);
+            await _signInManager.SignInAsync(appUser, true);
+
+            return View();
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(LoginVM user)
+        {
+            if (!ModelState.IsValid) return View("Index", user);
+
+            AppUser appUser = await _userManager.FindByEmailAsync(user.Email);
+            if (appUser == null)
+            {
+                ModelState.AddModelError("", "Email or password is wrong");
+                return View("Index", user);
+            }
+
+            Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(appUser, user.Password, user.RememberMe, true);
+            if (!result.Succeeded)
+            {
+                ModelState.AddModelError("", "Invalid Login Attempt");
+                return View("Index", user);
+            }
+
+            return RedirectToAction("Newsfeed", "Account");
+        }
+
+        public async Task<IActionResult> LogOut()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "User");
+        }
     }
 }
