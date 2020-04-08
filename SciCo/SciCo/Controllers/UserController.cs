@@ -71,7 +71,7 @@ namespace SciCo.Controllers
             await _userManager.AddToRoleAsync(appUser, UserRoles.AdminRole);
             await _signInManager.SignInAsync(appUser, true);
 
-            return View();
+            return RedirectToAction("Newsfeed", "Account");
         }
 
         [HttpPost, ValidateAntiForgeryToken]
