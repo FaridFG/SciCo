@@ -82,14 +82,14 @@ namespace SciCo.Controllers
             AppUser appUser = await _userManager.FindByEmailAsync(user.Email);
             if (appUser == null)
             {
-                ModelState.AddModelError("", "Email or password is wrong");
+                ModelState.AddModelError("", "Email or Password is wrong");
                 return View("Index", user);
             }
 
             Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(appUser, user.Password, user.RememberMe, true);
             if (!result.Succeeded)
             {
-                ModelState.AddModelError("", "Invalid Login Attempt");
+                ModelState.AddModelError("", "Email or Password is wrong");
                 return View("Index", user);
             }
 
