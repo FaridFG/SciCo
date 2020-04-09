@@ -38,6 +38,7 @@
                     <label asp-for="Terms">I accept the Terms and Conditions of SciCo.</label>
                     <span asp-validation-for="Terms"></span>
                 </div>
+                <div asp-validation-summary="ModelOnly" class="errorList"></div>
                 <div id="agreeTerms">You must agree with Terms and Conditions of our Company to continue sign up process!</div>
                 <div>
                     <button type="submit">Sign Up<i class="fas fa-user-plus" style="padding-left: 10px;"></i> </button>

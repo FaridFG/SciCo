@@ -27,4 +27,16 @@ $(function() {
         });
     });
     // left aside section ends
+
+    // more profile options click function starts
+    $("#more").click(function(ev) {
+        ev.preventDefault();
+        if (!($("#accountOptions").hasClass("show"))) {
+            $("#accountOptions").addClass("show");
+        }
+        else {
+            $("#accountOptions").removeClass("show");
+        }
+    })
+    // more profile options click function ends
 })
