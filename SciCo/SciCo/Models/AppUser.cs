@@ -20,5 +20,7 @@ namespace SciCo.Models
         public DateTime Birthday { get; set; }
         public string Gender { get; set; }
         public string Education { get; set; }
+        public string ProfilePhoto { get; set; }
+        public string CoverPhoto { get; set; }
     }
 }

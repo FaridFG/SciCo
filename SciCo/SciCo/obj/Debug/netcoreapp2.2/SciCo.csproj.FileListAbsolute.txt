@@ -8,7 +8,6 @@ C:\Users\farid\Desktop\SciCo\SciCo\SciCo\bin\Debug\netcoreapp2.2\SciCo.dll
 C:\Users\farid\Desktop\SciCo\SciCo\SciCo\bin\Debug\netcoreapp2.2\SciCo.pdb
 C:\Users\farid\Desktop\SciCo\SciCo\SciCo\bin\Debug\netcoreapp2.2\SciCo.Views.dll
 C:\Users\farid\Desktop\SciCo\SciCo\SciCo\bin\Debug\netcoreapp2.2\SciCo.Views.pdb
-C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\SciCo.csprojAssemblyReference.cache
 C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\SciCo.RazorAssemblyInfo.cache
 C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\SciCo.RazorAssemblyInfo.cs
 C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\SciCo.AssemblyInfoInputs.cache
@@ -32,3 +31,6 @@ C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Views\Use
 C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Views\User\SignUp.cshtml.g.cs
 C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_AccountPageLayout.cshtml.g.cs
 C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Views\Account\Newsfeed.cshtml.g.cs
+C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Components\_LeftAside\default.cshtml.g.cs
+C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\SciCo.csprojAssemblyReference.cache
+C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Views\Account\Timeline.cshtml.g.cs

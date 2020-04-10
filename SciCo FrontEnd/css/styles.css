@@ -1035,6 +1035,20 @@ aside.left i {
 #coverPhoto {
     height: 400px;
     width: 100%;
+    background-color: #fff;
+    border-radius: 7px 7px 0 0;
+}
+
+#coverPhoto p {
+    font-size: 40px;
+    font-weight: bold;
+    color: rgb(201, 198, 198);
+    border: thin solid #cedfd1;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 60px;
 }
 
 #coverPhoto img {
@@ -1068,17 +1082,46 @@ aside.left i {
     font-weight: bold;
 }
 
+#options .active {
+    color: #515365;
+    font-weight: bold;
+}
+
 #accountInfo {
     transform: translateY(-70px);
     text-align: center;
 }
 
-#accountInfo img {
+#photoItem {
     width: 150px;
     height: 150px;
     border-radius: 50%;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+
+#photoItem p {
+    height: 100%;
+    font-size: 25px;
+    font-weight: bold;
+    color: rgb(201, 198, 198);
+    letter-spacing: 1.5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: thin solid #cedfd1;
+    border-radius: 50%;
+    padding: 7px;
+    box-shadow: 1px 1px 10px 1px rgb(219, 215, 215);
+}
+
+#accountInfo img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
     padding: 7px;
     background-color: #fff;
+    box-shadow: 1px 1px 10px 1px rgb(219, 215, 215);
 }
 
 #accountInfo li:nth-child(2) a {

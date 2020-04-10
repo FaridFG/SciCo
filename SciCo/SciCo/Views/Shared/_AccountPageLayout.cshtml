@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Oxygen&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="~/css/styles.css">
     <title>@ViewBag.Title</title> @*SciCo - User's Name goes here*@
 </head>
 <body id="timeline" class="account">
@@ -345,7 +345,7 @@
             </div>
             <ul>
                 <li>
-                    <a href="#">@user.Name @user.Surname</a>
+                    <a asp-controller="Account" asp-action="Timeline" asp-route-id="@user.Id">@user.Name @user.Surname</a>
                 </li>
                 <li id="logOut">
                     <a href="#" class="button"> <i class="fas fa-angle-down"></i> </a>
@@ -366,54 +366,13 @@
     </header>
     <!-- header ends -->
     <!-- left aside starts -->
-    <aside class="left">
-        <div>
-            <a href="#" class="pink">Newsfeed</a>
-            <a href="#" class="pink"> <i class="fas fa-stream"></i> </a>
-        </div>
-        <div>
-            <a href="#" class="black">Groups</a>
-            <a href="#" class="black"> <i class="fas fa-users"></i> </a>
-        </div>
-        <div>
-            <a href="#" class="orange">Pages</a>
-            <a href="#" class="orange"> <i class="fas fa-flag"></i> </a>
-        </div>
-        <div>
-            <a href="#" class="green">Events</a>
-            <a href="#" class="green"> <i class="far fa-calendar-alt"></i> </a>
-        </div>
-        <div>
-            <a href="#" class="blue">Games</a>
-            <a href="#" class="blue"> <i class="fas fa-gamepad"></i> </a>
-        </div>
-        <div>
-            <a href="#" class="violet">Music</a>
-            <a href="#" class="violet"> <i class="fas fa-music"></i> </a>
-        </div>
-        <div>
-            <a href="#" class="red">Videos</a>
-            <a href="#" class="red"> <i class="fab fa-youtube"></i> </a>
-        </div>
-        <div>
-            <a href="#" class="purple">Shop</a>
-            <a href="#" class="purple"> <i class="fab fa-shopify"></i> </a>
-        </div>
-        <div>
-            <a href="#" class="tomato">Weather</a>
-            <a href="#" class="tomato"> <i class="fas fa-cloud-sun-rain"></i> </a>
-        </div>
-        <div>
-            <a href="#" class="brown">Jobs</a>
-            <a href="#" class="brown"> <i class="fas fa-briefcase"></i> </a>
-        </div>
-    </aside>
+    @await Component.InvokeAsync("_LeftAside")
     <!-- left aside ends -->
 
     @RenderBody()
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/3f7e3de7b3.js" crossorigin="anonymous"></script>
-    <script src="../js/account.js"></script>
+    <script src="~/js/account.js"></script>
 </body>
 </html>

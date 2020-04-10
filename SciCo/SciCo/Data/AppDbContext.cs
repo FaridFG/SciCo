@@ -18,5 +18,7 @@ namespace SciCo.Data
         {
             base.OnModelCreating(builder);
         }
+
+        public DbSet<LeftAside> LeftAsides { get; set; }
     }
 }

@@ -1,5 +1,5 @@
 $(function() {
-    // incoming and logout section starts
+    // incoming, logout, and more profile options section starts
     var buttons = document.getElementsByClassName("button");
     for (var i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener("click", function(ev) {
@@ -12,7 +12,7 @@ $(function() {
             }
         })
     }
-    // incoming and logout section ends
+    // incoming, logout, and more profile options section ends
 
     // left aside section starts
     $("aside.left > div").hover(function() {
@@ -27,16 +27,4 @@ $(function() {
         });
     });
     // left aside section ends
-
-    // more profile options click function starts
-    $("#more").click(function(ev) {
-        ev.preventDefault();
-        if (!($("#accountOptions").hasClass("show"))) {
-            $("#accountOptions").addClass("show");
-        }
-        else {
-            $("#accountOptions").removeClass("show");
-        }
-    })
-    // more profile options click function ends
 })
