@@ -26,5 +26,10 @@ namespace SciCo.Controllers
             AppUser user = await _db.Users.FindAsync(id); 
             return View(user);
         }
+
+        public IActionResult About()
+        {
+            return View();
+        }
     }
 }

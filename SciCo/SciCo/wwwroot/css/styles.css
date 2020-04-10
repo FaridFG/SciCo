@@ -1122,6 +1122,7 @@ aside.left i {
     padding: 7px;
     background-color: #fff;
     box-shadow: 1px 1px 10px 1px rgb(219, 215, 215);
+    border: 2px solid #cedfd1;
 }
 
 #accountInfo li:nth-child(2) a {
