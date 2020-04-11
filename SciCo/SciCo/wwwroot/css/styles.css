@@ -1529,6 +1529,60 @@ aside.left i {
 }
 /* account page ends */
 
+/* about section starts */
+#userInfo h1 {
+    color: #cf0a6d;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.information {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 30px;
+    font-weight: bold;
+}
+
+.information p {
+    font-size: 17px;
+}
+
+.information form {
+    display: flex;
+    justify-content: space-between;
+}
+
+.information form input {
+    width: 70%;
+    height: 28px;
+}
+
+.information form button {
+    width: 20%;
+    background-color: #fff;
+    color: #cf0a6d;
+    border: 1px solid #cf0a6d;
+    border-radius: 3px;
+    font-size: 17px;
+}
+
+.information form button:hover {
+    background-color: #cf0a6d;
+    color: #fff;
+    border: none;
+    transition: .75s;
+    cursor: pointer;
+}
+
+.information > div:nth-child(1) {
+    width: 40%;
+}
+
+.information > div:nth-child(2) {
+    width: 60%;
+}
+/* about section ends */
+
 /* friends section starts */
 #userFriends > div {
     display: flex;

@@ -1,10 +1,5 @@
 ﻿@model SciCo.Models.AppUser
-@{
-    ViewData["Title"] = "Profile";
-    Layout = "~/Views/Shared/_AccountPageLayout.cshtml";
-}
 
-<!-- profile section starts -->
 <section id="profile">
     <div id="coverPhoto">
         @if (Model.CoverPhoto == null)
@@ -19,10 +14,10 @@
     <div id="options">
         <ul>
             <li>
-                <a asp-action="Timeline" class="active">Timeline</a>
+                <a asp-action="Timeline">Timeline</a>
             </li>
             <li>
-                <a href="about.html">About</a>
+                <a asp-action="About" asp-route-id="@Model.Id">About</a>
             </li>
             <li>
                 <a href="friends.html">Friends</a>
