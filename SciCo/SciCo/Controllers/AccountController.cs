@@ -21,13 +21,33 @@ namespace SciCo.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Timeline(string id)
+        public async Task<IActionResult> Profile(string id)
         {
-            AppUser user = await _db.Users.FindAsync(id); 
+            AppUser user = await _db.Users.FindAsync(id);
             return View(user);
         }
 
+        public IActionResult Timeline()
+        {
+            return View();
+        }
+
         public IActionResult About()
+        {
+            return View();
+        }
+
+        public IActionResult Friends()
+        {
+            return View();
+        }
+
+        public IActionResult Photos()
+        {
+            return View();
+        }
+
+        public IActionResult Videos()
         {
             return View();
         }

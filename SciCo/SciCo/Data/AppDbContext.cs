@@ -17,8 +17,13 @@ namespace SciCo.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+            foreach (var relationship in builder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
+            {
+                relationship.DeleteBehavior = DeleteBehavior.Restrict;
+            }
         }
 
         public DbSet<LeftAside> LeftAsides { get; set; }
+        public DbSet<Friend> Friends { get; set; }
     }
 }

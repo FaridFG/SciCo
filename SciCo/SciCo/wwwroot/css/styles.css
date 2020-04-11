@@ -1032,6 +1032,14 @@ aside.left i {
     top: 115px;
 }
 
+.account main > section:nth-child(2) > div {
+    margin: 40px 180px;
+    background-color: #fff;
+    border: 1px solid #cedfd1;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px 3px rgba(50, 51, 63, 0.4);
+}
+
 #coverPhoto {
     height: 400px;
     width: 100%;
@@ -1049,6 +1057,7 @@ aside.left i {
     justify-content: center;
     align-items: center;
     padding-left: 60px;
+    border-radius: 7px 7px 0 0;
 }
 
 #coverPhoto img {
@@ -1146,12 +1155,12 @@ aside.left i {
 #accountOptions {
     position: absolute;
     width: 220px;
-    height: 190px;
+    height: auto;
     padding: 10px 40px 10px 20px;
     border-radius: 5px;
     background-color: #fcfffe;
     margin-left: -110px;
-    top: -200px;
+    top: -100px;
     z-index: 10;
     box-shadow: 2px 2px 5px 1px rgba(63, 66, 87, 0.4), -2px -2px 5px 1px rgba(63, 66, 87, 0.4);
     display: none;
@@ -1519,3 +1528,107 @@ aside.left i {
     }
 }
 /* account page ends */
+
+/* friends section starts */
+#userFriends > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.friend {
+    border: thin solid rgb(173, 175, 197);
+    width: 40%;
+    margin: 25px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.friend > div:nth-child(1) {
+    height: 100px;
+}
+
+.friend > div:nth-child(1) a:nth-child(1) img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.friend > div:nth-child(1) a:nth-child(2) img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: -40px 0 0 40%;
+    padding: 5px;
+}
+
+.friend > div:nth-child(2) {
+    height: 40px;
+}
+
+.friend > div:nth-child(2) > ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.friend > div:nth-child(2) a {
+    color: #2e2f31;
+    letter-spacing: .5px;
+    font-size: 16px;
+}
+
+#friendOptions {
+    position: relative;
+}
+
+#friendOptions > ul {
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 3px 3px 5px 3px rgba(50, 51, 63, 0.4);
+    right: -10px;
+    display: none;
+}
+
+#friendOptions li {
+    padding: 10px 40px;
+}
+
+#friendOptions a {
+    font-size: 13px;
+}
+
+#friendOptions:hover ul {
+    display: block;
+}
+
+#friendOptions:hover ul a {
+    color: #828597;
+    font-weight: bold;
+}
+
+#friendOptions:hover ul a:hover {
+    color: #515365;
+}
+/* friends section ends */
+
+/* photos section starts */
+#userPhotos > div {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    justify-content: space-between;
+}
+
+.images {
+    height: 180px;
+    margin: 25px;
+    border: 1px solid #cedfd1;
+    border-radius: 5px;
+}
+
+.images img {
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+}
+/* photos section ends */
