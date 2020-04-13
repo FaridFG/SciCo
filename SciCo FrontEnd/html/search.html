@@ -9,7 +9,7 @@
     <title>SciCo - User's Name</title>
 </head>
 
-<body id="friends" class="account">
+<body id="searchPage" class="account">
     <!-- header starts -->
     <header>
         <div class="logo">
@@ -19,7 +19,7 @@
             <form id="search">
                 <div>
                     <input type="search" id="search" name="search" placeholder="Search people or pages..." />
-                    <a href="#"> <i class="fas fa-search"></i> </a>
+                    <button> <i class="fas fa-search"></i> </button>
                 </div>
             </form>
         </div>
@@ -413,215 +413,63 @@
 
     <!-- main section starts -->
     <main>
-        <!-- profile section starts -->
-        <section id="profile">
-            <div id="coverPhoto">
-                <!-- <a href="#"> <img src="../img/coverImage.jpg" alt="cover photo" /> </a> -->
-                <p>Cover Photo</p>
+        <section>
+            <div>
+                <div class="searchResult">
+                    <div class="resultAccount">
+                        <img src="../img/profilePhoto.jpg" alt="user's profile photo" />
+                        <a href="#">Farid Guluzade</a>
+                    </div>
+                    <div class="showProfile">
+                        <a href="#">Show Profile</a>
+                    </div>
+                </div>
+                <div class="searchResult">
+                    <div class="resultAccount">
+                        <img src="../img/profilePhoto.jpg" alt="user's profile photo" />
+                        <a href="#">Farid Guluzade</a>
+                    </div>
+                    <div class="showProfile">
+                        <a href="#">Show Profile</a>
+                    </div>
+                </div>
+                <div class="searchResult">
+                    <div class="resultAccount">
+                        <img src="../img/profilePhoto.jpg" alt="user's profile photo" />
+                        <a href="#">Farid Guluzade</a>
+                    </div>
+                    <div class="showProfile">
+                        <a href="#">Show Profile</a>
+                    </div>
+                </div>
+                <div class="searchResult">
+                    <div class="resultAccount">
+                        <img src="../img/profilePhoto.jpg" alt="user's profile photo" />
+                        <a href="#">Farid Guluzade</a>
+                    </div>
+                    <div class="showProfile">
+                        <a href="#">Show Profile</a>
+                    </div>
+                </div>
+                <div class="searchResult">
+                    <div class="resultAccount">
+                        <img src="../img/profilePhoto.jpg" alt="user's profile photo" />
+                        <a href="#">Farid Guluzade</a>
+                    </div>
+                    <div class="showProfile">
+                        <a href="#">Show Profile</a>
+                    </div>
+                </div>
             </div>
-            <div id="options">
+            <div id="pagination">
                 <ul>
                     <li>
-                        <a href="timeline.html">Timeline</a>
+                        <a href="#"> <i class="fas fa-angle-left"></i>Previous</a>
                     </li>
                     <li>
-                        <a href="about.html">About</a>
-                    </li>
-                    <li>
-                        <a href="friends.html">Friends</a>
-                    </li>
-                    <li id="accountInfo">
-                        <ul>
-                            <li id="photoItem">
-                                <a href="#"> <img src="../img/profilePhoto.jpg" alt="profile photo"> </a>
-                                <!-- <p>Profile<br>Photo</p> -->
-                            </li>
-                            <li>
-                                <a href="#">Farid Guluzade</a>
-                            </li>
-                            <li>
-                                <a href="#">Baku, Azerbaijan</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="photos.html">Photos</a>
-                    </li>
-                    <li>
-                        <a href="videos.html">Videos</a>
-                    </li>
-                    <li id="more">
-                        <a href="#" class="button"> <i class="fas fa-ellipsis-h"></i> </a>
-                        <ul id="accountOptions" class="subMenu">
-                            <li>
-                                <a href="#">Update Profile Photo</a>
-                            </li>
-                            <li>
-                                <a href="#">Update Cover Photo</a>
-                            </li>
-                        </ul>
+                        <a href="#">Next<i class="fas fa-angle-right"></i> </a>
                     </li>
                 </ul>
-            </div>
-        </section>
-        <!-- profile section ends -->
-
-        <section id="userFriends">
-            <div>
-                <div class="friend">
-                    <div>
-                        <a href="#"> <img src="../img/coverImage.jpg" alt="user's cover image"> </a>
-                        <a href="#"> <img src="../img/profilePhoto.jpg" alt="user's profile photo"> </a>
-                    </div>
-                    <div>
-                        <ul>
-                            <li>
-                                <a href="#">Farid Guluzade</a>
-                            </li>
-                            <li id="friendOptions">
-                                <a href="#">
-                                    <i class="fas fa-ellipsis-h"></i>
-                                    <ul>
-                                        <li> <a href="#">Unfriend</a> </li>
-                                        <li> <a href="#">Block</a> </li>
-                                    </ul>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="friend">
-                    <div>
-                        <a href="#"> <img src="../img/coverImage.jpg" alt="user's cover image"> </a>
-                        <a href="#"> <img src="../img/profilePhoto.jpg" alt="user's profile photo"> </a>
-                    </div>
-                    <div>
-                        <ul>
-                            <li>
-                                <a href="#">Farid Guluzade</a>
-                            </li>
-                            <li id="friendOptions">
-                                <a href="#">
-                                    <i class="fas fa-ellipsis-h"></i>
-                                    <ul>
-                                        <li> <a href="#">Unfriend</a> </li>
-                                        <li> <a href="#">Block</a> </li>
-                                    </ul>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="friend">
-                    <div>
-                        <a href="#"> <img src="../img/coverImage.jpg" alt="user's cover image"> </a>
-                        <a href="#"> <img src="../img/profilePhoto.jpg" alt="user's profile photo"> </a>
-                    </div>
-                    <div>
-                        <ul>
-                            <li>
-                                <a href="#">Farid Guluzade</a>
-                            </li>
-                            <li id="friendOptions">
-                                <a href="#">
-                                    <i class="fas fa-ellipsis-h"></i>
-                                    <ul>
-                                        <li> <a href="#">Unfriend</a> </li>
-                                        <li> <a href="#">Block</a> </li>
-                                    </ul>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="friend">
-                    <div>
-                        <a href="#"> <img src="../img/coverImage.jpg" alt="user's cover image"> </a>
-                        <a href="#"> <img src="../img/profilePhoto.jpg" alt="user's profile photo"> </a>
-                    </div>
-                    <div>
-                        <ul>
-                            <li>
-                                <a href="#">Farid Guluzade</a>
-                            </li>
-                            <li id="friendOptions">
-                                <a href="#">
-                                    <i class="fas fa-ellipsis-h"></i>
-                                    <ul>
-                                        <li> <a href="#">Unfriend</a> </li>
-                                        <li> <a href="#">Block</a> </li>
-                                    </ul>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="friend">
-                    <div>
-                        <a href="#"> <img src="../img/coverImage.jpg" alt="user's cover image"> </a>
-                        <a href="#"> <img src="../img/profilePhoto.jpg" alt="user's profile photo"> </a>
-                    </div>
-                    <div>
-                        <ul>
-                            <li>
-                                <a href="#">Farid Guluzade</a>
-                            </li>
-                            <li id="friendOptions">
-                                <a href="#">
-                                    <i class="fas fa-ellipsis-h"></i>
-                                    <ul>
-                                        <li> <a href="#">Unfriend</a> </li>
-                                        <li> <a href="#">Block</a> </li>
-                                    </ul>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="friend">
-                    <div>
-                        <a href="#"> <img src="../img/coverImage.jpg" alt="user's cover image"> </a>
-                        <a href="#"> <img src="../img/profilePhoto.jpg" alt="user's profile photo"> </a>
-                    </div>
-                    <div>
-                        <ul>
-                            <li>
-                                <a href="#">Farid Guluzade</a>
-                            </li>
-                            <li id="friendOptions">
-                                <a href="#">
-                                    <i class="fas fa-ellipsis-h"></i>
-                                    <ul>
-                                        <li> <a href="#">Unfriend</a> </li>
-                                        <li> <a href="#">Block</a> </li>
-                                    </ul>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="friend">
-                    <div>
-                        <a href="#"> <img src="../img/coverImage.jpg" alt="user's cover image"> </a>
-                        <a href="#"> <img src="../img/profilePhoto.jpg" alt="user's profile photo"> </a>
-                    </div>
-                    <div>
-                        <ul>
-                            <li>
-                                <a href="#">Farid Guluzade</a>
-                            </li>
-                            <li id="friendOptions">
-                                <a href="#">
-                                    <i class="fas fa-ellipsis-h"></i>
-                                    <ul>
-                                        <li> <a href="#">Unfriend</a> </li>
-                                        <li> <a href="#">Block</a> </li>
-                                    </ul>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
             </div>
         </section>
     </main>

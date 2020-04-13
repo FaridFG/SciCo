@@ -78,5 +78,48 @@ $(function() {
             });
         }
     })
+
+    window.addEventListener("load", function() {
+        if (window.scrollTop > 570) {
+            $("aside.left > div").css({
+                "transform": "translateX(0)",
+                "transition": "transform .6s",
+                "border": "none",
+                "box-shadow": "none"
+            });
+            $("aside.left").css({
+                "height": "calc(100vh - 75px)",
+                "top": "75px",
+                "background-color": "#fff",
+                "border-right": "3px solid rgb(73, 76, 98)"
+            })
+            $("aside.left > div:nth-child(1)").css({
+                "margin-top": "30px"
+            });
+            $("aside.left > div").mouseleave(function() {
+                $(this).css({
+                    "transform": "translateX(0)"
+                });
+            });
+        }
+    })
     // left aside section ends
+
+    // profile options section starts
+    let profileOptions = document.querySelectorAll("#options > ul > li");
+    let options = Array.from(profileOptions);
+    options.splice(3, 1);
+    $(options[0]).addClass("active");
+
+    for (var i = 0; i < options.length; i++) {
+        options[i].addEventListener("click", function() {
+            if (!($(options[i]).hasClass("active"))) {
+                $(".active").removeClass("active");
+                $(this).addClass("active");
+            } else {
+                $(this).addClass("active");
+            }
+        })
+    }
+    // profile options section ends
 })

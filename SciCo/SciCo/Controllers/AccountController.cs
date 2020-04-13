@@ -35,9 +35,10 @@ namespace SciCo.Controllers
             return View(user);
         }
 
-        public IActionResult Friends()
+        public async Task<IActionResult> Friends(string id)
         {
-            return View();
+            AppUser user = await _db.Users.FindAsync(id);
+            return View(user);
         }
 
         public IActionResult Photos()
@@ -48,6 +49,16 @@ namespace SciCo.Controllers
         public IActionResult Videos()
         {
             return View();
+        }
+
+        public IActionResult Search(string search)
+        {
+            if (search == null)
+            {
+                ModelState.AddModelError("", "Type something to search");
+                return View();
+            }
+            return View(_db.Users.Where(s => s.Name.Contains(search) || s.Surname.Contains(search)).Take(5));
         }
     }
 }

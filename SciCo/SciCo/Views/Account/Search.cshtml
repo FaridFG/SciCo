@@ -1,0 +1,32 @@
+﻿@model IEnumerable<AppUser>
+@{
+    ViewData["Title"] = "Search";
+    Layout = "~/Views/Shared/_AccountPageLayout.cshtml";
+}
+
+    <section>
+        <div>
+            @foreach (var user in Model)
+            {
+                <div class="searchResult">
+                    <div class="resultAccount">
+                        <img src="~/img/@user.ProfilePhoto" alt="user's profile photo" />
+                        <a href="#">@user.Name @user.Surname</a>
+                    </div>
+                    <div class="showProfile">
+                        <a href="#">Show Profile</a>
+                    </div>
+                </div>
+            }
+        </div>
+        <div id="pagination">
+            <ul>
+                <li>
+                    <a href="#"> <i class="fas fa-angle-left"></i>Previous</a>
+                </li>
+                <li>
+                    <a href="#">Next<i class="fas fa-angle-right"></i> </a>
+                </li>
+            </ul>
+        </div>
+    </section>
