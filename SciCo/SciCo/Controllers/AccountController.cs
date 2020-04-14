@@ -22,7 +22,8 @@ namespace SciCo.Controllers
         }
         public IActionResult Newsfeed()
         {
-            return View();
+            var model = new List<FriendRequest>();
+            return View(model);
         }
 
         public async Task<IActionResult> Timeline(string id)
@@ -86,10 +87,11 @@ namespace SciCo.Controllers
             return View(user);
         }
 
-        public async Task<IActionResult> SendFriendRequest(string id)
+        [HttpPost]
+        public async Task<IActionResult> SendFriendRequest(string ReceiverId)
         {
             AppUser RequestorUser = await _userManager.GetUserAsync(User);
-            AppUser ReceiverUser = await _db.Users.FindAsync(id);
+            AppUser ReceiverUser = await _db.Users.FindAsync(ReceiverId);
             
             FriendRequest request = new FriendRequest
             {
@@ -103,7 +105,7 @@ namespace SciCo.Controllers
             }
             await _db.FriendRequests.AddAsync(request);
             await _db.SaveChangesAsync();
-            return Content($"'{RequestorUser.Name} {RequestorUser.Surname}' has sent a friend request to '{ReceiverUser.Name} {ReceiverUser.Surname}'");
+            return Content($"You '({RequestorUser.Name} {RequestorUser.Surname})' has sent a friend request to '{ReceiverUser.Name} {ReceiverUser.Surname}'");
         }
     }
 }

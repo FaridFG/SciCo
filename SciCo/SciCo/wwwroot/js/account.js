@@ -58,7 +58,7 @@ $(function() {
             });
             $("aside.left").css({
                 "height": "auto",
-                "top": "100px",
+                "top": "115px",
                 "background": "none",
                 "border-right": "none"
             });

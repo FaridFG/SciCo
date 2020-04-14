@@ -21,7 +21,10 @@ namespace SciCo.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View(_db.FriendRequests);
+            AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var model = _db.FriendRequests.Where(r => r.ReceiverUser == user);
+            ViewBag.Requestors = _db.FriendRequests.Select(r => r.RequestorUser);
+            return View(await Task.FromResult(model));
         }
     }
 }
