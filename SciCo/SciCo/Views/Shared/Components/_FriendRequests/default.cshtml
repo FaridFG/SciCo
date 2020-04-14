@@ -1,0 +1,27 @@
+﻿@model IEnumerable<FriendRequest>
+
+<a href="#" class="button"> <i class="fas fa-user-plus"></i> <span class="blueBack">@Model.Count()</span> </a>
+<div id="requests" class="subMenu">
+    @foreach (FriendRequest request in Model)
+    {
+        <div class="requestSender">
+            <div>
+                <img src="~/img/@request.RequestorUser.ProfilePhoto" alt="friend request sender's profile photo">
+                <a href="#">@request.RequestorUser.Name @request.RequestorUser.Surname</a>
+            </div>
+            <div>
+                <ul>
+                    <li>
+                        <a href="#" title="Confirm"> <i class="fas fa-user-plus"></i> </a>
+                    </li>
+                    <li>
+                        <a href="#" title="Delete"> <i class="fas fa-user-minus"></i> </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    }
+    <div id="allRequests" class="viewAll blueBack">
+        <a href="#" role="button">View All Friend Requests</a>
+    </div>
+</div>

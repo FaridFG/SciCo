@@ -1,4 +1,5 @@
 ﻿@model AppUser
+@{ var user = _userManager.GetUserAsync(User);}
 @{ System.Globalization.DateTimeFormatInfo date = new System.Globalization.DateTimeFormatInfo();}
 @{
     ViewData["Title"] = "About";
@@ -55,14 +56,32 @@
             </li>
             <li id="more">
                 <a href="#" class="button"> <i class="fas fa-ellipsis-h"></i> </a>
-                <ul id="accountOptions" class="subMenu">
-                    <li>
-                        <a href="#">Update Profile Photo</a>
-                    </li>
-                    <li>
-                        <a href="#">Update Cover Photo</a>
-                    </li>
-                </ul>
+                @if (Model == await user)
+                {
+                    <form id="accountOptions" class="subMenu" method="post">
+                        <div>
+                            <input type="hidden">
+                            <button>Update Profile Photo</button>
+                        </div>
+                        <div>
+                            <input type="hidden">
+                            <button>Update Cover Photo</button>
+                        </div>
+                    </form>
+                }
+                else
+                {
+                    <form id="accountOptions" class="subMenu" method="post">
+                        <div>
+                            <input type="hidden">
+                            <button>Send Friend Request</button>
+                        </div>
+                        <div>
+                            <input type="hidden">
+                            <button>Write Message</button>
+                        </div>
+                    </form>
+                }
             </li>
         </ul>
     </div>

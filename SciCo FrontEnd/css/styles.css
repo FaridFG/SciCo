@@ -1168,14 +1168,18 @@ aside.left i {
     display: none;
 }
 
-#accountOptions a {
+#accountOptions button {
     font-size: 13px;
+    color: #9a9fbf;
     font-weight: bold;
     letter-spacing: 0.05em;
+    background: transparent;
+    border: none;
+    padding: 10px 5px;
 }
 
-#more ul li {
-    padding: 5px 5px;
+#accountOptions button:hover {
+    cursor: pointer;
 }
 /* profile section ends */
 /* responsive account page starts */
@@ -1690,12 +1694,8 @@ aside.left i {
 /* photos section ends */
 
 /* search page starts */
-#searchPage > main {
+#searchBar {
     height: 600px;
-}
-
-#searchPage > main > section {
-    height: 100%;
     width: 80%;
     margin: 0 auto;
     background-color: #fff;
@@ -1704,15 +1704,15 @@ aside.left i {
     box-shadow: 3px 3px 5px 3px rgba(0, 0, 0, 0.5);
 }
 
-#searchPage > main > section > div:nth-child(1) {
+#searchBar > div:nth-child(1) {
     height: 75%;
 }
 
-#searchPage > main > section > div:nth-child(2) {
+#searchBar > div:nth-child(2) {
     height: 25%;
 }
 
-#searchPage .searchResult {
+#searchBar .searchResult {
     height: calc(100% / 5);
     display: flex;
     justify-content: space-between;
@@ -1748,13 +1748,18 @@ aside.left i {
     justify-content: center;
 }
 
-.showProfile a {
+.showProfile button {
     color: #cf0a6d;
     font-size: 18px;
     letter-spacing: 1.5px;
     border: 1px solid #cf0a6d;
     border-radius: 5px;
     padding: 10px 20px;
+    background: transparent;
+}
+
+.showProfile button:hover {
+    cursor: pointer;
 }
 
 #pagination ul {

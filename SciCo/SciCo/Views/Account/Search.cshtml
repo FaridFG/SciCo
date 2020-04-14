@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_AccountPageLayout.cshtml";
 }
 
-    <section>
+    <section id="searchBar">
         <div>
             @foreach (var user in Model)
             {
@@ -14,7 +14,10 @@
                         <a href="#">@user.Name @user.Surname</a>
                     </div>
                     <div class="showProfile">
-                        <a href="#">Show Profile</a>
+                        <form method="post" asp-action="ShowProfile">
+                            <input type="hidden" value="@user.Id" name="userId" />
+                            <button type="submit">Show Profile</button>
+                        </form>
                     </div>
                 </div>
             }

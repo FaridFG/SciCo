@@ -1,7 +1,7 @@
 ﻿@model AppUser
 @{ var user = _userManager.GetUserAsync(User);}
 @{
-    ViewData["Title"] = "Timeline";
+    ViewData["Title"] = "ShowProfile";
     Layout = "~/Views/Shared/_AccountPageLayout.cshtml";
 }
 
@@ -56,32 +56,16 @@
             </li>
             <li id="more">
                 <a href="#" class="button"> <i class="fas fa-ellipsis-h"></i> </a>
-                @if (Model == await user)
-                {
-                    <form id="accountOptions" class="subMenu" method="post">
-                        <div>
-                            <input type="hidden">
-                            <button>Update Profile Photo</button>
-                        </div>
-                        <div>
-                            <input type="hidden">
-                            <button>Update Cover Photo</button>
-                        </div>
-                    </form>
-                }
-                else
-                {
-                    <form id="accountOptions" class="subMenu" method="post">
-                        <div>
-                            <input type="hidden">
-                            <button>Send Friend Request</button>
-                        </div>
-                        <div>
-                            <input type="hidden">
-                            <button>Write Message</button>
-                        </div>
-                    </form>
-                }
+                <form id="accountOptions" class="subMenu" method="post" asp-action="SendFriendRequest">
+                    <div>
+                        <input type="hidden" name="ReceiverId" value="@Model.Id" />
+                        <button>Send Friend Request</button>
+                    </div>
+                    <div>
+                        <input type="hidden">
+                        <button>Write Message</button>
+                    </div>
+                </form>
             </li>
         </ul>
     </div>

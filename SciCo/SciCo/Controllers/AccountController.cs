@@ -14,9 +14,11 @@ namespace SciCo.Controllers
     public class AccountController : Controller
     {
         private readonly AppDbContext _db;
-        public AccountController(AppDbContext db)
+        private readonly UserManager<AppUser> _userManager;
+        public AccountController(AppDbContext db, UserManager<AppUser> userManager)
         {
             _db = db;
+            _userManager = userManager;
         }
         public IActionResult Newsfeed()
         {
@@ -26,18 +28,30 @@ namespace SciCo.Controllers
         public async Task<IActionResult> Timeline(string id)
         {
             AppUser user = await _db.Users.FindAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
             return View(user);
         }
 
         public async Task<IActionResult> About(string id)
         {
             AppUser user = await _db.Users.FindAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
             return View(user);
         }
 
         public async Task<IActionResult> Friends(string id)
         {
             AppUser user = await _db.Users.FindAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
             return View(user);
         }
 
@@ -59,6 +73,37 @@ namespace SciCo.Controllers
                 return View();
             }
             return View(_db.Users.Where(s => s.Name.Contains(search) || s.Surname.Contains(search)).Take(5));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ShowProfile(string userId)
+        {
+            AppUser user = await _db.Users.FindAsync(userId);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return View(user);
+        }
+
+        public async Task<IActionResult> SendFriendRequest(string id)
+        {
+            AppUser RequestorUser = await _userManager.GetUserAsync(User);
+            AppUser ReceiverUser = await _db.Users.FindAsync(id);
+            
+            FriendRequest request = new FriendRequest
+            {
+                RequestorUser = RequestorUser,
+                ReceiverUser = ReceiverUser
+            };
+
+            if (_db.FriendRequests.Any(r => r.RequestorUser == RequestorUser && r.ReceiverUser == ReceiverUser))
+            {
+                return Content($"You '({RequestorUser.Name} {RequestorUser.Surname})' has already sent a friend request to '{ReceiverUser.Name} {ReceiverUser.Surname}'");
+            }
+            await _db.FriendRequests.AddAsync(request);
+            await _db.SaveChangesAsync();
+            return Content($"'{RequestorUser.Name} {RequestorUser.Surname}' has sent a friend request to '{ReceiverUser.Name} {ReceiverUser.Surname}'");
         }
     }
 }
