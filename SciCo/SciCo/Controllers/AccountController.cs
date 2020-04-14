@@ -107,5 +107,15 @@ namespace SciCo.Controllers
             await _db.SaveChangesAsync();
             return Content($"You '({RequestorUser.Name} {RequestorUser.Surname})' has sent a friend request to '{ReceiverUser.Name} {ReceiverUser.Surname}'");
         }
+
+        public IActionResult AcceptFriendRequest()
+        {
+            return View();
+        }
+
+        public IActionResult AddInfo(string input)
+        {
+            return View();
+        }
     }
 }

@@ -18,5 +18,8 @@ namespace SciCo.Models
 
         [Required, StringLength(100)]
         public string ColorClass { get; set; }
+
+        [Required, StringLength(500)]
+        public string Link { get; set; }
     }
 }
