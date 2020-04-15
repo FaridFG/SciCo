@@ -1,4 +1,13 @@
 $(function() {
+    // search action scripts start
+    $(".account > header > .form button").click(function(ev){
+        if(($(".account > header > .form input")).val() == ""){
+            ev.preventDefault();
+            alert("You must enter user's name and surname to search...");
+        }
+    })
+    // search action scripts end
+
     // incoming, logout, and more profile options section starts
     var buttons = document.getElementsByClassName("button");
     for (var i = 0; i < buttons.length; i++) {

@@ -5,8 +5,6 @@
 }
 
 <section id="searchBar">
-    <h1>Search</h1>
-    <div asp-validation-summary="ModelOnly"></div>
     @if (Model == null)
     {
         <p>There is no user with this name</p>
@@ -22,15 +20,14 @@
                     <a href="#">@user.Name @user.Surname</a>
                 </div>
                 <div class="showProfile">
-                    <form method="post" asp-action="ShowProfile">
-                        <input type="hidden" value="@user.Id" name="userId" />
+                    <form>
+                        <input type="hidden">
                         <button type="submit">Show Profile</button>
                     </form>
                 </div>
             </div>
         }
     </div>
-    }
     <div id="pagination">
         <ul>
             <li>
@@ -41,4 +38,5 @@
             </li>
         </ul>
     </div>
+    }
 </section>

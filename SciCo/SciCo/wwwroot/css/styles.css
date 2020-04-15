@@ -760,6 +760,25 @@ input[type="search"]::-webkit-search-cancel-button {
     width: 10%;
 }
 
+#alert {
+    position: absolute;
+    z-index: 100;
+    width: 30%;
+    border: 2px solid rgb(63, 66, 87);
+    border-radius: 5px;
+    top: 80px;
+    left: 18%;
+    text-align: center;
+    /* display: none; */
+}
+
+#alert > p {
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+    padding: 10px 25px;
+}
+
 #incoming > ul {
     height: 100%;
     display: flex;
@@ -1749,8 +1768,21 @@ aside.left i {
     box-shadow: 3px 3px 5px 3px rgba(0, 0, 0, 0.5);
 }
 
+#searchBar p {
+    font-size: 40px;
+    font-weight: bold;
+    border: thin solid rgb(63, 66, 87);
+    border-radius: 5px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}
+
 #searchBar > div:nth-child(1) {
     height: 75%;
+    overflow: hidden;
 }
 
 #searchBar > div:nth-child(2) {
