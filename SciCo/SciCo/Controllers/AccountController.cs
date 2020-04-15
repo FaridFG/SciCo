@@ -19,8 +19,7 @@ namespace SciCo.Controllers
         }
         public IActionResult Newsfeed()
         {
-            var model = _db.LeftAsides;
-            return View(model);
+            return View();
         }
 
         public IActionResult Search(string search)

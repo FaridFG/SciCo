@@ -970,12 +970,25 @@ input[type="search"]::-webkit-search-cancel-button {
     border-radius: 50%;
     border: thin solid #fff;
     padding: 3px;
+    background-color: #fff;
 }
 
 #user img {
     width: 100%;
     height: 100%;
     border-radius: 50%;
+}
+
+#user img[alt] {
+    font-size: 13px;
+    text-align: center;
+}
+
+#user .profilePhoto p {
+    font-size: 13px;
+    text-align: center;
+    color: #515365;
+    font-weight: bold;
 }
 
 #user > ul {

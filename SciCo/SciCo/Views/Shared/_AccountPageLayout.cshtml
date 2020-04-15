@@ -17,7 +17,7 @@
             <a href="#"> <i class="fas fa-satellite"></i>SciCo</a>
         </div>
         <div class="form">
-            <form method="post" asp-action="Search" id="search">
+            <form asp-controller="Account" asp-action="Search" id="search">
                 <div>
                     <input type="search" id="search" name="search" placeholder="Search people or pages..." />
                     <button> <i class="fas fa-search"></i> </button>
@@ -346,7 +346,14 @@
         </div>
         <div id="user">
             <div class="profilePhoto">
-                <img src="~/img/@user.ProfilePhoto" alt="user's profile photo" />
+                @if (user.ProfilePhoto == null)
+                {
+                    <p>No Photo</p>
+                }
+                else
+                {
+                    <img src="~/img/@user.ProfilePhoto" alt="user's profile photo" />
+                }
             </div>
             <ul>
                 <li>
@@ -372,7 +379,7 @@
     <!-- header ends -->
 
     <!-- left aside starts -->
-    <partial name="_LeftAsidePartial" />
+    @await  Component.InvokeAsync("_LeftAside")
     <!-- left aside ends -->
 
     <!-- main starts -->
