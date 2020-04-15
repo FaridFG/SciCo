@@ -13,13 +13,12 @@ namespace SciCo.Models
         [Required, StringLength(100)]
         public string Title { get; set; }
 
+        public string Link { get; set; }
+
         [Required, StringLength(255)]
         public string IconClass { get; set; }
 
         [Required, StringLength(100)]
         public string ColorClass { get; set; }
-
-        [Required, StringLength(500)]
-        public string Link { get; set; }
     }
 }

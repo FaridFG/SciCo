@@ -14,6 +14,7 @@ namespace SciCo.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Title = table.Column<string>(maxLength: 100, nullable: false),
+                    Link = table.Column<string>(nullable: true),
                     IconClass = table.Column<string>(maxLength: 255, nullable: false),
                     ColorClass = table.Column<string>(maxLength: 100, nullable: false)
                 },

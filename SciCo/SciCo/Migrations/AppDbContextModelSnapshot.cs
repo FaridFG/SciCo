@@ -202,48 +202,6 @@ namespace SciCo.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("SciCo.Models.Friend", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("User1Id")
-                        .IsRequired();
-
-                    b.Property<string>("User2Id")
-                        .IsRequired();
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("User1Id");
-
-                    b.HasIndex("User2Id");
-
-                    b.ToTable("Friends");
-                });
-
-            modelBuilder.Entity("SciCo.Models.FriendRequest", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ReceiverUserId")
-                        .IsRequired();
-
-                    b.Property<string>("RequestorUserId")
-                        .IsRequired();
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ReceiverUserId");
-
-                    b.HasIndex("RequestorUserId");
-
-                    b.ToTable("FriendRequests");
-                });
-
             modelBuilder.Entity("SciCo.Models.LeftAside", b =>
                 {
                     b.Property<int>("Id")
@@ -258,9 +216,7 @@ namespace SciCo.Migrations
                         .IsRequired()
                         .HasMaxLength(255);
 
-                    b.Property<string>("Link")
-                        .IsRequired()
-                        .HasMaxLength(500);
+                    b.Property<string>("Link");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -313,32 +269,6 @@ namespace SciCo.Migrations
                     b.HasOne("SciCo.Models.AppUser")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
-            modelBuilder.Entity("SciCo.Models.Friend", b =>
-                {
-                    b.HasOne("SciCo.Models.AppUser", "User1")
-                        .WithMany()
-                        .HasForeignKey("User1Id")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("SciCo.Models.AppUser", "User2")
-                        .WithMany()
-                        .HasForeignKey("User2Id")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
-            modelBuilder.Entity("SciCo.Models.FriendRequest", b =>
-                {
-                    b.HasOne("SciCo.Models.AppUser", "ReceiverUser")
-                        .WithMany()
-                        .HasForeignKey("ReceiverUserId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("SciCo.Models.AppUser", "RequestorUser")
-                        .WithMany()
-                        .HasForeignKey("RequestorUserId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618

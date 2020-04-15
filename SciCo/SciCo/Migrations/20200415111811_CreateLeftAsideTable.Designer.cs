@@ -10,8 +10,8 @@ using SciCo.Data;
 namespace SciCo.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200408204414_CreateUserTable")]
-    partial class CreateUserTable
+    [Migration("20200415111811_CreateLeftAsideTable")]
+    partial class CreateLeftAsideTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -143,6 +143,8 @@ namespace SciCo.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
+                    b.Property<string>("CoverPhoto");
+
                     b.Property<string>("CurrentCity");
 
                     b.Property<string>("Education");
@@ -176,6 +178,8 @@ namespace SciCo.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed");
 
+                    b.Property<string>("ProfilePhoto");
+
                     b.Property<string>("SecurityStamp");
 
                     b.Property<string>("Surname")
@@ -200,12 +204,37 @@ namespace SciCo.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("SciCo.Models.LeftAside", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ColorClass")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
+                    b.Property<string>("IconClass")
+                        .IsRequired()
+                        .HasMaxLength(255);
+
+                    b.Property<string>("Link");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("LeftAsides");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
                         .WithMany()
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -213,7 +242,7 @@ namespace SciCo.Migrations
                     b.HasOne("SciCo.Models.AppUser")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
@@ -221,7 +250,7 @@ namespace SciCo.Migrations
                     b.HasOne("SciCo.Models.AppUser")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
@@ -229,12 +258,12 @@ namespace SciCo.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
                         .WithMany()
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("SciCo.Models.AppUser")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -242,7 +271,7 @@ namespace SciCo.Migrations
                     b.HasOne("SciCo.Models.AppUser")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618
         }

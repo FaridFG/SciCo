@@ -1,4 +1,4 @@
-﻿@{ var user = await _userManager.GetUserAsync(User);}
+﻿@{ AppUser user = await _userManager.GetUserAsync(User);}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Oxygen&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/styles.css">
-    <title>@ViewBag.Title</title> @*SciCo - User's Name goes here*@
+    <title>SciCo - @user.UserName</title>
 </head>
 
-<body id="timeline" class="account">
+<body class="account">
     <!-- header starts -->
     <header>
         <div class="logo">
@@ -27,7 +27,160 @@
         <div id="incoming">
             <ul>
                 <li>
-                    @await Component.InvokeAsync("_FriendRequests")
+                    <a href="#" class="button"> <i class="fas fa-user-plus"></i> <span class="blueBack">2</span> </a>
+                    <div id="requests" class="subMenu">
+                        <!-- <p>There is no friend request</p> -->
+                        <div class="requestSender">
+                            <div>
+                                <div>
+                                    <!-- <img src="~/img/profilePhoto.jpg" alt="friend request sender's profile photo" /> -->
+                                    <p>No<br />Photo</p>
+                                </div>
+                                <div>
+                                    <a href="#">Farid Guluzade</a>
+                                </div>
+                            </div>
+                            <div>
+                                <ul>
+                                    <li>
+                                        <a href="#" title="Confirm"> <i class="fas fa-user-plus"></i> </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" title="Delete"> <i class="fas fa-user-minus"></i> </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="requestSender">
+                            <div>
+                                <div>
+                                    <img src="~/img/profilePhoto.jpg" alt="friend request sender's profile photo" />
+                                    <!-- <p>No<br />Photo</p> -->
+                                </div>
+                                <div>
+                                    <a href="#">Farid Guluzade</a>
+                                </div>
+                            </div>
+                            <div>
+                                <ul>
+                                    <li>
+                                        <a href="#" title="Confirm"> <i class="fas fa-user-plus"></i> </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" title="Delete"> <i class="fas fa-user-minus"></i> </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="requestSender">
+                            <div>
+                                <div>
+                                    <img src="~/img/profilePhoto.jpg" alt="friend request sender's profile photo" />
+                                    <!-- <p>No<br />Photo</p> -->
+                                </div>
+                                <div>
+                                    <a href="#">Farid Guluzade</a>
+                                </div>
+                            </div>
+                            <div>
+                                <ul>
+                                    <li>
+                                        <a href="#" title="Confirm"> <i class="fas fa-user-plus"></i> </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" title="Delete"> <i class="fas fa-user-minus"></i> </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="requestSender">
+                            <div>
+                                <div>
+                                    <img src="~/img/profilePhoto.jpg" alt="friend request sender's profile photo" />
+                                    <!-- <p>No<br />Photo</p> -->
+                                </div>
+                                <div>
+                                    <a href="#">Farid Guluzade</a>
+                                </div>
+                            </div>
+                            <div>
+                                <ul>
+                                    <li>
+                                        <a href="#" title="Confirm"> <i class="fas fa-user-plus"></i> </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" title="Delete"> <i class="fas fa-user-minus"></i> </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="requestSender">
+                            <div>
+                                <div>
+                                    <img src="~/img/profilePhoto.jpg" alt="friend request sender's profile photo" />
+                                    <!-- <p>No<br />Photo</p> -->
+                                </div>
+                                <div>
+                                    <a href="#">Farid Guluzade</a>
+                                </div>
+                            </div>
+                            <div>
+                                <ul>
+                                    <li>
+                                        <a href="#" title="Confirm"> <i class="fas fa-user-plus"></i> </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" title="Delete"> <i class="fas fa-user-minus"></i> </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="requestSender">
+                            <div>
+                                <div>
+                                    <img src="~/img/profilePhoto.jpg" alt="friend request sender's profile photo" />
+                                    <!-- <p>No<br />Photo</p> -->
+                                </div>
+                                <div>
+                                    <a href="#">Farid Guluzade</a>
+                                </div>
+                            </div>
+                            <div>
+                                <ul>
+                                    <li>
+                                        <a href="#" title="Confirm"> <i class="fas fa-user-plus"></i> </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" title="Delete"> <i class="fas fa-user-minus"></i> </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="requestSender">
+                            <div>
+                                <div>
+                                    <img src="~/img/profilePhoto.jpg" alt="friend request sender's profile photo" />
+                                    <!-- <p>No<br />Photo</p> -->
+                                </div>
+                                <div>
+                                    <a href="#">Farid Guluzade</a>
+                                </div>
+                            </div>
+                            <div>
+                                <ul>
+                                    <li>
+                                        <a href="#" title="Confirm"> <i class="fas fa-user-plus"></i> </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" title="Delete"> <i class="fas fa-user-minus"></i> </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="allRequests" class="viewAll blueBack">
+                            <a href="#" role="button">View All Friend Requests</a>
+                        </div>
+                    </div>
                     <div class="subMenu">
                         <i class="fas fa-caret-up"></i>
                     </div>
@@ -193,11 +346,11 @@
         </div>
         <div id="user">
             <div class="profilePhoto">
-                <img src="~/img/profilePhoto.jpg" alt="user's profile photo" />
+                <img src="~/img/@user.ProfilePhoto" alt="user's profile photo" />
             </div>
             <ul>
                 <li>
-                    <a asp-controller="Account" asp-action="Timeline" asp-route-id="@user.Id">@user.Name @user.Surname</a>
+                    <a href="#">@user.UserName</a>
                 </li>
                 <li id="logOut">
                     <a href="#" class="button"> <i class="fas fa-angle-down"></i> </a>
@@ -217,9 +370,11 @@
         </div>
     </header>
     <!-- header ends -->
+
     <!-- left aside starts -->
-    @await Component.InvokeAsync("_LeftAside")
+    <partial name="_LeftAsidePartial" />
     <!-- left aside ends -->
+
     <!-- main starts -->
     <main>
         @RenderBody()

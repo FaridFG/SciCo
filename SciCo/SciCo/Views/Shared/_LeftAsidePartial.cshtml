@@ -1,0 +1,11 @@
+﻿@model IEnumerable<LeftAside>
+
+<aside class="left">
+    @foreach (LeftAside item in Model)
+    {
+        <div>
+            <a href="@item.Link" class="@item.ColorClass">@item.Title</a>
+            <a href="@item.Link" class="@item.ColorClass"> <i class="@item.IconClass"></i> </a>
+        </div>
+    }
+</aside>

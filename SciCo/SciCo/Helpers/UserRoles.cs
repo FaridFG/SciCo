@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace SciCo.Helpers
 {
-    public static class UserRoles
+    public class UserRoles
     {
         public const string AdminRole = "Admin";
         public const string ManagerRole = "Manager";

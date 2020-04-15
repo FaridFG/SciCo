@@ -3,51 +3,51 @@
     ViewData["Title"] = "SignUp";
 }
 
-    <main id="signup">
-        <div class="form">
-            <form method="post">
+<main id="signup">
+    <div class="form">
+        <form method="post">
+            <div>
                 <div>
-                    <div>
-                        <input asp-for="Name" placeholder="Name">
-                        <span asp-validation-for="Name"></span>
-                    </div>
-                    <div>
-                        <input asp-for="Surname" placeholder="Surname">
-                        <span asp-validation-for="Surname"></span>
-                    </div>
+                    <input asp-for="Name" placeholder="Name" />
+                    <span asp-validation-for="Name"></span>
                 </div>
                 <div>
-                    <input asp-for="Username" placeholder="Username">
-                    <span asp-validation-for="Username"></span>
+                    <input asp-for="Surname" placeholder="Surname" />
+                    <span asp-validation-for="Surname"></span>
                 </div>
-                <div>
-                    <input asp-for="Email" placeholder="Email@example.com">
-                    <span asp-validation-for="Email"></span>
-                </div>
-                <div>
-                    <input asp-for="Password" placeholder="Password">
-                    <span asp-validation-for="Password"></span>
-                </div>
-                <div>
-                    <label asp-for="Birthday">Enter your birthday:</label> <br />
-                    <input asp-for="Birthday">
-                    <span asp-validation-for="Birthday"></span>
-                </div>
-                <div id="agreement">
-                    <input asp-for="Terms">
-                    <label asp-for="Terms">I accept the Terms and Conditions of SciCo.</label>
-                    <span asp-validation-for="Terms"></span>
-                </div>
-                <div asp-validation-summary="ModelOnly" class="errorList"></div>
-                <div id="agreeTerms">You must agree with Terms and Conditions of our Company to continue sign up process!</div>
-                <div>
-                    <button type="submit">Sign Up<i class="fas fa-user-plus" style="padding-left: 10px;"></i> </button>
-                </div>
-            </form>
-        </div>
-    </main>
+            </div>
+            <div>
+                <input asp-for="Username" placeholder="Username" />
+                <span asp-validation-for="Username"></span>
+            </div>
+            <div>
+                <input asp-for="Email" placeholder="Email@example.com" />
+                <span asp-validation-for="Email"></span>
+            </div>
+            <div>
+                <input asp-for="Password" placeholder="Password" />
+                <span asp-validation-for="Password"></span>
+            </div>
+            <div>
+                <label asp-for="Birthday">Enter your birthday:</label> <br />
+                <input asp-for="Birthday" />
+                <span asp-validation-for="Birthday"></span>
+            </div>
+            <div id="agreement">
+                <input asp-for="Terms" />
+                <label asp-for="Terms">I accept the Terms and Conditions of SciCo.</label>
+                <span asp-validation-for="Terms"></span>
+            </div>
+            <div asp-validation-summary="ModelOnly" class="errorList"></div>
+            <div id="agreeTerms">You must agree with Terms and Conditions of our Company to continue sign up process!</div>
+            <div>
+                <button type="submit">Sign Up<i class="fas fa-user-plus" style="padding-left: 10px;"></i> </button>
+            </div>
+        </form>
+    </div>
+</main>
 
-@section Scripts{ 
+@section Scripts{
     <partial name="_ValidationScriptsPartial" />
     <script src="~/js/signup.js"></script>
 }
