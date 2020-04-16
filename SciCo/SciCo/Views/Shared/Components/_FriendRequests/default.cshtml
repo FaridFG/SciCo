@@ -1,5 +1,5 @@
 ﻿@model RequestsVM
-@inject AppDbContext  _db;
+
 
 @if (Model.RequestorUsers.Count() > 0)
 {
@@ -41,14 +41,14 @@ else
                 <div>
                     <ul>
                         <li>
-                            <form asp-action="AcceptFriendRequest">
+                            <form asp-controller="Friend" asp-action="AcceptFriendRequest">
                                 <input type="hidden" name="requestorId" value="@requestor.Id" />
                                 <input type="hidden" name="requestId" value="@request.Id">
                                 <button href="#" title="Confirm"> <i class="fas fa-user-plus"></i> </button>
                             </form>
                         </li>
                         <li>
-                            <form asp-action="DeleteFriendRequest">
+                            <form asp-controller="Friend" asp-action="DeleteFriendRequest">
                                 <input type="hidden" name="requestId" value="@request.Id">
                                 <button href="#" title="Delete"> <i class="fas fa-user-minus"></i> </button>
                             </form>
@@ -60,7 +60,7 @@ else
         @if (Model.RequestorUsers.Count() > 0)
         {
             <div id="allRequests" class="viewAll blueBack">
-                <a href="#" role="button">View All Friend Requests</a>
+                <a asp-controller="Friend" asp-action="ShowFriendRequests" role="button">View All Friend Requests</a>
             </div>
         }
     </div>

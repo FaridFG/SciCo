@@ -72,10 +72,17 @@
                 }
                 else
                 {
-                    <form id="accountOptions" class="subMenu" method="post" asp-action="SendFriendRequest">
+                    <form id="accountOptions" class="subMenu" method="post" asp-controller="Friend" asp-action="SendFriendRequest">
                         <div>
                             <input type="hidden" name="ReceiverId" value="@Model.Id" />
-                            <button>Send Friend Request</button>
+                            @if ((_db.FriendRequests.Any(r => r.RequestorUser == Model && r.ReceiverUser == user) || (_db.FriendRequests.Any(r => r.RequestorUser == user && r.ReceiverUser == Model))))
+                            {
+                                <button>Friend Request sent</button>
+                            }
+                            else
+                            {
+                                <button>Send Friend Request</button>
+                            }
                         </div>
                         <div>
                             <input type="hidden">

@@ -3,6 +3,7 @@
 @using SciCo.Models
 @using SciCo.ViewModels
 @using Microsoft.AspNetCore.Identity
+@inject AppDbContext  _db;
 @inject SignInManager<AppUser> _signInManager
 @inject UserManager<AppUser> _userManager
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers

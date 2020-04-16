@@ -1891,3 +1891,132 @@ aside.left i {
     padding: 0 15px;
 }
 /* search page ends */
+
+/* friend requests page starts */
+#friend-requests {
+    height: 600px;
+    width: 80%;
+    margin: 0 auto;
+    background-color: #fff;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px 3px rgba(0, 0, 0, 0.5);
+}
+
+#friend-requests > div:nth-child(1) {
+    height: 75%;
+    overflow: hidden;
+}
+
+#friend-requests > div:nth-child(2) {
+    height: 25%;
+}
+
+#friend-requests .requestResult {
+    height: calc(100% / 5);
+    display: flex;
+    justify-content: space-between;
+    border: thin solid #cedfd1;
+}
+
+.requestResult > div:nth-child(1) {
+    width: 70%;
+}
+
+.requestResult > div:nth-child(2) {
+    width: 30%;
+}
+
+.requestResult .resultAccount {
+    display: flex;
+    align-items: center;
+    padding-left: 100px;
+}
+
+.resultAccount img {
+    width: 60px;
+    height: 60px;
+    border: thin solid #9ea7a0;
+    border-radius: 50%;
+    padding: 3px;
+}
+
+.requestResult span {
+    font-size: 13px;
+    text-align: center;
+    font-weight: bold;
+    border: thin solid #9ea7a0;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.resultAccount a {
+    padding-left: 10px;
+    color: rgb(63, 66, 87);
+}
+
+.requestOptions ul {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.requestOptions li {
+    padding: 0 15px;
+}
+
+.requestOptions li:nth-child(1) button {
+    background-color: #0d8128;
+}
+
+.requestOptions li:nth-child(2) button {
+    background-color: #e7091f;
+}
+
+.requestOptions button {
+    border: none;
+    padding: 15px;
+    border-radius: 50%;
+}
+
+.requestOptions button:hover {
+    cursor: pointer;
+}
+
+.requestOptions i {
+    color: #fff;
+    font-size: 20px;
+}
+
+#pagination ul {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#pagination li {
+    padding: 0 75px;
+}
+
+#pagination li:first-child {
+    border-right: 2px solid rgb(73, 76, 98);
+}
+
+#pagination li:last-child {
+    border-left: 2px solid rgb(73, 76, 98);
+}
+
+#pagination a {
+    font-size: 25px;
+}
+
+#pagination i {
+    padding: 0 15px;
+}
+/* friend requests page ends */

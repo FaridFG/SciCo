@@ -28,7 +28,6 @@ namespace SciCo.ViewComponents
                 ReceiverUser = user,
                 RequestorUsers = _db.FriendRequests.Where(r => r.ReceiverUser == user).Select(r => r.RequestorUser)
             };
-            //ViewBag.Requestors = _db.FriendRequests.Where(r => r.ReceiverUser == user).Select(r => r.RequestorUser);
             return View(await Task.FromResult(model));
         }
     }
