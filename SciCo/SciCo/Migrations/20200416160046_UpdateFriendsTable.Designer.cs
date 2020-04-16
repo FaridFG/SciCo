@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SciCo.Data;
 
 namespace SciCo.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200416160046_UpdateFriendsTable")]
+    partial class UpdateFriendsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -216,10 +218,6 @@ namespace SciCo.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("User1Id");
-
-                    b.HasIndex("User2Id");
-
                     b.ToTable("Friends");
                 });
 
@@ -311,19 +309,6 @@ namespace SciCo.Migrations
                     b.HasOne("SciCo.Models.AppUser")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
-            modelBuilder.Entity("SciCo.Models.Friend", b =>
-                {
-                    b.HasOne("SciCo.Models.AppUser", "User1")
-                        .WithMany()
-                        .HasForeignKey("User1Id")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("SciCo.Models.AppUser", "User2")
-                        .WithMany()
-                        .HasForeignKey("User2Id")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 

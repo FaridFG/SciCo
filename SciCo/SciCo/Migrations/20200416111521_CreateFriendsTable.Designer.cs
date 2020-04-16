@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SciCo.Data;
 
 namespace SciCo.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200416111521_CreateFriendsTable")]
+    partial class CreateFriendsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -223,27 +225,6 @@ namespace SciCo.Migrations
                     b.ToTable("Friends");
                 });
 
-            modelBuilder.Entity("SciCo.Models.FriendRequest", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ReceiverUserId")
-                        .IsRequired();
-
-                    b.Property<string>("RequestorUserId")
-                        .IsRequired();
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ReceiverUserId");
-
-                    b.HasIndex("RequestorUserId");
-
-                    b.ToTable("FriendRequests");
-                });
-
             modelBuilder.Entity("SciCo.Models.LeftAside", b =>
                 {
                     b.Property<int>("Id")
@@ -324,19 +305,6 @@ namespace SciCo.Migrations
                     b.HasOne("SciCo.Models.AppUser", "User2")
                         .WithMany()
                         .HasForeignKey("User2Id")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
-            modelBuilder.Entity("SciCo.Models.FriendRequest", b =>
-                {
-                    b.HasOne("SciCo.Models.AppUser", "ReceiverUser")
-                        .WithMany()
-                        .HasForeignKey("ReceiverUserId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("SciCo.Models.AppUser", "RequestorUser")
-                        .WithMany()
-                        .HasForeignKey("RequestorUserId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618

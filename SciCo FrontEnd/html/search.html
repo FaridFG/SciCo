@@ -36,10 +36,16 @@
                             <div>
                                 <ul>
                                     <li>
-                                        <a href="#" title="Confirm"> <i class="fas fa-user-plus"></i> </a>
+                                        <form>
+                                            <input type="hidden">
+                                            <button href="#" title="Confirm"> <i class="fas fa-user-plus"></i> </button>
+                                        </form>
                                     </li>
                                     <li>
-                                        <a href="#" title="Delete"> <i class="fas fa-user-minus"></i> </a>
+                                        <form>
+                                            <input type="hidden">
+                                            <button href="#" title="Delete"> <i class="fas fa-user-minus"></i> </button>
+                                        </form>
                                     </li>
                                 </ul>
                             </div>
@@ -414,7 +420,10 @@
     <!-- main section starts -->
     <main>
         <section id="searchBar">
-            <!-- <p>User could not found</p> -->
+            <!-- <div id="errorMessage">
+                <p>Sorry, we couldn't find the user<br /><strong>Farid Guluzade</strong> </p>
+            </div> -->
+            
             <div>
                 <div class="searchResult">
                     <div class="resultAccount">
@@ -431,7 +440,7 @@
                 <div class="searchResult">
                     <div class="resultAccount">
                         <img src="../img/profilePhoto.jpg" alt="user's profile photo" />
-                        <a href="#">Farid Guluzade</a>
+                        <a href="#">Jahangir Mirzayev</a>
                     </div>
                     <div class="showProfile">
                         <form>
@@ -442,7 +451,8 @@
                 </div>
                 <div class="searchResult">
                     <div class="resultAccount">
-                        <img src="../img/profilePhoto.jpg" alt="user's profile photo" />
+                        <!-- <img src="../img/profilePhoto.jpg" alt="user's profile photo" /> -->
+                        <span>No<br />Photo</span>
                         <a href="#">Farid Guluzade</a>
                     </div>
                     <div class="showProfile">

@@ -908,34 +908,34 @@ input[type="search"]::-webkit-search-cancel-button {
     text-align: center;
 }
 
-.requestSender > div a {
-    color: #515365;
-    font-size: 14px;
-}
-
-.requestSender > div:nth-child(1) a:hover {
-    font-weight: bold;
-}
-
-.requestSender > div:nth-child(2) a {
-    padding: 15px;
-    border-radius: 50%;
-}
-
-.requestSender ul {
-    display: flex;
-}
-
 .requestSender li {
     padding: 0 15px;
 }
 
-.requestSender li:nth-child(1) a {
+.requestSender form button {
+    border: none;
+    padding: 15px;
+    border-radius: 50%;
+}
+
+.requestSender form button:hover {
+    cursor: pointer;
+}
+
+.requestSender li:nth-child(1) button {
     background-color: #0d8128;
 }
 
-.requestSender li:nth-child(2) a {
+.requestSender li:nth-child(2) button {
     background-color: #e7091f;
+}
+
+.requestSender form i {
+    color: #fff;
+}
+
+.requestSender ul {
+    display: flex;
 }
 
 .requestSender i {
@@ -1768,15 +1768,25 @@ aside.left i {
     box-shadow: 3px 3px 5px 3px rgba(0, 0, 0, 0.5);
 }
 
-#searchBar p {
-    font-size: 40px;
-    font-weight: bold;
+#errorMessage {
+    height: 100% !important;
     border: thin solid rgb(63, 66, 87);
     border-radius: 5px;
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#errorMessage p {
+    font-size: 40px;
+    text-align: center;
+    line-height: 75px;
+}
+
+#errorMessage strong {
+    background-color: rgb(63, 66, 87);
+    color: #fff;
+    padding: 0 20px;
 }
 
 #searchBar > div:nth-child(1) {
@@ -1795,14 +1805,18 @@ aside.left i {
     border: thin solid #cedfd1;
 }
 
-.searchResult > div {
-    width: 50%;
+.searchResult > div:nth-child(1) {
+    width: 75%;
+}
+
+.searchResult > div:nth-child(2) {
+    width: 25%;
 }
 
 .searchResult .resultAccount {
     display: flex;
     align-items: center;
-    justify-content: center;
+    padding-left: 100px;
 }
 
 .resultAccount img {
@@ -1813,6 +1827,19 @@ aside.left i {
     padding: 3px;
 }
 
+.searchResult span {
+    font-size: 13px;
+    text-align: center;
+    font-weight: bold;
+    border: thin solid #9ea7a0;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .resultAccount a {
     padding-left: 10px;
     color: rgb(63, 66, 87);
@@ -1821,7 +1848,6 @@ aside.left i {
 .searchResult .showProfile {
     display: flex;
     align-items: center;
-    justify-content: center;
 }
 
 .showProfile button {

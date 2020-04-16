@@ -1,0 +1,67 @@
+﻿@model RequestsVM
+@inject AppDbContext  _db;
+
+@if (Model.RequestorUsers.Count() > 0)
+{
+    <a href="#" class="button"> <i class="fas fa-user-plus"></i> <span class="blueBack">@Model.RequestorUsers.Count()</span> </a>
+}
+else
+{
+    <a href="#" class="button"> <i class="fas fa-user-plus"></i> </a>
+}
+
+@if (Model.RequestorUsers.Count() == 0)
+{
+    <div id="requests" class="subMenu">
+        <p>You don't have any friend requests!</p>
+    </div>
+}
+else
+{
+    <div id="requests" class="subMenu">
+        @foreach (AppUser requestor in Model.RequestorUsers)
+        {
+            FriendRequest request = _db.FriendRequests.FirstOrDefault(r => r.RequestorUser == requestor);
+            <div class="requestSender">
+                <div>
+                    <div>
+                        @if (requestor.ProfilePhoto == null)
+                        {
+                            <p>No<br />Photo</p>
+                        }
+                        else
+                        {
+                            <a href="#"> <img src="~/img/@requestor.ProfilePhoto" alt="profile photo">      </a>
+                        }
+                    </div>
+                    <div>
+                        <a href="#">@requestor.Name @requestor.Surname</a>
+                    </div>
+                </div>
+                <div>
+                    <ul>
+                        <li>
+                            <form asp-action="AcceptFriendRequest">
+                                <input type="hidden" name="requestorId" value="@requestor.Id" />
+                                <input type="hidden" name="requestId" value="@request.Id">
+                                <button href="#" title="Confirm"> <i class="fas fa-user-plus"></i> </button>
+                            </form>
+                        </li>
+                        <li>
+                            <form asp-action="DeleteFriendRequest">
+                                <input type="hidden" name="requestId" value="@request.Id">
+                                <button href="#" title="Delete"> <i class="fas fa-user-minus"></i> </button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        }
+        @if (Model.RequestorUsers.Count() > 0)
+        {
+            <div id="allRequests" class="viewAll blueBack">
+                <a href="#" role="button">View All Friend Requests</a>
+            </div>
+        }
+    </div>
+}

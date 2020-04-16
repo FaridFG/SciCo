@@ -1,13 +1,16 @@
 ﻿@model IEnumerable<AppUser>
+
 @{
     ViewData["Title"] = "Search";
     Layout = "~/Views/Shared/_AccountPageLayout.cshtml";
 }
 
 <section id="searchBar">
-    @if (Model == null)
+    @if (Model.Count() == 0)
     {
-        <p>There is no user with this name</p>
+        <div id="errorMessage">
+            <p>Sorry, we couldn't find the user<br /><strong>@ViewBag.Fullname</strong></p>
+        </div>
     }
     else
     {
@@ -16,27 +19,37 @@
         {
             <div class="searchResult">
                 <div class="resultAccount">
-                    <img src="~/img/@user.ProfilePhoto" alt="user's profile photo" />
+                    @if (user.ProfilePhoto == null)
+                    {
+                        <span>No<br />Photo</span>
+                    }
+                    else
+                    {
+                        <img src="~/img/@user.ProfilePhoto" alt="user's profile photo" />
+                    }
                     <a href="#">@user.Name @user.Surname</a>
                 </div>
                 <div class="showProfile">
-                    <form>
-                        <input type="hidden">
+                    <form asp-action="ShowProfile">
+                        <input type="hidden" name="userId" value="@user.Id">
                         <button type="submit">Show Profile</button>
                     </form>
                 </div>
             </div>
         }
-    </div>
-    <div id="pagination">
-        <ul>
-            <li>
-                <a href="#"> <i class="fas fa-angle-left"></i>Previous</a>
-            </li>
-            <li>
-                <a href="#">Next<i class="fas fa-angle-right"></i> </a>
-            </li>
-        </ul>
-    </div>
+        </div>
+        @if (ViewBag.Quantity > 5)
+        {
+            <div id="pagination">
+                <ul>
+                    <li>
+                        <a href="#"> <i class="fas fa-angle-left"></i>Previous</a>
+                    </li>
+                    <li>
+                        <a href="#">Next<i class="fas fa-angle-right"></i> </a>
+                    </li>
+                </ul>
+            </div>
+         }
     }
 </section>
