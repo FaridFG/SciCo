@@ -1,6 +1,5 @@
 ﻿@model RequestsVM
 
-
 @if (Model.RequestorUsers.Count() > 0)
 {
     <a href="#" class="button"> <i class="fas fa-user-plus"></i> <span class="blueBack">@Model.RequestorUsers.Count()</span> </a>
@@ -44,13 +43,13 @@ else
                             <form asp-controller="Friend" asp-action="AcceptFriendRequest">
                                 <input type="hidden" name="requestorId" value="@requestor.Id" />
                                 <input type="hidden" name="requestId" value="@request.Id">
-                                <button href="#" title="Confirm"> <i class="fas fa-user-plus"></i> </button>
+                                <button title="Confirm"> <i class="fas fa-user-plus"></i> </button>
                             </form>
                         </li>
                         <li>
                             <form asp-controller="Friend" asp-action="DeleteFriendRequest">
                                 <input type="hidden" name="requestId" value="@request.Id">
-                                <button href="#" title="Delete"> <i class="fas fa-user-minus"></i> </button>
+                                <button title="Delete"> <i class="fas fa-user-minus"></i> </button>
                             </form>
                         </li>
                     </ul>

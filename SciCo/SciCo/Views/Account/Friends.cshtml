@@ -1,0 +1,39 @@
+﻿@model FriendVM
+@{ AppUser loggedUser = await _userManager.GetUserAsync(User);}
+@{ AppUser owner = Model.MainUser;}
+
+@{
+    ViewData["Title"] = "Friends";
+    Layout = "~/Views/Shared/_AccountPageLayout.cshtml";
+}
+
+<!-- profile section starts -->
+@await Component.InvokeAsync("_Profile", Model.MainUser.Id)
+<!-- profile section ends -->
+
+<!-- friends section starts -->
+<section id="userFriends">
+    <div>
+        <div class="friend">
+            <div>
+                <a href="#"> <img src="~/img/@Model.MainUser.CoverPhoto" alt="user's cover image"> </a>
+                <a href="#"> <img src="~/img/@Model.MainUser.ProfilePhoto" alt="user's profile photo"> </a>
+            </div>
+            <div>
+                <ul>
+                    <li>
+                        <a href="#">@Model.MainUser.Name @Model.MainUser.Surname</a>
+                    </li>
+                    <li id="friendOptions">
+                        <a href="#"> <i class="fas fa-ellipsis-h"></i> </a>
+                        <ul>
+                            <li> <a href="#">Unfriend</a> </li>
+                            <li> <a href="#">Block</a> </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- friends section ends -->

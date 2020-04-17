@@ -37,11 +37,11 @@ namespace SciCo.Controllers
 
             if (_db.FriendRequests.Any(r => r.RequestorUser == RequestorUser && r.ReceiverUser == ReceiverUser))
             {
-                return Content($"You '({RequestorUser.Name} {RequestorUser.Surname})' has already sent a friend request to '{ReceiverUser.Name} {ReceiverUser.Surname}'");
+                return View($"You '({RequestorUser.Name} {RequestorUser.Surname})' has already sent a friend request to '{ReceiverUser.Name} {ReceiverUser.Surname}'");
             }
             await _db.FriendRequests.AddAsync(request);
             await _db.SaveChangesAsync();
-            return Content($"You '({RequestorUser.Name} {RequestorUser.Surname})' has sent a friend request to '{ReceiverUser.Name} {ReceiverUser.Surname}'");
+            return RedirectToAction("Timeline", "Account", new { id = ReceiverId });
         }
 
         public async Task<IActionResult> ShowFriendRequests()
@@ -85,6 +85,23 @@ namespace SciCo.Controllers
             _db.FriendRequests.Remove(request);
             await _db.SaveChangesAsync();
             return RedirectToAction("Newsfeed", "Account");
+        }
+
+        public async Task<IActionResult> CancelFriendRequest(string ReceiverId)
+        {
+            AppUser RequestorUser = await _userManager.GetUserAsync(User);
+            AppUser ReceiverUser = await _db.Users.FindAsync(ReceiverId);
+
+            FriendRequest request = _db.FriendRequests.FirstOrDefault(r => r.RequestorUser == RequestorUser && r.ReceiverUser == ReceiverUser);
+
+            _db.FriendRequests.Remove(request);
+            await _db.SaveChangesAsync();
+            return RedirectToAction("Timeline", "Account", new { id = ReceiverId });
+        }
+
+        public IActionResult Unfriend()
+        {
+            return View();
         }
     }
 }

@@ -1220,20 +1220,20 @@ aside.left i {
 
 #accountOptions {
     position: absolute;
-    width: 220px;
+    width: 230px;
     height: auto;
     padding: 10px 40px 10px 20px;
     border-radius: 5px;
     background-color: #fcfffe;
-    margin-left: -110px;
-    top: -100px;
-    z-index: 10;
+    margin-left: -120px;
+    bottom:200%;
+    z-index: 5;
     box-shadow: 2px 2px 5px 1px rgba(63, 66, 87, 0.4), -2px -2px 5px 1px rgba(63, 66, 87, 0.4);
     display: none;
 }
 
 #accountOptions button {
-    font-size: 13px;
+    font-size: 12px;
     color: #9a9fbf;
     font-weight: bold;
     letter-spacing: 0.05em;
@@ -1244,6 +1244,7 @@ aside.left i {
 
 #accountOptions button:hover {
     cursor: pointer;
+    color: rgb(63, 66, 87);
 }
 /* profile section ends */
 /* responsive account page starts */
@@ -1601,7 +1602,7 @@ aside.left i {
 
 /* about section starts */
 #userInfo h1 {
-    color: #cf0a6d;
+    color: #ff3e2f;
     text-align: center;
     padding: 20px 0;
 }
@@ -1630,17 +1631,17 @@ aside.left i {
 .information form button {
     width: 20%;
     background-color: #fff;
-    color: #cf0a6d;
-    border: 1px solid #cf0a6d;
-    border-radius: 3px;
+    color: #ff3e2f;
+    border: 1px solid #ff3e2f;
+    border-radius: 20px;
     font-size: 17px;
 }
 
 .information form button:hover {
-    background-color: #cf0a6d;
+    background-color: #ff3e2f;
     color: #fff;
     border: none;
-    transition: .75s;
+    transition: .5s;
     cursor: pointer;
 }
 
@@ -1651,6 +1652,11 @@ aside.left i {
 .information > div:nth-child(2) {
     width: 60%;
 }
+
+.answer {
+    color: #ff3e2f;
+    font-weight: bold;
+}
 /* about section ends */
 
 /* friends section starts */
@@ -1658,6 +1664,17 @@ aside.left i {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+}
+
+#noFriend {
+    height: 250px;
+    justify-content: center !important;
+    align-items: center;
+}
+
+#noFriend p {
+    font-size: 50px;
+    font-weight: bold;
 }
 
 .friend {
@@ -1917,6 +1934,19 @@ aside.left i {
     display: flex;
     justify-content: space-between;
     border: thin solid #cedfd1;
+}
+
+#noRequest {
+    height: 100% !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#noRequest p {
+    font-size: 70px;
+    font-weight: bold;
+    letter-spacing: 2px;
 }
 
 .requestResult > div:nth-child(1) {

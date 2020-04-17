@@ -1,0 +1,133 @@
+﻿@model AppUser
+@{ AppUser user = await _userManager.GetUserAsync(User);}
+
+<section id="profile">
+    <div id="coverPhoto">
+        @if (Model.CoverPhoto == null)
+        {
+            <p>Cover Photo</p>
+        }
+        else
+        {
+            <a href="#"> <img src="~/img/@Model.CoverPhoto" alt="cover photo" /> </a>
+        }
+    </div>
+    <div id="options">
+        <ul>
+            <li>
+                <a asp-controller="Account" asp-action="Timeline" asp-route-id="@Model.Id">Timeline</a>
+            </li>
+            <li>
+                <a asp-controller="Account" asp-action="About" asp-route-id="@Model.Id">About</a>
+            </li>
+            <li>
+                <a asp-controller="Account" asp-action="Friends" asp-route-id="@Model.Id">Friends</a>
+            </li>
+            <li id="accountInfo">
+                <ul>
+                    <li id="photoItem">
+                        @if (Model.ProfilePhoto == null)
+                        {
+                            <p>Profile<br>Photo</p>
+                        }
+                        else
+                        {
+                            <a href="#"> <img src="~/img/@Model.ProfilePhoto" alt="profile photo"> </a>
+                        }
+                    </li>
+                    <li>
+                        <a href="#">@Model.Name @Model.Surname</a>
+                    </li>
+                    <li>
+                        <a href="#">Baku, Azerbaijan</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="photos.html">Photos</a>
+            </li>
+            <li>
+                <a href="videos.html">Videos</a>
+            </li>
+            <li id="more">
+                <a href="#" class="button"> <i class="fas fa-ellipsis-h"></i> </a>
+                <ul id="accountOptions" class="subMenu">
+                    @if (Model == user)
+                    {
+                        <li>
+                            <form>
+                                <div>
+                                    <input type="hidden">
+                                    <button>Update Profile Photo</button>
+                                </div>
+                            </form>
+                        </li>
+                        <li>
+                            <form>
+                                <div>
+                                    <input type="hidden">
+                                    <button>Update Cover Photo</button>
+                                </div>
+                            </form>
+                        </li>
+                    }
+                    else
+                    {
+                        if (_db.FriendRequests.Any(r => r.RequestorUser == user && r.ReceiverUser == Model))
+                        {
+                            <li>
+                                <form asp-controller="Friend" asp-action="CancelFriendRequest">
+                                    <div>
+                                        <input type="hidden" name="ReceiverId" value="@Model.Id" />
+                                        <button>Cancel Friend Request</button>
+                                    </div>
+                                </form>
+                            </li>
+                        }
+                        else if (_db.FriendRequests.Any(r => r.RequestorUser == Model && r.ReceiverUser == user))
+                        {
+                            <li>
+                                <form method="post" asp-controller="Friend" asp-action="ShowFriendRequests">
+                                    <div>
+                                        <input type="hidden" name="ReceiverId" value="@Model.Id" />
+                                        <button>Reply to Friend Request</button>
+                                    </div>
+                                </form>
+                            </li>
+                        }
+                        else if ((_db.Friends.Any(f => f.User1 == Model && f.User2 == user) || (_db.Friends.Any(f => f.User1 == user && f.User2 == Model))))
+                        {
+                            <li>
+                                <form method="post" asp-controller="Friend" asp-action="SendFriendRequest">
+                                    <div>
+                                        <input type="hidden" name="ReceiverId" value="@Model.Id" />
+                                        <button>Unfriend</button>
+                                    </div>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <form method="post" asp-controller="Friend" asp-action="SendFriendRequest">
+                                    <div>
+                                        <input type="hidden" name="ReceiverId" value="@Model.Id" />
+                                        <button>Send Friend Request</button>
+                                    </div>
+                                </form>
+                            </li>
+                        }
+                        <li>
+                            <form method="post" asp-controller="Friend" asp-action="SendFriendRequest">
+                                <div>
+                                    <input type="hidden" name="ReceiverId" value="@Model.Id" />
+                                    <button>Write Message</button>
+                                </div>
+                            </form>
+                        </li>
+                    }
+                </ul>
+            </li>
+        </ul>
+    </div>
+</section>

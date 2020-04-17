@@ -37,6 +37,7 @@ namespace SciCo.Controllers
             return View(user);
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Search(string search)
         {
             AppUser user = await _userManager.GetUserAsync(User);
@@ -58,6 +59,27 @@ namespace SciCo.Controllers
                 return NotFound();
             }
             return View("Timeline", user);
+        }
+
+        public async Task<IActionResult> About(string id)
+        {
+            AppUser user = await _db.Users.FindAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return View(user);
+        }
+
+        public async Task<IActionResult> Friends(string id)
+        {
+            AppUser user = await _db.Users.FindAsync(id);
+            FriendVM model = new FriendVM
+            {
+                MainUser = user,
+                Friends = _db.Friends.Where(f => f.User1 == user || f.User2 == user)
+            };
+            return View(model);
         }
     }
 }

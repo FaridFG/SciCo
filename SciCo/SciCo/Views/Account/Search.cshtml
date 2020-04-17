@@ -27,7 +27,7 @@
                     {
                         <img src="~/img/@user.ProfilePhoto" alt="user's profile photo" />
                     }
-                    <a href="#">@user.Name @user.Surname</a>
+                    <a asp-controller="Account" asp-action="Timeline" asp-route-id="@user.Id">@user.Name @user.Surname</a>
                 </div>
                 <div class="showProfile">
                     <form asp-action="ShowProfile">
