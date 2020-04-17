@@ -14,10 +14,35 @@
 <!-- friends section starts -->
 <section id="userFriends">
     <div>
-        <div class="friend">
+        @foreach (Friend friend in Model.Friends)
+        {
+            <div class="friend">
+                @friend.User2.Name
+            </div>
+        }
+
+        @*<div class="friend">
             <div>
-                <a href="#"> <img src="~/img/@Model.MainUser.CoverPhoto" alt="user's cover image"> </a>
-                <a href="#"> <img src="~/img/@Model.MainUser.ProfilePhoto" alt="user's profile photo"> </a>
+                <div>
+                    @if (Model.MainUser.CoverPhoto == null)
+                    {
+                        <p>Cover Photo</p>
+                    }
+                    else
+                    {
+                        <img src="~/img/@Model.MainUser.CoverPhoto" alt="user's cover image" />
+                    }
+                </div>
+                <div>
+                    @if (Model.MainUser.CoverPhoto == null)
+                    {
+                         <p>No<br />Photo</p>
+                    }
+                    else
+                    {
+                        <img src="~/img/@Model.MainUser.ProfilePhoto" alt="user's cover image" />
+                    }
+                </div>
             </div>
             <div>
                 <ul>
@@ -33,7 +58,7 @@
                     </li>
                 </ul>
             </div>
-        </div>
+        </div>*@
     </div>
 </section>
 <!-- friends section ends -->

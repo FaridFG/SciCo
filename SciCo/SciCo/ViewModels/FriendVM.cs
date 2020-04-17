@@ -9,7 +9,7 @@ namespace SciCo.ViewModels
     public class FriendVM
     {
         public AppUser MainUser { get; set; }
-        public IEnumerable<AppUser> FriendUsers { get; set; }
+        public AppUser FriendUser { get; set; }
         public IEnumerable<Friend> Friends { get; set; }
     }
 }
