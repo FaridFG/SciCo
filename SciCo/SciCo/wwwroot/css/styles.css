@@ -944,6 +944,37 @@ input[type="search"]::-webkit-search-cancel-button {
     font-size: 18px;
 }
 
+#inbox {
+    overflow-y: scroll;
+}
+
+.message {
+    overflow-x: hidden;
+}
+
+.message > div:nth-child(1) {
+    border: 2px solid #cedfd1;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.message img {
+    margin: 0 !important;
+    width: 100%;
+    height: 100%;
+}
+
+.message > div:nth-child(1) > p {
+    color: black;
+    font-size: 13px;
+    text-align: center;
+}
+
 .message p > a {
     color: #515365;
 }
@@ -1065,7 +1096,7 @@ aside {
     width: 18%;
     position: fixed;
     top: 115px;
-    z-index: 100;
+    z-index: 90;
 }
 
 aside.left > div {
@@ -1676,7 +1707,7 @@ aside.left i {
 #noFriend p {
     font-size: 50px;
     font-weight: bold;
-    text-align: center;
+    align-items: center;
 }
 
 #noFriend strong {
@@ -2092,3 +2123,113 @@ aside.left i {
     padding: 0 15px;
 }
 /* friend requests page ends */
+
+/* popup write message section starts */
+#popup {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    opacity: .75;
+    position: fixed;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+#messageBox {
+    height: 550px;
+    width: 30%;
+    background-color: #fff;
+    box-shadow: 2px 2px 3px 3px rgba(66, 3, 82, 0.6), -2px -2px 3px 3px rgba(66, 3, 82, 0.6);
+    border-radius: 5px;
+    position: fixed;
+    z-index: 100;
+    left: 40%;
+    top: 100px;
+    display: none;
+}
+
+#messageBox > a {
+    color: #ff3e2f;
+    font-size: 30px;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+
+#messageBox > div:nth-child(1) {
+    height: 85px;
+    border-bottom: thin solid #cedfd1;
+}
+
+#messageBox > div:nth-child(1) p {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    
+}
+
+#messageBox strong {
+    color: #ff3e2f;
+}
+
+#messageBox > div:nth-child(2) {
+    height: calc(550px - 85px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#messageForm {
+    width: 90%;
+    height: 100%;
+}
+
+#messageForm > div {
+    margin: 30px 0;
+}
+
+#messageBox textarea {
+    border: 2px solid rgb(173, 175, 197);
+    border-radius: 5px;
+    color: black;
+    font-size: 20px;
+    width: 100%;
+}
+
+#messageBox textarea[placeholder] {
+    padding: 15px 0 0 15px;
+}
+
+#messageBox > div:nth-child(3) {
+    height: calc(550px - 15% - 70%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: thin solid #cedfd1;
+}
+
+#messageBox button {
+    border: thin solid rgb(173, 175, 197);
+    background: transparent;
+    font-size: 25px;
+    width: 100%;
+    padding: 7px 0;
+    border-radius: 5px;
+    color: #ff3e2f;
+    letter-spacing: 2px;
+}
+
+#messageBox button:hover {
+    border-width: 2px;
+    cursor: pointer;
+}
+
+#messageBox button i {
+    padding: 0 10px;
+}
+/* popup write message section ends */

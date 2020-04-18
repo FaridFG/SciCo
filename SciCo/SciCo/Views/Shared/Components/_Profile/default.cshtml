@@ -118,10 +118,10 @@
                             </li>
                         }
                         <li>
-                            <form method="post" asp-controller="Friend" asp-action="SendFriendRequest">
+                            <form method="post" asp-controller="Message" asp-action="SendMessage">
                                 <div>
                                     <input type="hidden" name="ReceiverId" value="@Model.Id" />
-                                    <button>Write Message</button>
+                                    <button class="button" id="write">Write Message</button>
                                 </div>
                             </form>
                         </li>

@@ -1,0 +1,38 @@
+﻿@model MessageVM
+
+@if (Model.Messages.Count() == 0)
+{
+    <a href="#" class="button"> <i class="fas fa-envelope"></i> </a>
+}
+else
+{
+    <a href="#" class="button"> <i class="fas fa-envelope"></i> <span class="pinkBack">@Model.Messages.Count()</span> </a>
+}
+
+<div id="inbox" class="subMenu">
+    @foreach (AppUser sender in Model.Senders)
+    {
+        <div class="message">
+            <div>
+                @if (sender.ProfilePhoto == null)
+                {
+                    <p>No<br />Photo</p>
+                }
+                else
+                {
+                    <img src="~/img/@sender.ProfilePhoto" alt="message sender's profile photo">
+                }
+            </div>
+            <div>
+                <p> <a href="#">@sender.Name @sender.Surname</a> </p>
+                @foreach (Message message in Model.Messages.Where(m => m.Sender == sender))
+                {
+                    <p> <a href="#">@message.Content</a> </p>
+                }
+            </div>
+        </div>
+    }
+    <div id="allMessages" class="viewAll pinkBack">
+        <a href="#" role="button">View All Messages</a>
+    </div>
+</div>

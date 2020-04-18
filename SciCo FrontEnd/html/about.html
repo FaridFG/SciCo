@@ -189,7 +189,8 @@
                     <div id="inbox" class="subMenu">
                         <div class="message">
                             <div>
-                                <img src="../img/profilePhoto.jpg" alt="message sender's profile photo">
+                                <!-- <img src="../img/profilePhoto.jpg" alt="message sender's profile photo"> -->
+                                <p>No<br />Photo</p>
                             </div>
                             <div>
                                 <p> <a href="#">Farid Guluzade</a> </p>
@@ -470,7 +471,7 @@
                                 <form>
                                     <div>
                                         <input type="hidden">
-                                        <button>Update Cover Photo</button>
+                                        <button id="write" class="button">Write Message</button>
                                     </div>
                                 </form>
                             </li>
@@ -631,6 +632,25 @@
         <!-- profile section ends -->
     </main>
     <!-- main section ends -->
+
+    <div id="popup"></div>
+
+    <div id="messageBox">
+        <div>
+            <p>Receiver: &nbsp;<strong>Farid Guluzade</strong> </p>
+        </div>
+        <div>
+            <form name="messageForm" id="messageForm">
+                <div>
+                    <textarea name="messageContent" id="messageContent" rows="12" placeholder="Enter your message here..."></textarea>
+                </div>
+                <div>
+                    <button type="submit">Send<i class="fas fa-share-square"></i> </button>
+                </div>
+            </form>
+        </div>
+        <a href="#" id="close"> <i class="far fa-times-circle"></i> </a>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/3f7e3de7b3.js" crossorigin="anonymous"></script>

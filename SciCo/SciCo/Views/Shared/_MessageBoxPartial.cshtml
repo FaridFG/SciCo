@@ -1,0 +1,19 @@
+﻿@model AppUser
+
+<div id="messageBox">
+    <div>
+        <p>Receiver: &nbsp;<strong>@Model.Name @Model.Surname</strong> </p>
+    </div>
+    <div>
+        <form name="messageForm" id="messageForm" asp-controller="Message" asp-action="SendMessage">
+            <div>
+                <textarea name="messageContent" id="messageContent" rows="12" placeholder="Enter your message here..."></textarea>
+                <input type="hidden" name="receiverId" value="@Model.Id" />
+            </div>
+            <div>
+                <button type="submit">Send<i class="fas fa-share-square"></i> </button>
+            </div>
+        </form>
+    </div>
+    <a href="#" id="close"> <i class="far fa-times-circle"></i> </a>
+</div>

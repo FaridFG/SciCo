@@ -9,3 +9,5 @@
 <!-- profile section starts -->
 @await  Component.InvokeAsync("_Profile", Model.Id)
 <!-- profile section ends -->
+
+@await  Html.PartialAsync("_MessageBoxPartial", Model)

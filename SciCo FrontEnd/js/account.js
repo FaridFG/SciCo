@@ -89,6 +89,19 @@ $(function() {
     })
     // left aside section ends
 
+    // write message section starts
+    $("#write").click(function(ev){
+        ev.preventDefault();
+        $("#popup").fadeIn(1000);
+        $("#messageBox").fadeIn(1000);
+    })
+    $("#close").click(function(ev){
+        ev.preventDefault();
+        $("#popup").slideUp("fast");
+        $("#messageBox").slideUp("fast");
+    })
+    // write message section ends
+
     // profile options section starts
     // let profileOptions = document.querySelectorAll("#options > ul > li");
     // let options = Array.from(profileOptions);

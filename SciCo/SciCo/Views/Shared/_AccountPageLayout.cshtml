@@ -34,75 +34,7 @@
                     </div>
                 </li>
                 <li>
-                    <a href="#" class="button"> <i class="fas fa-envelope"></i> <span class="pinkBack">2</span> </a>
-                    <div id="inbox" class="subMenu">
-                        <div class="message">
-                            <div>
-                                <img src="~/img/profilePhoto.jpg" alt="message sender's profile photo">
-                            </div>
-                            <div>
-                                <p> <a href="#">Farid Guluzade</a> </p>
-                                <p> <a href="#">This message was sent for examining the front end of this website.</a> </p>
-                            </div>
-                        </div>
-                        <div class="message">
-                            <div>
-                                <img src="~/img/profilePhoto.jpg" alt="message sender's profile photo">
-                            </div>
-                            <div>
-                                <p> <a href="#">Farid Guluzade</a> </p>
-                                <p> <a href="#">This message was sent for examining the front end of this website.</a> </p>
-                            </div>
-                        </div>
-                        <div class="message">
-                            <div>
-                                <img src="~/img/profilePhoto.jpg" alt="message sender's profile photo">
-                            </div>
-                            <div>
-                                <p> <a href="#">Farid Guluzade</a> </p>
-                                <p> <a href="#">This message was sent for examining the front end of this website.</a> </p>
-                            </div>
-                        </div>
-                        <div class="message">
-                            <div>
-                                <img src="~/img/profilePhoto.jpg" alt="message sender's profile photo">
-                            </div>
-                            <div>
-                                <p> <a href="#">Farid Guluzade</a> </p>
-                                <p> <a href="#">This message was sent for examining the front end of this website.</a> </p>
-                            </div>
-                        </div>
-                        <div class="message">
-                            <div>
-                                <img src="~/img/profilePhoto.jpg" alt="message sender's profile photo">
-                            </div>
-                            <div>
-                                <p> <a href="#">Farid Guluzade</a> </p>
-                                <p> <a href="#">This message was sent for examining the front end of this website.</a> </p>
-                            </div>
-                        </div>
-                        <div class="message">
-                            <div>
-                                <img src="~/img/profilePhoto.jpg" alt="message sender's profile photo">
-                            </div>
-                            <div>
-                                <p> <a href="#">Farid Guluzade</a> </p>
-                                <p> <a href="#">This message was sent for examining the front end of this website.</a> </p>
-                            </div>
-                        </div>
-                        <div class="message">
-                            <div>
-                                <img src="~/img/profilePhoto.jpg" alt="message sender's profile photo">
-                            </div>
-                            <div>
-                                <p> <a href="#">Farid Guluzade</a> </p>
-                                <p> <a href="#">This message was sent for examining the front end of this website.</a> </p>
-                            </div>
-                        </div>
-                        <div id="allMessages" class="viewAll pinkBack">
-                            <a href="#" role="button">View All Messages</a>
-                        </div>
-                    </div>
+                    @await  Component.InvokeAsync("_Message")
                     <div class="subMenu">
                         <i class="fas fa-caret-up"></i>
                     </div>
@@ -234,6 +166,7 @@
     <main>
         @RenderBody()
     </main>
+    <div id="popup"></div>
     <!-- main ends -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

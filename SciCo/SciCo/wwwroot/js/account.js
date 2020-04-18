@@ -89,21 +89,34 @@ $(function() {
     })
     // left aside section ends
 
-    // profile options section starts
-    //let profileOptions = document.querySelectorAll("#options > ul > li");
-    //let options = Array.from(profileOptions);
-    //options.splice(3, 1);
-    //$(options[0]).addClass("active");
+    // write message section starts
+    $("#write").click(function(ev){
+        ev.preventDefault();
+        $("#popup").fadeIn(1000);
+        $("#messageBox").fadeIn(1000);
+    })
+    $("#close").click(function(ev){
+        ev.preventDefault();
+        $("#popup").slideUp("fast");
+        $("#messageBox").slideUp("fast");
+    })
+    // write message section ends
 
-    //for (var i = 0; i < options.length; i++) {
-    //    options[i].addEventListener("click", function() {
-    //        if (!($(options[i]).hasClass("active"))) {
-    //            $(".active").removeClass("active");
-    //            $(this).addClass("active");
-    //        } else {
-    //            $(this).addClass("active");
-    //        }
-    //    })
-    //}
+    // profile options section starts
+    // let profileOptions = document.querySelectorAll("#options > ul > li");
+    // let options = Array.from(profileOptions);
+    // options.splice(3, 1);
+    // $(options[0]).addClass("active");
+
+    // for (var i = 0; i < options.length; i++) {
+    //     options[i].addEventListener("click", function() {
+    //         if (!($(options[i]).hasClass("active"))) {
+    //             $(".active").removeClass("active");
+    //             $(this).addClass("active");
+    //         } else {
+    //             $(this).addClass("active");
+    //         }
+    //     })
+    // }
     // profile options section ends
 })
