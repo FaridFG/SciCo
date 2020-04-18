@@ -1,4 +1,5 @@
 ﻿@model FriendVM
+@{ AppUser user = await _userManager.GetUserAsync(User);}
 
 @{
     ViewData["Title"] = "Friends";
@@ -11,59 +12,54 @@
 
 <!-- friends section starts -->
     <section id="userFriends">
-            @foreach (AppUser user in Model.FriendUsers)
-            {
-                <div style="display:block !important;">
-                    <p>@user.Id</p>
-                </div>
-            }
-
-            @foreach (Friend friend in Model.Friends)
-            {
-                <div style="display:block !important;">
-                    <p>@friend.Id</p>
-                </div>
-            }
-
-
-        @*@if (Model.Friends.Count() == 0)
+        @if (Model.Friends.Count() == 0)
         {
-            <div id="noFriend">
-                <p>Your friends list is empty!</p>
-            </div>
+            if (Model.MainUser == user)
+            {
+                <div id="noFriend">
+                    <p>Your friends list is empty!</p>
+                </div>
+            }
+            else
+            {
+                <div id="noFriend">
+                    <p><strong>@Model.MainUser.Name @Model.MainUser.Surname</strong>'s friends list is empty!</p>
+                </div>
+            }
+
         }
         else
         {
             <div>
-                @foreach (Friend friend in Model.Friends)
+                @foreach (AppUser friend in Model.FriendUsers)
                 {
                     <div class="friend">
                         <div>
                             <div>
-                                @if (Model.MainUser.CoverPhoto == null)
+                                @if (friend.CoverPhoto == null)
                                 {
                                     <p>Cover Photo</p>
                                 }
                                 else
                                 {
-                                    <img src="~/img/@Model.MainUser.CoverPhoto" alt="user's cover image" />
+                                    <img src="~/img/@friend.CoverPhoto" alt="user's cover image" />
                                 }
                             </div>
                             <div>
-                                @if (Model.MainUser.ProfilePhoto == null)
+                                @if (friend.ProfilePhoto == null)
                                 {
                                     <p>No<br />Photo</p>
                                 }
                                 else
                                 {
-                                    <img src="~/img/@Model.MainUser.ProfilePhoto" alt="user's cover image" />
+                                    <img src="~/img/@friend.ProfilePhoto" alt="user's cover image" />
                                 }
                             </div>
                         </div>
                         <div>
                             <ul>
                                 <li>
-                                    <a href="#">@Model.MainUser.Name @Model.MainUser.Surname</a>
+                                    <a href="#">@friend.Name @friend.Surname</a>
                                 </li>
                                 <li id="friendOptions">
                                     <a href="#"> <i class="fas fa-ellipsis-h"></i> </a>
@@ -77,6 +73,6 @@
                     </div>
                 }
             </div>
-        }*@
+        }
     </section>
 <!-- friends section ends -->

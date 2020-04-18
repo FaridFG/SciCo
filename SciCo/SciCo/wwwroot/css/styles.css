@@ -1676,6 +1676,11 @@ aside.left i {
 #noFriend p {
     font-size: 50px;
     font-weight: bold;
+    text-align: center;
+}
+
+#noFriend strong {
+    color: #ff3e2f;
 }
 
 .friend {
