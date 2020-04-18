@@ -77,9 +77,9 @@ namespace SciCo.Controllers
             FriendVM model = new FriendVM
             {
                 MainUser = user,
-
+                FriendUsers = _db.Users,
+                Friends = _db.Friends.Where(f => f.User1.Id == user.Id || f.User2.Id == user.Id)
             };
-
             return View(model);
         }
     }
