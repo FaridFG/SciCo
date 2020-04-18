@@ -99,9 +99,22 @@ namespace SciCo.Controllers
             return RedirectToAction("Timeline", "Account", new { id = ReceiverId });
         }
 
-        public IActionResult Unfriend()
+        public async Task<IActionResult> Unfriend(string ReceiverId)
         {
-            return View();
+            AppUser loggedUser = await _userManager.FindByNameAsync(User.Identity.Name);
+            AppUser user = await _db.Users.FindAsync(ReceiverId);
+            Friend friend_1 = _db.Friends.FirstOrDefault(f => f.User1 == loggedUser && f.User2 == user);
+            Friend friend_2 = _db.Friends.FirstOrDefault(f => f.User1 == user && f.User2 == loggedUser);
+            try
+            {
+                _db.Friends.Remove(friend_1);
+            }
+            catch
+            {
+                _db.Friends.Remove(friend_2);
+            }
+            await _db.SaveChangesAsync();
+            return RedirectToAction("Timeline", "Account", new { id = ReceiverId });
         }
     }
 }

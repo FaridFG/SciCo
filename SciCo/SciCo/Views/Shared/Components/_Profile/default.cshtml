@@ -98,7 +98,7 @@
                         else if ((_db.Friends.Any(f => f.User1 == Model && f.User2 == user) || (_db.Friends.Any(f => f.User1 == user && f.User2 == Model))))
                         {
                             <li>
-                                <form method="post" asp-controller="Friend" asp-action="SendFriendRequest">
+                                <form method="post" asp-controller="Friend" asp-action="Unfriend">
                                     <div>
                                         <input type="hidden" name="ReceiverId" value="@Model.Id" />
                                         <button>Unfriend</button>
