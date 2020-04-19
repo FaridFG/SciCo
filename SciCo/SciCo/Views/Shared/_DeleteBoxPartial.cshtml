@@ -1,0 +1,16 @@
+﻿@model AppUser
+
+<div id="deleteBox">
+    <div id="alertMessage">
+        <p>Are you sure, you want to delete your account?</p>
+    </div>
+    <div id="deleteOptions">
+        <div>
+            <a class="close" href="#">Cancel</a>
+        </div>
+        <div>
+            <a asp-controller="Account" asp-action="DeleteAccount">Yes, I am sure!</a>
+        </div>
+    </div>
+    <a href="#" class="close"> <i class="far fa-times-circle"></i> </a>
+</div>

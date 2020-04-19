@@ -2233,3 +2233,216 @@ aside.left i {
     padding: 0 10px;
 }
 /* popup write message section ends */
+
+/* delete popup alert box starts */
+#deleteBox {
+    height: 400px;
+    width: 40%;
+    background-color: #fff;
+    box-shadow: 2px 2px 3px 3px rgba(66, 3, 82, 0.6), -2px -2px 3px 3px rgba(66, 3, 82, 0.6);
+    border-radius: 5px;
+    position: fixed;
+    z-index: 100;
+    left: 30%;
+    top: 180px;
+    display: none;
+}
+
+#alertMessage {
+    height: 75%;
+}
+
+#alertMessage p {
+    font-size: 40px;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: rgb(63, 66, 87);
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+#deleteOptions {
+    height: 25%;
+    display: flex;
+    align-items: center;
+}
+
+#deleteOptions > div {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+#deleteOptions a {
+    border: thin solid rgb(173, 175, 197);
+    border-radius: 5px;
+    width: 70%;
+    text-align: center;
+    font-size: 25px;
+    padding: 10px 0;
+}
+
+#deleteOptions a:hover {
+    border-width: 3px;
+}
+
+#deleteBox > a {
+    color: rgb(63, 66, 87);
+    font-size: 30px;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+/* delete popup alert box ends */
+
+/* inbox section starts */
+#chatApp section {
+    height: 596px;
+    background-color: #fff;
+    display: flex;
+    border-radius: 8px;
+    border: 3px solid rgb(63, 66, 87)
+}
+
+#chatApp section > div {
+    height: 100%;
+}
+
+#messageSenders {
+    width: 40%;
+    border-right: 5px solid rgb(63, 66, 87);
+    border-radius: 8px 0 0 8px;
+    overflow-y: auto;
+}
+
+.chatContent {
+    border-top: 1px solid rgb(173, 175, 197);
+    border-bottom: 1px solid rgb(173, 175, 197);
+    height: 80px;
+    display: grid;
+    grid-template-columns: 60px 350px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.chatContent > div:nth-child(1) {
+    border: thin solid #cedfd1;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+}
+
+.chatContent img {
+    width: 100%;
+    border-radius: 50%;
+    padding: 3px;
+}
+
+.chatContent > div:nth-child(1) p {
+    text-align: center;
+    font-size: 14px;
+}
+
+.chatContent a {
+    color: rgb(63, 66, 87);
+}
+
+.chatContent p:nth-child(1) a {
+    font-weight: bold;
+}
+
+.chatContent > div:nth-child(2) > p {
+    margin: 5px 0;
+}
+
+.chatContent > div:nth-child(2) > p:nth-child(1) {
+    font-size: 14px;
+}
+
+.chatContent > div:nth-child(2) {
+    overflow: hidden;
+}
+
+.chatContent > div:nth-child(2) > p:nth-child(2) {
+    font-size: 13px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#chat {
+    width: 60%;
+}
+
+#chat > div:nth-child(1) {
+    height: 450px;
+    overflow-y: auto;
+}
+
+#chat p {
+    padding: 15px 30px;
+    font-size: 17px;
+    color: #fff;
+    text-align: justify;
+}
+
+#chat .sent, .received {
+    clear: both;
+    border-radius: 5px;
+    margin: 10px 10px;
+    max-width: 45%;
+}
+
+.sent {
+    float: right;
+    background-color: #3500d3;
+}
+
+.received {
+    background-color: #f30e66;
+    float: left;
+}
+
+#messageInput {
+    border-top: 2px solid rgb(173, 175, 197);
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 140px;
+    background-color: #fff;
+}
+
+#messageInput > form {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#messageInput textarea {
+    margin-left: 15px;
+    font-size: 18px;
+    color: #3500d3;
+}
+
+#messageInput textarea[placeholder] {
+    padding: 10px 0 0 10px;
+}
+
+#messageInput button {
+    border: thin solid #3500d3;
+    font-size: 25px;
+    margin-right: 15px;
+    background: transparent;
+    padding: 10px 25px;
+    margin-top: 65px;
+    color: #3500d3;
+}
+/* inbox section ends */

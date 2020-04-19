@@ -2233,3 +2233,66 @@ aside.left i {
     padding: 0 10px;
 }
 /* popup write message section ends */
+
+/* delete popup alert box starts */
+#deleteBox {
+    height: 400px;
+    width: 40%;
+    background-color: #fff;
+    box-shadow: 2px 2px 3px 3px rgba(66, 3, 82, 0.6), -2px -2px 3px 3px rgba(66, 3, 82, 0.6);
+    border-radius: 5px;
+    position: fixed;
+    z-index: 100;
+    left: 30%;
+    top: 180px;
+    display: none;
+}
+
+#alertMessage {
+    height: 75%;
+}
+
+#alertMessage p {
+    font-size: 40px;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: rgb(63, 66, 87);
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+#deleteOptions {
+    height: 25%;
+    display: flex;
+    align-items: center;
+}
+
+#deleteOptions > div {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+#deleteOptions a {
+    border: thin solid rgb(173, 175, 197);
+    border-radius: 5px;
+    width: 70%;
+    text-align: center;
+    font-size: 25px;
+    padding: 10px 0;
+}
+
+#deleteOptions a:hover {
+    border-width: 3px;
+}
+
+#deleteBox > a {
+    color: rgb(63, 66, 87);
+    font-size: 30px;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+/* delete popup alert box ends */

@@ -102,6 +102,19 @@ $(function() {
     })
     // write message section ends
 
+    // delete my account popup starts
+    $("#delete").click(function(ev){
+        ev.preventDefault();
+        $("#popup").fadeIn("fast");
+        $("#deleteBox").fadeIn("fast");
+    })
+    $(".close").click(function(ev){
+        ev.preventDefault();
+        $("#popup").fadeOut("slow");
+        $("#deleteBox").fadeOut("slow");
+    })
+    // delete my account popup ends
+
     // profile options section starts
     // let profileOptions = document.querySelectorAll("#options > ul > li");
     // let options = Array.from(profileOptions);

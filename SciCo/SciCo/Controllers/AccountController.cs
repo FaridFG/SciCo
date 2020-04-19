@@ -16,11 +16,13 @@ namespace SciCo.Controllers
     {
         private readonly AppDbContext _db;
         private readonly UserManager<AppUser> _userManager;
+        private readonly SignInManager<AppUser> _signInManager;
 
-        public AccountController(AppDbContext db, UserManager<AppUser> userManager)
+        public AccountController(AppDbContext db, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
         {
             _db = db;
             _userManager = userManager;
+            _signInManager = signInManager;
         }
         public IActionResult Newsfeed()
         {
@@ -81,6 +83,25 @@ namespace SciCo.Controllers
                 Friends = _db.Friends.Where(f => f.User1.Id == user.Id || f.User2.Id == user.Id)
             };
             return View(model);
+        }
+
+        public async Task<IActionResult> DeleteAccount()
+        {
+            AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var friends = _db.Friends.Where(f => f.User1 == user || f.User2 == user).Select(f => f.Id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return Content($"user = {user.UserName}, friends = {friends}");
+
+            //await _signInManager.SignOutAsync();
+            //_db.Users.Remove(user);
+            //await _db.SaveChangesAsync();
+
+            //return RedirectToAction("Index", "User");
         }
     }
 }

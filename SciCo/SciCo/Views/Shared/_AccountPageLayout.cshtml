@@ -146,7 +146,7 @@
                             <a href="#"> <i class="fas fa-sliders-h"></i>Account Settings</a>
                         </li>
                         <li>
-                            <a href="#"> <i class="fas fa-book-open"></i>Take Notes</a>
+                            <a id="delete" class="button" asp-controller="Account" asp-action="DeleteAccount"> <i class="fas fa-book-open"></i>Delete My Account</a>
                         </li>
                         <li>
                             <a asp-controller="User" asp-action="LogOut"> <i class="fas fa-sign-out-alt"></i>Log Out</a>
@@ -167,6 +167,7 @@
         @RenderBody()
     </main>
     <div id="popup"></div>
+    @await  Html.PartialAsync("_DeleteBoxPartial", user)
     <!-- main ends -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
