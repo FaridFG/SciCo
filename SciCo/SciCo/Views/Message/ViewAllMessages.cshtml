@@ -1,0 +1,43 @@
+﻿@model MessageVM
+@{ AppUser user = await _userManager.GetUserAsync(User);}
+
+@{
+    ViewData["Title"] = "ShowMessages";
+    Layout = "~/Views/Shared/_AccountPageLayout.cshtml";
+}
+
+<!-- chat section starts -->
+<section id="chatApp">
+    <div id="messageSenders">
+        @foreach (AppUser sender in Model.Senders.Distinct())
+        {
+            <div class="chatContent">
+                <div>
+                    @if (sender.ProfilePhoto == null)
+                    {
+                        <p>No<br />Photo</p>
+                    }
+                    else
+                    {
+                        <img src="../img/@sender.ProfilePhoto" alt="message sender's profile photo">
+                    }
+                </div>
+                <div>
+                    <p>
+                        <a href="#">@sender.Name @sender.Surname</a>
+                        @if (Model.Messages.Where(m => m.Sender == sender).Count() > 1)
+                        {
+                            <span>@Model.Messages.Where(m => m.Sender == sender).Count()</span>
+                        }
+                    </p>
+                    @foreach (Message message in Model.Messages.Where(m => m.Sender == sender).TakeLast(1))
+                    {
+                        <p> <a href="#">@message.Content</a> </p>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+    <div id="chat"></div>
+</section>
+<!-- chat section ends -->

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SciCo.Data;
 using SciCo.Models;
+using SciCo.ViewModels;
 
 namespace SciCo.Controllers
 {
@@ -26,7 +27,8 @@ namespace SciCo.Controllers
             {
                 Sender = await _userManager.FindByNameAsync(User.Identity.Name),
                 Receiver = await _db.Users.FindAsync(receiverId),
-                Content = messageContent
+                Content = messageContent,
+                Time = DateTime.Now
             };
 
             if (message == null)
@@ -39,9 +41,40 @@ namespace SciCo.Controllers
             return RedirectToAction("Timeline", "Account", new { id = receiverId });
         }
 
-        public IActionResult ShowMessages()
+        public async Task<IActionResult> ShowMessages()
         {
-            return View();
+            AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            MessageVM model = new MessageVM
+            {
+                Messages = _db.Messages.Where(m => m.Receiver == user),
+                Senders = _db.Messages.Where(m => m.Receiver == user).Select(m => m.Sender),
+                Receiver = user
+            };
+            return View(model);
+        }
+
+        public async Task<IActionResult> ViewAllMessages()
+        {
+            AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            MessageVM model = new MessageVM
+            {
+                Messages = _db.Messages.Where(m => m.Receiver == user),
+                Senders = _db.Messages.Where(m => m.Receiver == user).Select(m => m.Sender),
+                Receiver = user
+            };
+            return View(model);
         }
 
         public IActionResult ReplyToMessage()

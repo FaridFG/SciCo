@@ -1,0 +1,71 @@
+﻿@model MessageVM
+@{ AppUser user = await _userManager.GetUserAsync(User);}
+
+@{
+    ViewData["Title"] = "ShowMessages";
+    Layout = "~/Views/Shared/_AccountPageLayout.cshtml";
+}
+
+
+
+@for (int i = 0; i < Model.Senders.Count(); i++)
+{
+    @for (int j = 0; j < Model.Senders.Count(); j++)
+    {
+        if (@Model.Senders.ElementAt(i) == Model.Senders.ElementAt(j))
+        {
+            continue;
+        }
+        else
+        {
+            <h1>@Model.Senders.ElementAt(i).UserName</h1>
+        }
+    }
+}
+
+
+
+<!-- chat section starts -->
+@*<section id="chatApp">
+        <div id="messageSenders">
+            @foreach (AppUser sender in Model.Senders)
+            {
+                <div class="chatContent">
+                    <div>
+                        @if (sender.ProfilePhoto == null)
+                        {
+                            <p>No<br />Photo</p>
+                        }
+                        else
+                        {
+                            <img src="../img/@sender.ProfilePhoto" alt="message sender's profile photo">
+                        }
+                    </div>
+                    <div>
+                        <p> <a href="#">@sender.Name @sender.Surname</a> </p>
+                        @foreach (Message message in Model.Messages.Where(m => m.Sender == sender))
+                        {
+                            <p> <a href="#">@message.Content</a> </p>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+        <div id="chat">
+            <div>
+                <div class="sent">
+                    <p>This is from senderThis is from senderThis is from senderThis is from senderThis is from senderThis is from sender</p>
+                </div>
+                <div class="received">
+                    <p>This is from receiverThis is from receiverThis is from receiverThis is from receiverThis is from receiver</p>
+                </div>
+            </div>
+            <div id="messageInput">
+                <form>
+                    <textarea name="content" id="content" cols="50" rows="5" placeholder="Enter your message..."></textarea>
+                    <button type="submit">Send<i class="fas fa-share-square"></i> </button>
+                </form>
+            </div>
+        </div>
+    </section>*@
+<!-- chat section ends -->

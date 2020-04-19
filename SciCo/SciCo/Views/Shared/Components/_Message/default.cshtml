@@ -6,33 +6,56 @@
 }
 else
 {
-    <a href="#" class="button"> <i class="fas fa-envelope"></i> <span class="pinkBack">@Model.Messages.Count()</span> </a>
+    <a href="#" class="button"> <i class="fas fa-envelope"></i> <span class="pinkBack">@Model.Senders.Distinct().Count()</span> </a>
 }
 
 <div id="inbox" class="subMenu">
-    @foreach (AppUser sender in Model.Senders)
+    @if (Model.Senders.Count() == 0)
     {
-        <div class="message">
-            <div>
-                @if (sender.ProfilePhoto == null)
-                {
-                    <p>No<br />Photo</p>
-                }
-                else
-                {
-                    <img src="~/img/@sender.ProfilePhoto" alt="message sender's profile photo">
-                }
-            </div>
-            <div>
-                <p> <a href="#">@sender.Name @sender.Surname</a> </p>
-                @foreach (Message message in Model.Messages.Where(m => m.Sender == sender))
-                {
-                    <p> <a href="#">@message.Content</a> </p>
-                }
-            </div>
+        <div id="noMessages" class="subMenu">
+            <p>You don't have any messages!</p>
         </div>
     }
-    <div id="allMessages" class="viewAll pinkBack">
-        <a href="#" role="button">View All Messages</a>
-    </div>
+    else
+    {
+        @foreach (AppUser sender in Model.Senders.Distinct())
+        {
+            <div class="message">
+                <div>
+                    @if (sender.ProfilePhoto == null)
+                    {
+                        <p>No<br />Photo</p>
+                    }
+                    else
+                    {
+                        <img src="~/img/@sender.ProfilePhoto" alt="message sender's profile photo">
+                    }
+                </div>
+                <div>
+                    <p>
+                        <a asp-controller="Account" asp-action="Timeline" asp-route-id="@sender.Id">@sender.Name @sender.Surname</a>
+                        @if (Model.Messages.Where(m => m.Sender == sender).Count() > 1)
+                        {
+                            <span>@Model.Messages.Where(m => m.Sender == sender).Count()</span>
+                        }
+                    </p>
+                    @foreach (Message message in Model.Messages.Where(m => m.Sender == sender).TakeLast(1))
+                    {
+                        @if (!message.HasSeen)
+                        {
+                            <p> <a asp-controller="Message" asp-action="ShowMessages" style="font-weight: bold;">@message.Content</a> </p>
+                        }
+                        else
+                        {
+                            <p> <a asp-controller="Message" asp-action="ShowMessages">@message.Content</a> </p>
+                        }
+
+                    }
+                </div>
+            </div>
+        }
+        <div id="allMessages" class="viewAll pinkBack">
+            <a asp-controller="Message" asp-action="ViewAllMessages">View All Messages</a>
+        </div>
+    }
 </div>

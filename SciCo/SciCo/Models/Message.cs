@@ -15,5 +15,8 @@ namespace SciCo.Models
         public AppUser Receiver { get; set; }
         [Required, StringLength(500)]
         public string Content { get; set; }
+        [Required]
+        public DateTime Time { get; set; }
+        public bool HasSeen { get; set; }
     }
 }

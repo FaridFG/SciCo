@@ -1,7 +1,7 @@
 $(function() {
     // search action scripts start
-    $(".account > header > .form button").click(function(ev){
-        if(($(".account > header > .form input")).val() == ""){
+    $(".account > header > .form button").click(function (ev) {
+        if (($(".account > header > .form input")).val().trim() == "") {
             ev.preventDefault();
             alert("You must enter user's name and surname to search...");
         }

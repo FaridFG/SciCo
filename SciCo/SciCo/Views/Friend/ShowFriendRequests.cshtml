@@ -50,15 +50,18 @@
                     </div>
                 }
             </div>
-            <div id="pagination">
-                <ul>
-                    <li>
-                        <a href="#"> <i class="fas fa-angle-left"></i>Previous</a>
-                    </li>
-                    <li>
-                        <a href="#">Next<i class="fas fa-angle-right"></i> </a>
-                    </li>
-                </ul>
-            </div>
+            @if (Model.RequestorUsers.Count() > 5)
+            {
+                <div id="pagination">
+                    <ul>
+                        <li>
+                            <a href="#"> <i class="fas fa-angle-left"></i>Previous</a>
+                        </li>
+                        <li>
+                            <a href="#">Next<i class="fas fa-angle-right"></i> </a>
+                        </li>
+                    </ul>
+                </div>
+            }
         }
     </section>

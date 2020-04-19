@@ -53,6 +53,17 @@ namespace SciCo.Controllers
             return View(_db.Users.Where(s => (s != user) && (s.Name.Contains(search) || s.Surname.Contains(search))).Take(5));
         }
 
+        public async Task<IActionResult> Next(string search, int? page)
+        {
+            AppUser user = await _userManager.GetUserAsync(User);
+            ViewBag.PageCount = Math.Ceiling((decimal)(_db.Users.Where(s => (s != user) && (s.Name.Contains(search) || s.Surname.Contains(search))).Count()));
+            if (page == null)
+            {
+                return View(_db.Users.Where(s => (s != user) && (s.Name.Contains(search) || s.Surname.Contains(search))).Take(5));
+            }
+            return View(_db.Users.Where(s => (s != user) && (s.Name.Contains(search) || s.Surname.Contains(search))).Take(5));
+        }
+
         public async Task<IActionResult> ShowProfile(string userId)
         {
             AppUser user = await _db.Users.FindAsync(userId);
