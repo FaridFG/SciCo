@@ -1,7 +1,7 @@
 $(function() {
     // search action scripts start
-    $(".account > header > .form button").click(function (ev) {
-        if (($(".account > header > .form input")).val().trim() == "") {
+    $(".account > header > .form button").click(function(ev){
+        if(($(".account > header > .form input")).val().trim() == ""){
             ev.preventDefault();
             alert("You must enter user's name and surname to search...");
         }
@@ -136,10 +136,32 @@ $(function() {
     // updating profile and cover photos starts
     $("#profileImage").click(function (ev) {
         ev.preventDefault();
-        $("#pPhoto").click();
+        $("#popup").fadeIn("fast");
+        $("#pictureBoxProfile").fadeIn("fast");
+    })
+    $(".close").click(function(ev){
+        ev.preventDefault();
+        $("#popup").fadeOut("slow");
+        $("#pictureBoxProfile").fadeOut("slow");
     })
 
     $("#coverImage").click(function (ev) {
+        ev.preventDefault();
+        $("#popup").fadeIn("fast");
+        $("#pictureBoxCover").fadeIn("fast");
+    })
+    $(".close").click(function(ev){
+        ev.preventDefault();
+        $("#popup").fadeOut("slow");
+        $("#pictureBoxCover").fadeOut("slow");
+    })
+    
+    $("#changeProfilePhoto").click(function (ev) {
+        ev.preventDefault();
+        $("#pPhoto").click();
+    })
+
+    $("#changeCoverPhoto").click(function (ev) {
         ev.preventDefault();
         $("#cPhoto").click();
     })

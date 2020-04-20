@@ -2495,3 +2495,96 @@ aside.left i {
     color: #fff;
 }
 /* inbox section ends */
+
+/* update profile and cover photos forms start */
+#pictureBoxProfile, #pictureBoxCover {
+    height: 550px;
+    width: 30%;
+    background-color: #fff;
+    box-shadow: 2px 2px 3px 3px rgba(66, 3, 82, 0.6), -2px -2px 3px 3px rgba(66, 3, 82, 0.6);
+    border-radius: 5px;
+    position: fixed;
+    z-index: 100;
+    left: 40%;
+    top: 100px;
+    display: none;
+}
+
+#pictureBoxProfile > a, #pictureBoxCover > a {
+    color: #ff3e2f;
+    font-size: 30px;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+
+#pictureBoxProfile > div:nth-child(1), #pictureBoxCover > div:nth-child(1) {
+    height: 85px;
+    border-bottom: thin solid #cedfd1;
+}
+
+#pictureBoxProfile > div:nth-child(1) p, #pictureBoxCover > div:nth-child(1) p {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    
+}
+
+#pictureBoxProfile > div:nth-child(2), #pictureBoxCover > div:nth-child(2) {
+    height: calc(550px - 85px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#profilePictureForm, #coverPictureForm {
+    width: 90%;
+    height: 100%;
+}
+
+#profilePictureForm > div, #coverPictureForm > div {
+    margin: 60px 0;
+}
+
+#profilePictureForm input[type="file"], #coverPictureForm input[type="file"] {
+    display: none;
+}
+
+#profilePictureForm a, #coverPictureForm a {
+    display: block;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#profilePictureForm a > i, #coverPictureForm a > i {
+    font-size: 150px;
+}
+
+#pictureBoxProfile button, #pictureBoxCover button {
+    border: thin solid rgb(173, 175, 197);
+    background: transparent;
+    font-size: 25px;
+    width: 100%;
+    padding: 7px 0;
+    border-radius: 5px;
+    color: #ff3e2f;
+    letter-spacing: 2px;
+}
+
+#pictureBoxProfile button:hover, #pictureBoxCover button:hover {
+    border-width: 2px;
+    cursor: pointer;
+}
+
+#pictureBoxProfile button i, #pictureBoxCover button i {
+    padding: 0 10px;
+}
+
+#pPhoto, #cPhoto {
+    display: none;
+}
+/* update profile and cover photos forms end */
