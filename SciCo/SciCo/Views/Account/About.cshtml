@@ -21,22 +21,38 @@
                 <p>Hometown</p>
             </div>
             <div>
-                @if (user.Hometown == null && user == Model)
+                @if (user == Model)
                 {
-                    <div>
-                        <form>
-                            <input type="text">
-                            <button type="submit">Add</button>
-                        </form>
-                    </div>
-                }
-                else if (user.Hometown == null && user != Model)
-                {
-                    <p>No information to show</p>
+                    if (user.Hometown == null)
+                    {
+                        <div>
+                            <form asp-controller="AccountInfo" asp-action="UpdateHometown">
+                                <input type="text" name="hometown">
+                                <button type="submit">Add</button>
+                            </form>
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="answer">@Model.Hometown</p>
+                        <div>
+                            <form style="margin-top: 10px;" asp-controller="AccountInfo" asp-action="UpdateHometown">
+                                <input type="text" name="hometown">
+                                <button type="submit">Update</button>
+                            </form>
+                        </div>
+                    }
                 }
                 else
                 {
-                    <p class="answer">@Model.Hometown</p>
+                    if (Model.Hometown == null)
+                    {
+                        <p>No information to show</p>
+                    }
+                    else
+                    {
+                        <p class="answer">@Model.Hometown</p>
+                    }
                 }
             </div>
         </div>
@@ -46,22 +62,38 @@
                 <p>Current City</p>
             </div>
             <div>
-                @if (user.CurrentCity == null && user == Model)
+                @if (user == Model)
                 {
-                    <div>
-                        <form>
-                            <input type="text">
-                            <button type="submit">Add</button>
-                        </form>
-                    </div>
-                }
-                else if (user.CurrentCity == null && user != Model)
-                {
-                    <p>No information to show</p>
+                    if (user.CurrentCity == null)
+                    {
+                        <div>
+                            <form asp-controller="AccountInfo" asp-action="UpdateCurrentCity">
+                                <input type="text" name="currentCity">
+                                <button type="submit">Add</button>
+                            </form>
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="answer">@Model.CurrentCity</p>
+                        <div>
+                            <form style="margin-top: 10px;" asp-controller="AccountInfo" asp-action="UpdateCurrentCity">
+                                <input type="text" name="currentCity">
+                                <button type="submit">Update</button>
+                            </form>
+                        </div>
+                    }
                 }
                 else
                 {
-                    <p class="answer">@Model.CurrentCity</p>
+                    if (Model.CurrentCity == null)
+                    {
+                        <p>No information to show</p>
+                    }
+                    else
+                    {
+                        <p class="answer">@Model.CurrentCity</p>
+                    }
                 }
             </div>
         </div>
@@ -89,22 +121,44 @@
                 <p>Gender</p>
             </div>
             <div>
-                @if (user.Gender == null && user == Model)
+                @if (user == Model)
                 {
-                    <div>
-                        <form>
-                            <input type="text">
-                            <button type="submit">Add</button>
-                        </form>
-                    </div>
-                }
-                else if (user.Gender == null && user != Model)
-                {
-                    <p>No information to show</p>
+                    if (user.Gender == null)
+                    {
+                        <div>
+                            <form asp-controller="AccountInfo" asp-action="UpdateGender">
+                                <select name="gender">
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                                <button type="submit">Add</button>
+                            </form>
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="answer">@Model.Gender</p>
+                        <div>
+                            <form style="margin-top: 10px;" asp-controller="AccountInfo" asp-action="UpdateGender">
+                                <select name="gender">
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                                <button type="submit">Update</button>
+                            </form>
+                        </div>
+                    }
                 }
                 else
                 {
-                    <p class="answer">@Model.Gender</p>
+                    if (Model.Gender == null)
+                    {
+                        <p>No information to show</p>
+                    }
+                    else
+                    {
+                        <p class="answer">@Model.Gender</p>
+                    }
                 }
             </div>
         </div>
@@ -114,22 +168,38 @@
                 <p>Education</p>
             </div>
             <div>
-                @if (user.Education == null && user == Model)
+                @if (user == Model)
                 {
-                    <div>
-                        <form>
-                            <input type="text">
-                            <button type="submit">Add</button>
-                        </form>
-                    </div>
-                }
-                else if (user.Education == null && user != Model)
-                {
-                    <p>No information to show</p>
+                    if (user.Education == null)
+                    {
+                        <div>
+                            <form asp-controller="AccountInfo" asp-action="UpdateEducation">
+                                <input type="text" name="education">
+                                <button type="submit">Add</button>
+                            </form>
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="answer">@Model.Education</p>
+                        <div>
+                            <form style="margin-top: 10px;" asp-controller="AccountInfo" asp-action="UpdateEducation">
+                                <input type="text" name="education">
+                                <button type="submit">Update</button>
+                            </form>
+                        </div>
+                    }
                 }
                 else
                 {
-                    <p class="answer">@Model.Education</p>
+                    if (Model.Education == null)
+                    {
+                        <p>No information to show</p>
+                    }
+                    else
+                    {
+                        <p class="answer">@Model.Education</p>
+                    }
                 }
             </div>
         </div>
@@ -139,7 +209,20 @@
                 <p>Email</p>
             </div>
             <div>
-                <p class="answer">@Model.Email</p>
+                @if (user == Model)
+                {
+                    <p class="answer">@Model.Email</p>
+                    <div>
+                        <form style="margin-top: 10px;" asp-controller="AccountInfo" asp-action="UpdateEmail">
+                            <input type="email" name="email" placeholder="email@example.com" />
+                            <button type="submit">Update</button>
+                        </form>
+                    </div>
+                }
+                else
+                {
+                    <p class="answer">@Model.Email</p>
+                }
             </div>
         </div>
         <hr />
@@ -148,22 +231,38 @@
                 <p>Phone Number</p>
             </div>
             <div>
-                @if (user.PhoneNumber == null && user == Model)
+                @if (user == Model)
                 {
-                    <div>
-                        <form>
-                            <input type="tel">
-                            <button type="submit">Add</button>
-                        </form>
-                    </div>
-                }
-                else if (user.PhoneNumber == null && user != Model)
-                {
-                    <p>No information to show</p>
+                    if (user.PhoneNumber == null)
+                    {
+                        <div>
+                            <form asp-controller="AccountInfo" asp-action="UpdatePhoneNumber">
+                                <input type="tel" name="number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}" placeholder="012-345-67-89" />
+                                <button type="submit">Add</button>
+                            </form>
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="answer">@Model.PhoneNumber</p>
+                        <div>
+                            <form style="margin-top: 10px;" asp-controller="AccountInfo" asp-action="UpdatePhoneNumber">
+                                <input type="text" name="number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}" placeholder="012-345-67-89" />
+                                <button type="submit">Update</button>
+                            </form>
+                        </div>
+                    }
                 }
                 else
                 {
-                    <p class="answer">@Model.PhoneNumber</p>
+                    if (Model.PhoneNumber == null)
+                    {
+                        <p>No information to show</p>
+                    }
+                    else
+                    {
+                        <p class="answer">@Model.PhoneNumber</p>
+                    }
                 }
             </div>
         </div>

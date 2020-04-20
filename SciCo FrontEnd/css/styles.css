@@ -1677,9 +1677,13 @@ aside.left i {
     justify-content: space-between;
 }
 
-.information form input {
+.information form input, select {
     width: 70%;
     height: 28px;
+    border-radius: 20px;
+    border: thin solid rgb(173, 175, 197);
+    padding: 3px 0 3px 10px;
+    font-size: 16px;
 }
 
 .information form button {

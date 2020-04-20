@@ -34,9 +34,9 @@ else
                 <div>
                     <p>
                         <a asp-controller="Account" asp-action="Timeline" asp-route-id="@sender.Id">@sender.Name @sender.Surname</a>
-                        @if (Model.Messages.Where(m => m.Sender == sender).Count() > 1)
+                        @if (Model.Messages.Where(m => m.Sender == sender && m.HasSeen == false).Count() > 1)
                         {
-                            <span>@Model.Messages.Where(m => m.Sender == sender).Count()</span>
+                            <span>@Model.Messages.Where(m => m.Sender == sender && m.HasSeen == false).Count()</span>
                         }
                     </p>
                     @foreach (Message message in Model.Messages.Where(m => m.Sender == sender).TakeLast(1))
