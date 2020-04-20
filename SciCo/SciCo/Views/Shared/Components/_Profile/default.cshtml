@@ -55,18 +55,18 @@
                     @if (Model == user)
                     {
                         <li>
-                            <form>
+                            <form enctype="multipart/form-data">
                                 <div>
-                                    <input type="hidden">
-                                    <button>Update Profile Photo</button>
+                                    <input id="pPhoto" type="file" style="display: none;">
+                                    <button id="profileImage">Update Profile Photo</button>
                                 </div>
                             </form>
                         </li>
                         <li>
-                            <form>
+                            <form enctype="multipart/form-data">
                                 <div>
-                                    <input type="hidden">
-                                    <button>Update Cover Photo</button>
+                                    <input id="cPhoto" type="file" style="display: none;">
+                                    <button id="coverImage">Update Cover Photo</button>
                                 </div>
                             </form>
                         </li>

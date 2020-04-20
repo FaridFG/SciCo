@@ -132,4 +132,16 @@ $(function() {
     //     })
     // }
     // profile options section ends
+
+    // updating profile and cover photos starts
+    $("#profileImage").click(function (ev) {
+        ev.preventDefault();
+        $("#pPhoto").click();
+    })
+
+    $("#coverImage").click(function (ev) {
+        ev.preventDefault();
+        $("#cPhoto").click();
+    })
+    // updating profile and cover photos ends
 })
