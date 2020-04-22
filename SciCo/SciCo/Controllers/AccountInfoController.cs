@@ -103,29 +103,5 @@ namespace SciCo.Controllers
             await _db.SaveChangesAsync();
             return RedirectToAction("About", "Account", new { id = user.Id });
         }
-
-        public async Task<IActionResult> UpdateProfilePhoto(string profilePhoto)
-        {
-            AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
-
-            if(profilePhoto == null || profilePhoto.Trim() == "")
-            {
-                return PartialView("_ValidationError");
-            }
-
-            return View();
-        }
-
-        public async Task<IActionResult> UpdateCoverPhoto(string coverPhoto)
-        {
-            AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
-
-            if (coverPhoto == null || coverPhoto.Trim() == "")
-            {
-                return PartialView("_ValidationError");
-            }
-
-            return View();
-        }
     }
 }

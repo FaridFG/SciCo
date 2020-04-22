@@ -1656,7 +1656,7 @@ aside.left i {
 
 /* about section starts */
 #userInfo h1 {
-    color: #ff3e2f;
+    color: #f30e66;
     text-align: center;
     padding: 20px 0;
 }
@@ -1689,14 +1689,14 @@ aside.left i {
 .information form button {
     width: 20%;
     background-color: #fff;
-    color: #ff3e2f;
-    border: 1px solid #ff3e2f;
+    color: #f30e66;
+    border: 1px solid #f30e66;
     border-radius: 20px;
     font-size: 17px;
 }
 
 .information form button:hover {
-    background-color: #ff3e2f;
+    background-color: #f30e66;
     color: #fff;
     border: none;
     transition: .5s;
@@ -1712,7 +1712,7 @@ aside.left i {
 }
 
 .answer {
-    color: #ff3e2f;
+    color: #f30e66;
     font-weight: bold;
 }
 /* about section ends */
@@ -1761,6 +1761,7 @@ aside.left i {
 
 .friend > div:nth-child(1) > div:nth-child(1) img {
     width: 100%;
+    height: 100%;
     border-radius: 5px;
 }
 
@@ -1787,6 +1788,7 @@ aside.left i {
 
 .friend > div:nth-child(1) > div:nth-child(2) img {
     width: 100%;
+    height: 100%;
     border-radius: 50%;
 }
 
@@ -2511,16 +2513,21 @@ aside.left i {
 }
 
 #pictureBoxProfile > a, #pictureBoxCover > a {
-    color: #ff3e2f;
+    color: #f30e66;
     font-size: 30px;
     position: absolute;
-    right: 10px;
+    right: 5%;
     top: 5px;
+}
+
+#pictureBoxProfile > div, #pictureBoxCover > div {
+    width: 90%;
+    margin: 0 auto;
 }
 
 #pictureBoxProfile > div:nth-child(1), #pictureBoxCover > div:nth-child(1) {
     height: 85px;
-    border-bottom: thin solid #cedfd1;
+    border-bottom: thin solid rgb(173, 175, 197);
 }
 
 #pictureBoxProfile > div:nth-child(1) p, #pictureBoxCover > div:nth-child(1) p {
@@ -2529,23 +2536,36 @@ aside.left i {
     justify-content: center;
     align-items: center;
     font-size: 25px;
-    
 }
 
 #pictureBoxProfile > div:nth-child(2), #pictureBoxCover > div:nth-child(2) {
-    height: calc(550px - 85px);
+    height: 170px;
+}
+
+#pictureBoxProfile > div:nth-child(3), #pictureBoxCover > div:nth-child(3) {
+    height: 200px;
+    border: thin solid rgb(173, 175, 197);
+    border-radius: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#profilePictureForm, #coverPictureForm {
+#pictureBoxProfile > div:nth-child(3) img, #pictureBoxCover > div:nth-child(3) img {
     width: 90%;
-    height: 100%;
+    height: 90%;
 }
 
-#profilePictureForm > div, #coverPictureForm > div {
-    margin: 60px 0;
+#pictureBoxProfile > div:nth-child(3) p, #pictureBoxCover > div:nth-child(3) p {
+    font-size: 25px;
+}
+
+#pictureBoxProfile > div:nth-child(4), #pictureBoxCover > div:nth-child(4) {
+    height: 95px;
+}
+
+#pictureBoxProfile form, #pictureBoxCover form {
+    height: 100%;
 }
 
 #profilePictureForm input[type="file"], #coverPictureForm input[type="file"] {
@@ -2554,37 +2574,36 @@ aside.left i {
 
 #profilePictureForm a, #coverPictureForm a {
     display: block;
-    height: 200px;
+    height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 #profilePictureForm a > i, #coverPictureForm a > i {
-    font-size: 150px;
+    font-size: 120px;
+    color: #f30e66;
+    padding: 0 25px;
 }
 
 #pictureBoxProfile button, #pictureBoxCover button {
-    border: thin solid rgb(173, 175, 197);
+    border: 1px solid rgb(173, 175, 197);
     background: transparent;
     font-size: 25px;
     width: 100%;
-    padding: 7px 0;
+    padding: 15px 0;
     border-radius: 5px;
-    color: #ff3e2f;
+    color: #f30e66;
     letter-spacing: 2px;
+    margin-top: 15px;
 }
 
 #pictureBoxProfile button:hover, #pictureBoxCover button:hover {
-    border-width: 2px;
+    border: 1px solid #f30e66;
     cursor: pointer;
 }
 
 #pictureBoxProfile button i, #pictureBoxCover button i {
     padding: 0 10px;
-}
-
-#pPhoto, #cPhoto {
-    display: none;
 }
 /* update profile and cover photos forms end */

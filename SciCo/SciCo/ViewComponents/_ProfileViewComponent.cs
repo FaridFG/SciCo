@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SciCo.Data;
 using SciCo.Models;
+using SciCo.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,12 @@ namespace SciCo.ViewComponents
         public async Task<IViewComponentResult> InvokeAsync(string id)
         {
             AppUser user = await _db.Users.FindAsync(id);
-            return View(await Task.FromResult(user));
+            PhotoVM model = new PhotoVM
+            {
+                user = user,
+                Photos = _db.Photos.Where(p => p.user.Id == user.Id)
+            };
+            return View(await Task.FromResult(model));
         }
     }
 }

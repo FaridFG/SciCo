@@ -46,3 +46,4 @@ C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Views\Mes
 C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Views\Message\ViewAllMessages.cshtml.g.cs
 C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_ProfilePhotoPartial.cshtml.g.cs
 C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CoverPhotoPartial.cshtml.g.cs
+C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Views\Account\Photos.cshtml.g.cs

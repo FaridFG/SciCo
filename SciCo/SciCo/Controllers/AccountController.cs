@@ -91,7 +91,19 @@ namespace SciCo.Controllers
             {
                 MainUser = user,
                 FriendUsers = _db.Friends.Where(f => f.User1 == user).Select(f => f.User2).Concat(_db.Friends.Where(f => f.User2 == user).Select(f => f.User1)),
-                Friends = _db.Friends.Where(f => f.User1.Id == user.Id || f.User2.Id == user.Id)
+                Friends = _db.Friends.Where(f => f.User1.Id == user.Id || f.User2.Id == user.Id),
+                Photos = _db.Photos
+            };
+            return View(model);
+        }
+
+        public async Task<IActionResult> Photos(string id)
+        {
+            AppUser user = await _db.Users.FindAsync(id);
+            PhotoVM model = new PhotoVM
+            {
+                user = user,
+                Photos = _db.Photos.Where(p => p.user == user)
             };
             return View(model);
         }

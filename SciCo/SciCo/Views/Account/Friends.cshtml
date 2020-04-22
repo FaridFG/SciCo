@@ -36,23 +36,29 @@
                     <div class="friend">
                         <div>
                             <div>
-                                @if (friend.CoverPhoto == null)
+                                @if (!(Model.Photos.Any(p => p.user == friend && p.isCoverPhoto == true)))
                                 {
                                     <p>Cover Photo</p>
                                 }
                                 else
                                 {
-                                    <img src="~/img/@friend.CoverPhoto" alt="user's cover image" />
+                                    foreach (Photo photo in Model.Photos.Where(p => p.user == friend && p.isCoverPhoto == true).TakeLast(1))
+                                    {
+                                        <a href="#"> <img src="~/img/@photo.Link" alt="profile photo"> </a>
+                                    }
                                 }
                             </div>
                             <div>
-                                @if (friend.ProfilePhoto == null)
+                                @if (!(Model.Photos.Any(p => p.user == friend && p.isProfilePhoto == true)))
                                 {
-                                    <p>No<br />Photo</p>
+                                    <p>Profile<br>Photo</p>
                                 }
                                 else
                                 {
-                                    <img src="~/img/@friend.ProfilePhoto" alt="user's cover image" />
+                                    foreach (Photo photo in Model.Photos.Where(p => p.user == friend && p.isProfilePhoto == true).TakeLast(1))
+                                    {
+                                        <a href="#"> <img src="~/img/@photo.Link" alt="cover photo" /> </a>
+                                    }
                                 }
                             </div>
                         </div>

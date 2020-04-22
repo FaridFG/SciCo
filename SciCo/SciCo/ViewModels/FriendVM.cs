@@ -11,5 +11,6 @@ namespace SciCo.ViewModels
         public AppUser MainUser { get; set; }
         public IEnumerable<AppUser> FriendUsers { get; set; }
         public IEnumerable<Friend> Friends { get; set; }
+        public IEnumerable<Photo> Photos { get; set; }
     }
 }

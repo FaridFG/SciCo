@@ -9,6 +9,6 @@ namespace SciCo.ViewModels
     public class PhotoVM
     {
         public AppUser user { get; set; }
-        public Photo Photos { get; set; }
+        public IEnumerable<Photo> Photos { get; set; }
     }
 }

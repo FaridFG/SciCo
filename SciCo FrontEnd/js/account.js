@@ -148,12 +148,12 @@ $(function() {
     $("#coverImage").click(function (ev) {
         ev.preventDefault();
         $("#popup").fadeIn("fast");
-        $("#picpictureBoxCovertureBox").fadeIn("fast");
+        $("#pictureBoxCover").fadeIn("fast");
     })
     $(".close").click(function(ev){
         ev.preventDefault();
         $("#popup").fadeOut("slow");
-        $("#pictpictureBoxCoverreBox").fadeOut("slow");
+        $("#pictureBoxCover").fadeOut("slow");
     })
     
     $("#changeProfilePhoto").click(function (ev) {

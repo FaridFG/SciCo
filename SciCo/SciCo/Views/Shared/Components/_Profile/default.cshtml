@@ -1,42 +1,48 @@
-﻿@model AppUser
+﻿@model PhotoVM
 @{ AppUser user = await _userManager.GetUserAsync(User);}
 
 <section id="profile">
     <div id="coverPhoto">
-        @if (Model.CoverPhoto == null)
+        @if (!(Model.Photos.Any(p => p.user == Model.user && p.isCoverPhoto == true)))
         {
             <p>Cover Photo</p>
         }
         else
         {
-            <a href="#"> <img src="~/img/@Model.CoverPhoto" alt="cover photo" /> </a>
+            foreach (Photo photo in Model.Photos.Where(p => p.user == Model.user && p.isCoverPhoto == true).TakeLast(1))
+            {
+                <a href="#"> <img src="~/img/@photo.Link" alt="cover photo" /> </a>
+            }
         }
     </div>
     <div id="options">
         <ul>
             <li>
-                <a asp-controller="Account" asp-action="Timeline" asp-route-id="@Model.Id">Timeline</a>
+                <a asp-controller="Account" asp-action="Timeline" asp-route-id="@Model.user.Id">Timeline</a>
             </li>
             <li>
-                <a asp-controller="Account" asp-action="About" asp-route-id="@Model.Id">About</a>
+                <a asp-controller="Account" asp-action="About" asp-route-id="@Model.user.Id">About</a>
             </li>
             <li>
-                <a asp-controller="Account" asp-action="Friends" asp-route-id="@Model.Id">Friends</a>
+                <a asp-controller="Account" asp-action="Friends" asp-route-id="@Model.user.Id">Friends</a>
             </li>
             <li id="accountInfo">
                 <ul>
                     <li id="photoItem">
-                        @if (Model.ProfilePhoto == null)
+                        @if (!(Model.Photos.Any(p => p.user == Model.user && p.isProfilePhoto == true)))
                         {
                             <p>Profile<br>Photo</p>
                         }
                         else
                         {
-                            <a href="#"> <img src="~/img/@Model.ProfilePhoto" alt="profile photo"> </a>
+                            foreach (Photo photo in Model.Photos.Where(p => p.user == Model.user && p.isProfilePhoto == true).TakeLast(1))
+                            {
+                                <a href="#"> <img src="~/img/@photo.Link" alt="profile photo"> </a>
+                            }
                         }
                     </li>
                     <li>
-                        <a href="#">@Model.Name @Model.Surname</a>
+                        <a href="#">@Model.user.Name @Model.user.Surname</a>
                     </li>
                     <li>
                         <a href="#">Baku, Azerbaijan</a>
@@ -44,7 +50,7 @@
                 </ul>
             </li>
             <li>
-                <a href="photos.html">Photos</a>
+                <a asp-controller="Account" asp-action="Photos" asp-route-id="@Model.user.Id">Photos</a>
             </li>
             <li>
                 <a href="videos.html">Videos</a>
@@ -52,53 +58,75 @@
             <li id="more">
                 <a href="#" class="button"> <i class="fas fa-ellipsis-h"></i> </a>
                 <ul id="accountOptions" class="subMenu">
-                    @if (Model == user)
+                    @if (Model.user == user)
                     {
                         <li>
-                            <form>
-                                <div>
-                                    <button class="button" id="profileImage">Update Profile Photo</button>
-                                </div>
-                            </form>
+                            @if(Model.Photos.Where(p => p.user == user && p.isProfilePhoto == true).Count() > 0)
+                            {
+                                <form>
+                                    <div>
+                                        <button class="button" id="profileImage">Update Profile Photo</button>
+                                    </div>
+                                </form>
+                            }
+                            else
+                            {
+                                <form>
+                                    <div>
+                                        <button class="button" id="profileImage">Add Profile Photo</button>
+                                    </div>
+                                </form>
+                            }
                         </li>
                         <li>
-                            <form>
-                                <div>
-                                    <button class="button" id="coverImage">Update Cover Photo</button>
-                                </div>
-                            </form>
+                            @if (Model.Photos.Where(p => p.user == user && p.isCoverPhoto == true).Count() > 0)
+                            {
+                                <form>
+                                    <div>
+                                        <button class="button" id="coverImage">Update Cover Photo</button>
+                                    </div>
+                                </form>
+                            }
+                            else
+                            {
+                                <form>
+                                    <div>
+                                        <button class="button" id="coverImage">Add Cover Photo</button>
+                                    </div>
+                                </form>
+                            }
                         </li>
                     }
                     else
                     {
-                        if (_db.FriendRequests.Any(r => r.RequestorUser == user && r.ReceiverUser == Model))
+                        if (_db.FriendRequests.Any(r => r.RequestorUser == user && r.ReceiverUser == Model.user))
                         {
                             <li>
                                 <form asp-controller="Friend" asp-action="CancelFriendRequest">
                                     <div>
-                                        <input type="hidden" name="ReceiverId" value="@Model.Id" />
+                                        <input type="hidden" name="ReceiverId" value="@Model.user.Id" />
                                         <button>Cancel Friend Request</button>
                                     </div>
                                 </form>
                             </li>
                         }
-                        else if (_db.FriendRequests.Any(r => r.RequestorUser == Model && r.ReceiverUser == user))
+                        else if (_db.FriendRequests.Any(r => r.RequestorUser == Model.user && r.ReceiverUser == user))
                         {
                             <li>
                                 <form method="post" asp-controller="Friend" asp-action="ShowFriendRequests">
                                     <div>
-                                        <input type="hidden" name="ReceiverId" value="@Model.Id" />
+                                        <input type="hidden" name="ReceiverId" value="@Model.user.Id" />
                                         <button>Reply to Friend Request</button>
                                     </div>
                                 </form>
                             </li>
                         }
-                        else if ((_db.Friends.Any(f => f.User1 == Model && f.User2 == user) || (_db.Friends.Any(f => f.User1 == user && f.User2 == Model))))
+                        else if ((_db.Friends.Any(f => f.User1 == Model.user && f.User2 == user) || (_db.Friends.Any(f => f.User1 == user && f.User2 == Model.user))))
                         {
                             <li>
                                 <form method="post" asp-controller="Friend" asp-action="Unfriend">
                                     <div>
-                                        <input type="hidden" name="ReceiverId" value="@Model.Id" />
+                                        <input type="hidden" name="ReceiverId" value="@Model.user.Id" />
                                         <button>Unfriend</button>
                                     </div>
                                 </form>
@@ -109,7 +137,7 @@
                             <li>
                                 <form method="post" asp-controller="Friend" asp-action="SendFriendRequest">
                                     <div>
-                                        <input type="hidden" name="ReceiverId" value="@Model.Id" />
+                                        <input type="hidden" name="ReceiverId" value="@Model.user.Id" />
                                         <button>Send Friend Request</button>
                                     </div>
                                 </form>
@@ -118,7 +146,7 @@
                         <li>
                             <form method="post" asp-controller="Message" asp-action="SendMessage">
                                 <div>
-                                    <input type="hidden" name="ReceiverId" value="@Model.Id" />
+                                    <input type="hidden" name="ReceiverId" value="@Model.user.Id" />
                                     <button class="button" id="write">Write Message</button>
                                 </div>
                             </form>

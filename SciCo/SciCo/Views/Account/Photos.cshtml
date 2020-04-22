@@ -1,0 +1,22 @@
+﻿@model PhotoVM
+@{
+    ViewData["Title"] = "Photos";
+    Layout = "~/Views/Shared/_AccountPageLayout.cshtml";
+}
+
+<!-- profile section starts -->
+@await Component.InvokeAsync("_Profile", Model.user.Id)
+<!-- profile section ends -->
+
+<!-- photos section starts -->
+<section id="userPhotos">
+    <div>
+        @foreach (Photo photo in Model.Photos)
+        {
+            <div class="images">
+                <a href="#"> <img src="~/img/@photo.Link" alt="user's photos"> </a>
+            </div>
+        }
+    </div>
+</section>
+<!-- photos section ends -->
