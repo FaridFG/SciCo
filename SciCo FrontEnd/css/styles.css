@@ -2163,7 +2163,7 @@ aside.left i {
     display: flex;
     align-items: center;
     justify-content: center;
-    display: none;
+    /* display: none; */
 }
 
 #messageBox {
@@ -2509,7 +2509,7 @@ aside.left i {
     z-index: 100;
     left: 40%;
     top: 100px;
-    display: none;
+    /* display: none; */
 }
 
 #pictureBoxProfile > a, #pictureBoxCover > a {

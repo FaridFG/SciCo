@@ -5,9 +5,17 @@
     <div>
         <form name="profilePictureForm" id="profilePictureForm" asp-controller="Photo" asp-action="AddProfilePhoto" enctype="multipart/form-data">
             <div>
-                <input type="file" name="firstProfileImage" id="pPhoto" />
+                <input type="file" id="pPhoto" />
                 <a href="#" id="changeProfilePhoto"> <i class="fas fa-cloud-upload-alt"></i> </a>
             </div>
+        </form>
+    </div>
+    <div>
+        <p>Photo to upload</p>
+        @*<img src="" alt="photo" />*@
+    </div>
+    <div>
+        <form name="profilePictureForm" id="profilePictureForm">
             <div>
                 <button type="submit">Upload<i class="fas fa-cloud-upload-alt"></i> </button>
             </div>
