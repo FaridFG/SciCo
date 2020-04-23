@@ -11,5 +11,6 @@ namespace SciCo.ViewModels
         public IEnumerable<Message> Messages { get; set; }
         public IEnumerable<AppUser> Senders { get; set; }
         public AppUser Receiver { get; set; }
+        public IEnumerable<Photo> Photos { get; set; }
     }
 }

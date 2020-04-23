@@ -56,7 +56,8 @@ namespace SciCo.Controllers
             {
                 Messages = _db.Messages.Where(m => m.Receiver == user),
                 Senders = _db.Messages.Where(m => m.Receiver == user).Select(m => m.Sender),
-                Receiver = user
+                Receiver = user,
+                Photos = _db.Photos
             };
             return View(model);
         }
@@ -74,7 +75,8 @@ namespace SciCo.Controllers
             {
                 Messages = _db.Messages.Where(m => m.Receiver == user),
                 Senders = _db.Messages.Where(m => m.Receiver == user).Select(m => m.Sender),
-                Receiver = user
+                Receiver = user,
+                Photos = _db.Photos
             };
             return View(model);
         }

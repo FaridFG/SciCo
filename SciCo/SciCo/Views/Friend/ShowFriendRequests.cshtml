@@ -20,13 +20,16 @@
                     FriendRequest request = _db.FriendRequests.FirstOrDefault(r => r.RequestorUser == requestor);
                     <div class="requestResult">
                         <div class="resultAccount">
-                            @if (requestor.ProfilePhoto == null)
+                            @if (!(Model.Photos.Any(p => p.user == requestor && p.isProfilePhoto == true)))
                             {
                                 <span>No<br />Photo</span>
                             }
                             else
                             {
-                                <img src="~/img/@requestor.ProfilePhoto" alt="user's profile photo" />
+                                @foreach (Photo photo in Model.Photos.Where(p => p.user == requestor && p.isProfilePhoto == true).TakeLast(1))
+                                {
+                                    <img src="~/img/@photo.Link" alt="user's profile photo" />
+                                }
                             }
                             <a asp-controller="Account" asp-action="Timeline" asp-route-id="@requestor.Id">@requestor.Name @requestor.Surname</a>
                         </div>

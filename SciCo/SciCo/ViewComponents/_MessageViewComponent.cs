@@ -27,7 +27,8 @@ namespace SciCo.ViewComponents
             {
                 Messages = _db.Messages.Where(m => m.Receiver == user),
                 Senders = _db.Messages.Where(m => m.Receiver == user).Select(m => m.Sender),
-                Receiver = user
+                Receiver = user,
+                Photos = _db.Photos
             };
             return View(await Task.FromResult(message));
         }

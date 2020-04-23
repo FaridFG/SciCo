@@ -24,13 +24,16 @@ else
             <div class="requestSender">
                 <div>
                     <div>
-                        @if (requestor.ProfilePhoto == null)
+                        @if (!(Model.Photos.Any(p => p.user == requestor && p.isProfilePhoto == true)))
                         {
                             <p>No<br />Photo</p>
                         }
                         else
                         {
-                            <a href="#"> <img src="~/img/@requestor.ProfilePhoto" alt="profile photo">      </a>
+                            @foreach (Photo photo in Model.Photos.Where(p => p.user == requestor && p.isProfilePhoto == true).TakeLast(1))
+                            {
+                                <img src="~/img/@photo.Link" alt="user's profile photo" />
+                            }
                         }
                     </div>
                     <div>

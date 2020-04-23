@@ -50,7 +50,8 @@ namespace SciCo.Controllers
             RequestsVM model = new RequestsVM()
             {
                 ReceiverUser = user,
-                RequestorUsers = _db.FriendRequests.Where(r => r.ReceiverUser == user).Select(r => r.RequestorUser)
+                RequestorUsers = _db.FriendRequests.Where(r => r.ReceiverUser == user).Select(r => r.RequestorUser),
+                Photos = _db.Photos
             };
             return View(model);
         }
