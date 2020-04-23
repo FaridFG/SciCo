@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AppUser>
+﻿@model SearchVM
 
 @{
     ViewData["Title"] = "Search";
@@ -6,7 +6,7 @@
 }
 
 <section id="searchBar">
-    @if (Model.Count() == 0)
+    @if (Model.Users.Count() == 0)
     {
         <div id="errorMessage">
             <p>Sorry, we couldn't find the user<br /><strong>@ViewBag.Fullname</strong></p>
@@ -15,17 +15,20 @@
     else
     {
         <div>
-        @foreach (AppUser user in Model)
+        @foreach (AppUser user in Model.Users)
         {
             <div class="searchResult">
                 <div class="resultAccount">
-                    @if (user.ProfilePhoto == null)
+                    @if (!(Model.Photos.Any(p => p.user == user && p.isProfilePhoto == true)))
                     {
                         <span>No<br />Photo</span>
                     }
                     else
                     {
-                        <img src="~/img/@user.ProfilePhoto" alt="user's profile photo" />
+                        @foreach (Photo photo in Model.Photos.Where(p => p.user == user && p.isProfilePhoto == true).TakeLast(1))
+                        {
+                            <img src="~/img/@photo.Link" alt="user's profile photo" />
+                        }
                     }
                     <a asp-controller="Account" asp-action="Timeline" asp-route-id="@user.Id">@user.Name @user.Surname</a>
                 </div>

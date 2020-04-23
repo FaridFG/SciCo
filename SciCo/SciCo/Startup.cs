@@ -82,6 +82,14 @@ namespace SciCo
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
+                  name: "areas",
+                  template: "{area:exists}/{controller=Dasboard}/{action=Index}/{id?}"
+                );
+            });
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
                     name: "default",
                     template: "{controller=User}/{action=Index}/{id?}");
             });

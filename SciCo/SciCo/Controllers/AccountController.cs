@@ -43,14 +43,23 @@ namespace SciCo.Controllers
         public async Task<IActionResult> Search(string search)
         {
             AppUser user = await _userManager.GetUserAsync(User);
-            ViewBag.Fullname = search;
-            ViewBag.Quantity = _db.Users.Where(s => (s != user) && (s.Name.Contains(search) || s.Surname.Contains(search))).Count();
+
             if (search == null)
             {
                 ModelState.AddModelError("", "Type something to search");
                 return View();
             }
-            return View(_db.Users.Where(s => (s != user) && (s.Name.Contains(search) || s.Surname.Contains(search))).Take(5));
+
+            ViewBag.Fullname = search;
+            ViewBag.Quantity = _db.Users.Where(s => (s != user) && (s.Name.Contains(search) || s.Surname.Contains(search))).Count();
+
+            SearchVM model = new SearchVM
+            {
+                Users = _db.Users.Where(s => (s != user) && (s.Name.Contains(search) || s.Surname.Contains(search))).Take(5),
+                Photos = _db.Photos
+            };
+
+            return View(model);
         }
 
         public async Task<IActionResult> Next(string search, int? page)

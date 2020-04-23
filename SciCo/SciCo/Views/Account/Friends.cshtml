@@ -82,3 +82,11 @@
         }
     </section>
 <!-- friends section ends -->
+
+@await  Html.PartialAsync("_MessageBoxPartial", Model.MainUser)
+
+@await  Html.PartialAsync("_PhotoPartial")
+
+@await  Html.PartialAsync("_ProfilePhotoPartial")
+
+@await  Html.PartialAsync("_CoverPhotoPartial")

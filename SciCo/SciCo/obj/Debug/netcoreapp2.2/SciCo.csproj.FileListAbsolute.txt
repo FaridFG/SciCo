@@ -48,3 +48,8 @@ C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Views\Sha
 C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CoverPhotoPartial.cshtml.g.cs
 C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Views\Account\Photos.cshtml.g.cs
 C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_PhotoPartial.cshtml.g.cs
+C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\SciCo.csprojAssemblyReference.cache
+C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Areas\ScicoAdmin\Views\Shared\_AdminLayout.cshtml.g.cs
+C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Areas\ScicoAdmin\Views\_AdminViewImports.cshtml.g.cs
+C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Areas\ScicoAdmin\Views\_AdminViewStart.cshtml.g.cs
+C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Areas\ScicoAdmin\Views\Dashboard\Index.cshtml.g.cs
