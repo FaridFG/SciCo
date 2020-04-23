@@ -134,6 +134,17 @@ $(function() {
     // profile options section ends
 
     // updating profile and cover photos starts
+    $("#userImage").click(function (ev) {
+        ev.preventDefault();
+        $("#popup").fadeIn("fast");
+        $("#pictureBox").fadeIn("fast");
+    })
+    $(".close").click(function(ev){
+        ev.preventDefault();
+        $("#popup").fadeOut("slow");
+        $("#pictureBox").fadeOut("slow");
+    })
+
     $("#profileImage").click(function (ev) {
         ev.preventDefault();
         $("#popup").fadeIn("fast");
@@ -155,6 +166,11 @@ $(function() {
         $("#popup").fadeOut("slow");
         $("#pictureBoxCover").fadeOut("slow");
     })
+
+    $("#addNewPhoto").click(function (ev) {
+        ev.preventDefault();
+        $("#newPhoto").click();
+    })
     
     $("#changeProfilePhoto").click(function (ev) {
         ev.preventDefault();
@@ -165,6 +181,14 @@ $(function() {
         ev.preventDefault();
         $("#cPhoto").click();
     })
+
+    if($("#pictureBox form input").val() == ""){
+        $("#pictureBox img").css("display", "none");
+        $("#pictureBox > div:nth-child(2) p").css("display", "block");
+    } else {
+        $("#pictureBox img").css("display", "block");
+        $("#pictureBox > div:nth-child(2) p").css("display", "none");
+    }
 
     if($("#pictureBoxProfile form input").val() == ""){
         $("#pictureBoxProfile img").css("display", "none");
@@ -182,6 +206,20 @@ $(function() {
         $("#pictureBoxCover > div:nth-child(2) p").css("display", "none");
     }
     // updating profile and cover photos ends
+
+    // showing new image in the div
+    var newImageInput = document.querySelector("#pictureBox form input[type='file']");
+    newImageInput.addEventListener("change", function() {
+        openFile(event, "Img");
+        if($("#pictureBox form input").val() == ""){
+            $("#pictureBox img").css("display", "none");
+            $("#pictureBox > div:nth-child(2) p").css("display", "block");
+        } else {
+            $("#pictureBox img").css("display", "block");
+            $("#pictureBox > div:nth-child(2) p").css("display", "none");
+        }
+    })
+    // showing new image in the div
 
     // showing profile image in the div
     var profileInput = document.querySelector("#pictureBoxProfile form input[type='file']");

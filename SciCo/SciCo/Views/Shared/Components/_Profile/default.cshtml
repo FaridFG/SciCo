@@ -61,6 +61,13 @@
                     @if (Model.user == user)
                     {
                         <li>
+                            <form>
+                                <div>
+                                    <button class="button" id="userImage">Add New Photo</button>
+                                </div>
+                            </form>
+                        </li>
+                        <li>
                             @if(Model.Photos.Where(p => p.user == user && p.isProfilePhoto == true).Count() > 0)
                             {
                                 <form>

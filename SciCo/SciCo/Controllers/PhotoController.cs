@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -13,6 +14,7 @@ using SciCo.Models;
 
 namespace SciCo.Controllers
 {
+    [Authorize]
     public class PhotoController : Controller
     {
         private readonly AppDbContext _db;
@@ -26,9 +28,38 @@ namespace SciCo.Controllers
             _env = env;
         }
 
-        public IActionResult AddPhoto(IFormFile image)
+        public async Task<IActionResult> AddPhoto(IFormFile image)
         {
-            return View();
+            AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            if (image == null)
+            {
+                return View("_ValidationError");
+            }
+
+            if (!image.IsImage())
+            {
+                return Content("please, select an image");
+            }
+
+            if (image.LessThan(0.75))
+            {
+                return Content("size is too large");
+            }
+
+            string fileName = await image.SavePhoto(_env.WebRootPath, "img");
+
+            Photo photo = new Photo
+            {
+                user = user,
+                Link = fileName,
+                isProfilePhoto = false,
+                isCoverPhoto = false
+            };
+
+            await _db.Photos.AddAsync(photo);
+            await _db.SaveChangesAsync();
+            return RedirectToAction("Timeline", "Account", new { id = user.Id });
         }
 
         public async Task<IActionResult> AddProfilePhoto(IFormFile ProfileImage)

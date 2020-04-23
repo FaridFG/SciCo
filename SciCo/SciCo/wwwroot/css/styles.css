@@ -2499,7 +2499,7 @@ aside.left i {
 /* inbox section ends */
 
 /* update profile and cover photos forms start */
-#pictureBoxProfile, #pictureBoxCover {
+#pictureBox, #pictureBoxProfile, #pictureBoxCover {
     height: 550px;
     width: 30%;
     background-color: #fff;
@@ -2512,7 +2512,7 @@ aside.left i {
     display: none;
 }
 
-#pictureBoxProfile > a, #pictureBoxCover > a {
+#pictureBox > a, #pictureBoxProfile > a, #pictureBoxCover > a {
     color: #f30e66;
     font-size: 30px;
     position: absolute;
@@ -2520,16 +2520,16 @@ aside.left i {
     top: 5px;
 }
 
-#pictureBoxProfile > div, #pictureBoxCover > div {
+#pictureBox > div, #pictureBoxProfile > div, #pictureBoxCover > div {
     width: 90%;
     margin: 0 auto;
 }
 
-#pictureBoxProfile > div:nth-child(1), #pictureBoxCover > div:nth-child(1) {
+#pictureBox > div:nth-child(1), #pictureBoxProfile > div:nth-child(1), #pictureBoxCover > div:nth-child(1) {
     height: 85px;
 }
 
-#pictureBoxProfile > div:nth-child(1) p, #pictureBoxCover > div:nth-child(1) p {
+#pictureBox > div:nth-child(1) p, #pictureBoxProfile > div:nth-child(1) p, #pictureBoxCover > div:nth-child(1) p {
     height: 100%;
     display: flex;
     justify-content: center;
@@ -2537,7 +2537,7 @@ aside.left i {
     font-size: 25px;
 }
 
-#pictureBoxProfile > div:nth-child(2), #pictureBoxCover > div:nth-child(2) {
+#pictureBox > div:nth-child(2), #pictureBoxProfile > div:nth-child(2), #pictureBoxCover > div:nth-child(2) {
     height: 200px;
     border: thin solid rgb(173, 175, 197);
     border-radius: 5px;
@@ -2546,28 +2546,28 @@ aside.left i {
     align-items: center;
 }
 
-#pictureBoxProfile > div:nth-child(2) img, #pictureBoxCover > div:nth-child(2) img {
+#pictureBox > div:nth-child(2) img, #pictureBoxProfile > div:nth-child(2) img, #pictureBoxCover > div:nth-child(2) img {
     width: 90%;
     height: 90%;
 }
 
-#pictureBoxProfile > div:nth-child(2) p, #pictureBoxCover > div:nth-child(2) p {
+#pictureBox > div:nth-child(2) p, #pictureBoxProfile > div:nth-child(2) p, #pictureBoxCover > div:nth-child(2) p {
     font-size: 25px;
 }
 
-#pictureBoxProfile form, #pictureBoxCover form {
+#pictureBox form, #pictureBoxProfile form, #pictureBoxCover form {
     height: 260px;
 }
 
-#pictureBoxCover form > div {
+#pictureBox form > div, #pictureBoxProfile form > div, #pictureBoxCover form > div {
     margin: 10px 0;
 }
 
-#profilePictureForm input[type="file"], #coverPictureForm input[type="file"] {
+#PictureForm input[type="file"], #profilePictureForm input[type="file"], #coverPictureForm input[type="file"] {
     display: none;
 }
 
-#profilePictureForm a, #coverPictureForm a {
+#PictureForm a, #profilePictureForm a, #coverPictureForm a {
     display: block;
     height: 150px;
     display: flex;
@@ -2575,13 +2575,13 @@ aside.left i {
     justify-content: center;
 }
 
-#profilePictureForm a > i, #coverPictureForm a > i {
+#PictureForm a > i, #profilePictureForm a > i, #coverPictureForm a > i {
     font-size: 120px;
     color: #f30e66;
     padding: 0 25px;
 }
 
-#pictureBoxProfile button, #pictureBoxCover button {
+#pictureBox button, #pictureBoxProfile button, #pictureBoxCover button {
     border: 2px solid rgb(173, 175, 197);
     background: transparent;
     font-size: 25px;
@@ -2593,12 +2593,12 @@ aside.left i {
     margin-top: 5px;
 }
 
-#pictureBoxProfile button:hover, #pictureBoxCover button:hover {
+#pictureBox button:hover, #pictureBoxProfile button:hover, #pictureBoxCover button:hover {
     border: 2px solid #f30e66;
     cursor: pointer;
 }
 
-#pictureBoxProfile button i, #pictureBoxCover button i {
+#pictureBox button i, #pictureBoxProfile button i, #pictureBoxCover button i {
     padding: 0 10px;
 }
 /* update profile and cover photos forms end */
