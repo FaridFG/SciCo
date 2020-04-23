@@ -2527,7 +2527,6 @@ aside.left i {
 
 #pictureBoxProfile > div:nth-child(1), #pictureBoxCover > div:nth-child(1) {
     height: 85px;
-    border-bottom: thin solid rgb(173, 175, 197);
 }
 
 #pictureBoxProfile > div:nth-child(1) p, #pictureBoxCover > div:nth-child(1) p {
@@ -2539,10 +2538,6 @@ aside.left i {
 }
 
 #pictureBoxProfile > div:nth-child(2), #pictureBoxCover > div:nth-child(2) {
-    height: 170px;
-}
-
-#pictureBoxProfile > div:nth-child(3), #pictureBoxCover > div:nth-child(3) {
     height: 200px;
     border: thin solid rgb(173, 175, 197);
     border-radius: 5px;
@@ -2551,21 +2546,21 @@ aside.left i {
     align-items: center;
 }
 
-#pictureBoxProfile > div:nth-child(3) img, #pictureBoxCover > div:nth-child(3) img {
+#pictureBoxProfile > div:nth-child(2) img, #pictureBoxCover > div:nth-child(2) img {
     width: 90%;
     height: 90%;
 }
 
-#pictureBoxProfile > div:nth-child(3) p, #pictureBoxCover > div:nth-child(3) p {
+#pictureBoxProfile > div:nth-child(2) p, #pictureBoxCover > div:nth-child(2) p {
     font-size: 25px;
 }
 
-#pictureBoxProfile > div:nth-child(4), #pictureBoxCover > div:nth-child(4) {
-    height: 95px;
+#pictureBoxProfile form, #pictureBoxCover form {
+    height: 260px;
 }
 
-#pictureBoxProfile form, #pictureBoxCover form {
-    height: 100%;
+#pictureBoxCover form > div {
+    margin: 10px 0;
 }
 
 #profilePictureForm input[type="file"], #coverPictureForm input[type="file"] {
@@ -2587,7 +2582,7 @@ aside.left i {
 }
 
 #pictureBoxProfile button, #pictureBoxCover button {
-    border: 1px solid rgb(173, 175, 197);
+    border: 2px solid rgb(173, 175, 197);
     background: transparent;
     font-size: 25px;
     width: 100%;
@@ -2595,11 +2590,11 @@ aside.left i {
     border-radius: 5px;
     color: #f30e66;
     letter-spacing: 2px;
-    margin-top: 15px;
+    margin-top: 5px;
 }
 
 #pictureBoxProfile button:hover, #pictureBoxCover button:hover {
-    border: 1px solid #f30e66;
+    border: 2px solid #f30e66;
     cursor: pointer;
 }
 

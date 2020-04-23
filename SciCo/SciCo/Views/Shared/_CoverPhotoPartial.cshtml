@@ -3,19 +3,15 @@
         <p>Select Cover Photo</p>
     </div>
     <div>
+        <p>Photo to upload</p>
+        <img id="coverImg" />
+    </div>
+    <div>
         <form name="coverPictureForm" id="coverPictureForm" asp-controller="Photo" asp-action="AddCoverPhoto" enctype="multipart/form-data">
             <div>
-                <input type="file" id="cPhoto"  />
+                <input type="file" id="cPhoto" name="CoverImage" />
                 <a href="#" id="changeCoverPhoto"> <i class="fas fa-cloud-upload-alt"></i> </a>
             </div>
-        </form>
-    </div>
-    <div>
-        <p>Photo to upload</p>
-        <!-- <img src="" alt="photo" /> -->
-    </div>
-    <div>
-        <form name="coverPictureForm" id="coverPictureForm">
             <div>
                 <button type="submit">Upload<i class="fas fa-cloud-upload-alt"></i> </button>
             </div>

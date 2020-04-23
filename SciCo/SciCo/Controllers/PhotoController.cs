@@ -31,26 +31,26 @@ namespace SciCo.Controllers
             return View();
         }
 
-        public async Task<IActionResult> AddProfilePhoto(IFormFile firstProfileImage)
+        public async Task<IActionResult> AddProfilePhoto(IFormFile ProfileImage)
         {
             AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
 
-            if (firstProfileImage == null)
+            if (ProfileImage == null)
             {
                 return View("_ValidationError");
             }
 
-            if (!firstProfileImage.IsImage())
+            if (!ProfileImage.IsImage())
             {
                 return Content("please, select an image");
             }
 
-            if (firstProfileImage.LessThan(0.75))
+            if (ProfileImage.LessThan(0.75))
             {
                 return Content("size is too large");
             }
 
-            string fileName = await firstProfileImage.SavePhoto(_env.WebRootPath, "img");
+            string fileName = await ProfileImage.SavePhoto(_env.WebRootPath, "img");
 
             Photo profilePhoto = new Photo
             {
@@ -65,26 +65,26 @@ namespace SciCo.Controllers
             return RedirectToAction("Timeline", "Account", new { id = user.Id });
         }
 
-        public async Task<IActionResult> AddCoverPhoto(IFormFile firstCoverImage)
+        public async Task<IActionResult> AddCoverPhoto(IFormFile CoverImage)
         {
             AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
 
-            if (firstCoverImage == null)
+            if (CoverImage == null)
             {
                 return View("_ValidationError");
             }
 
-            if (!firstCoverImage.IsImage())
+            if (!CoverImage.IsImage())
             {
                 return Content("please, select an image");
             }
 
-            if (firstCoverImage.LessThan(0.75))
+            if (CoverImage.LessThan(0.75))
             {
                 return Content("size is too large");
             }
 
-            string fileName = await firstCoverImage.SavePhoto(_env.WebRootPath, "img");
+            string fileName = await CoverImage.SavePhoto(_env.WebRootPath, "img");
 
             Photo coverPhoto = new Photo
             {
