@@ -14,8 +14,9 @@
 
 
   <ItemGroup>
-    <Folder Include="Areas\ScicoAdmin\Data\" />
     <Folder Include="Areas\ScicoAdmin\Models\" />
+    <Folder Include="Areas\ScicoAdmin\Data\" />
+    <Folder Include="wwwroot\ScicoAdmin\" />
   </ItemGroup>
 
 </Project>

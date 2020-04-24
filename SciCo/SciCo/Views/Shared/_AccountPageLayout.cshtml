@@ -1,5 +1,4 @@
-﻿@model IEnumerable<Photo>
-@{ AppUser user = await _userManager.GetUserAsync(User);}
+﻿@{ AppUser user = await _userManager.GetUserAsync(User);}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -127,16 +126,16 @@
             </ul>
         </div>
         <div id="user">
-            <div class="profilePhoto">
-                @if (!(Model.Any(p => p.user == user && p.isProfilePhoto == true)))
+            <div class="profilePhoto" style="overflow: hidden;">
+                @if (!(_db.Photos.Any(p => p.user == user && p.isProfilePhoto == true)))
                 {
                     <span>No<br />Photo</span>
                 }
                 else
                 {
-                    @foreach (Photo photo in Model.Where(p => p.user == user && p.isProfilePhoto == true).TakeLast(1))
+                    @foreach (string link in _db.Photos.Where(p => p.user == user && p.isProfilePhoto == true).OrderByDescending(p => p.Id).Select(p => p.Link))
                     {
-                        <img src="~/img/@photo.Link" alt="user's profile photo" />
+                        <img src="~/img/@link" alt="user's profile photo" />
                     }
                 }
             </div>

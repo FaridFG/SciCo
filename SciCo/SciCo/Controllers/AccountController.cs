@@ -26,8 +26,7 @@ namespace SciCo.Controllers
         }
         public IActionResult Newsfeed()
         {
-            var model = _db.Photos;
-            return View(model);
+            return View();
         }
 
         public async Task<IActionResult> Timeline(string id)
