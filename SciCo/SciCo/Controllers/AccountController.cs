@@ -24,9 +24,19 @@ namespace SciCo.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
         }
+
         public IActionResult Newsfeed()
         {
-            return View();
+            PostVM model = new PostVM
+            {
+                Posts = _db.Posts,
+                Comments = _db.Comments,
+                Likes = _db.Likes,
+                Dislikes = _db.Dislikes,
+                Photos = _db.Photos,
+                Users = _db.Users
+            };
+            return View(model);
         }
 
         public async Task<IActionResult> Timeline(string id)

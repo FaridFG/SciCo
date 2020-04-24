@@ -10,8 +10,6 @@ namespace SciCo.Models
         public int Id { get; set; }
         public AppUser Poster { get; set; }
         public string Content { get; set; }
-        public int Likes { get; set; }
-        public int Dislikes { get; set; }
         public DateTime Time { get; set; }
     }
 }

@@ -12,242 +12,123 @@
 
 <!-- posts section starts -->
         <section id="posts">
-            <div class="post">
-                <div>
-                    <div id="postOwner">
-                        <div>
-                            <!-- <p>No<br />Photo</p> -->
-                            <img src="~/img/profilePhoto.jpg" alt="post owner's profile photo">
-                        </div>
-                        <div>
-                            <a href="#">Farid Guluzade</a>
-                            <p>9 hours ago</p>
-                        </div>
-                    </div>
-                    <div id="postSettings">
-                        <a href="#"> <i class="fas fa-ellipsis-h"></i> </a>
-                    </div>
-                </div>
-                <div id="postContent">
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.</p>
-                </div>
-                <div id="postStatistics">
+            @foreach (Post post in _db.Posts.Where(p => p.Poster == Model))
+            {
+                <div class="post">
                     <div>
-                        <div>
-                            <a href="#"> <i class="far fa-thumbs-up"></i> <span>34</span> </a>
-                            <a href="#"> <i class="far fa-thumbs-down"></i> <span>4</span> </a>
+                        <div id="postOwner">
+                            <div>
+                                @if(!(_db.Photos.Any(p => p.user == Model && p.isProfilePhoto == true)))
+                                {
+                                     <p>No<br />Photo</p>
+                                }
+                                else
+                                {
+                                    @foreach (Photo photo in _db.Photos.Where(p => p.user == Model && p.isProfilePhoto == true))
+                                    {
+                                        <img src="~/img/@photo.Link" alt="post owner's profile photo">
+                                    }
+                                }
+                            </div>
+                            <div>
+                                <a href="#">@Model.Name @Model.Surname</a>
+                                <p>@post.Time</p>
+                            </div>
                         </div>
-                        <div>
-                            <a href="#"> <i class="far fa-comment-alt"></i> <span>7</span> </a>
+                        <div id="postSettings">
+                            <a href="#"> <i class="fas fa-ellipsis-h"></i> </a>
                         </div>
                     </div>
-                </div>
-                <div id="postOptions">
-                    <div>
-                        <div>
-                            <a href="#"> <i class="far fa-thumbs-up"></i>Like</a>
-                        </div>
-                        <div>
-                            <a href="#"> <i class="far fa-thumbs-down"></i> <span>Dislike</span> </a>
-                        </div>
-                        <div>
-                            <a href="#"> <i class="far fa-comment-alt"></i>Comment</a>
-                        </div>
+                    <div id="postContent">
+                        <p>@post.Content</p>
                     </div>
-                </div>
-                <div class="postComments">
-                    <div class="comment">
+                    <div id="postStatistics">
                         <div>
                             <div>
-                                <div>
-                                    <img src="~/img/profilePhoto.jpg" alt="comment author's profile photo">
-                                </div>
-                                <div>
-                                    <a href="#">Farid Guluzade</a>
-                                    <p>3 minutes ago</p>
-                                </div>
+                                <a href="#"> <i class="far fa-thumbs-up"></i> <span>@_db.Likes.Where(l  => l.Post == post).Count()</span> </a>
+                                <a href="#"> <i class="far fa-thumbs-down"></i> <span>@_db.Dislikes.Where(d => d.Post == post).Count()</span> </a>
                             </div>
-                            <div class="commentSettings">
-                                <a href="#"> <i class="fas fa-ellipsis-h"></i> </a>
+                            <div>
+                                <a href="#"> <i class="far fa-comment-alt"></i> <span>@_db.Comments.Where(c  => c.Post == post).Count()</span> </a>
                             </div>
-                        </div>
-                        <div>
-                            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugiten, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi en lod nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur adipisci velit en lorem ipsum der.</p>
                         </div>
                     </div>
-                    <div class="comment">
+                    <div id="postOptions">
                         <div>
                             <div>
-                                <div>
-                                    <img src="~/img/profilePhoto.jpg" alt="comment author's profile photo">
-                                </div>
-                                <div>
-                                    <a href="#">Farid Guluzade</a>
-                                    <p>3 minutes ago</p>
-                                </div>
+                                <form asp-controller="Post" asp-action="Like">
+                                    <input type="hidden" value="@post.Id" name="postId" />
+                                    <button type="submit"> <i class="far fa-thumbs-up"></i>Like</button>
+                                </form>
                             </div>
-                            <div class="commentSettings">
-                                <a href="#"> <i class="fas fa-ellipsis-h"></i> </a>
+                            <div>
+                                <form asp-controller="Post" asp-action="Dislike">
+                                    <input type="hidden" value="@post.Id" name="postId" />
+                                    <button type="submit"> <i class="far fa-thumbs-down"></i>Dislike</button>
+                                </form>
                             </div>
-                        </div>
-                        <div>
-                            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugiten, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi en lod nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur adipisci velit en lorem ipsum der.</p>
+                            <div>
+                                <form>
+                                    <input type="hidden" />
+                                    <button type="submit"> <i class="far fa-comment-alt"></i>Comment</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                    <div class="comment">
+                    <div class="postComments">
+                        @foreach (Comment comment in _db.Comments.Where(c => c.Post == post))
+                        {
+                            <div class="comment">
+                                <div>
+                                    <div>
+                                        <div>
+                                            <img src="~/img/profilePhoto.jpg" alt="comment author's profile photo">
+                                        </div>
+                                        <div>
+                                            @*@foreach (AppUser commenter in _db.Users.Where(u => u == comment.Commenter))
+                                            {
+                                                <a href="#">@commenter.Name @commenter.Surname</a>
+                                            }*@
+                                            <a href="#">@user.Name @user.Surname</a>
+                                            <p>3 minutes ago</p>
+                                        </div>
+                                    </div>
+                                    <div class="commentSettings">
+                                        <a href="#"> <i class="fas fa-ellipsis-h"></i> </a>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p>@comment.Content</p>
+                                </div>
+                            </div>
+                        }
+                        
+                    </div>
+                    <div id="writeComment">
                         <div>
                             <div>
-                                <div>
-                                    <img src="~/img/profilePhoto.jpg" alt="comment author's profile photo">
-                                </div>
-                                <div>
-                                    <a href="#">Farid Guluzade</a>
-                                    <p>3 minutes ago</p>
-                                </div>
+                                @if(!(_db.Photos.Any(p => p.user == Model && p.isProfilePhoto == true)))
+                                {
+                                     <p>No<br />Photo</p> 
+                                }
+                                else
+                                {
+                                    @foreach (Photo photo in _db.Photos.Where(p => p.user == Model && p.isProfilePhoto == true))
+                                    {
+                                        <img src="~/img/@photo.Link" alt="user's profile photo" />
+                                    }
+                                }
                             </div>
-                            <div class="commentSettings">
-                                <a href="#"> <i class="fas fa-ellipsis-h"></i> </a>
-                            </div>
-                        </div>
-                        <div>
-                            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugiten, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi en lod nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur adipisci velit en lorem ipsum der.</p>
-                        </div>
-                    </div>
-                </div>
-                <div id="writeComment">
-                    <div>
-                        <div>
-                            <!-- <p>No<br />Photo</p> -->
-                            <img src="~/img/profilePhoto.jpg" alt="user's profile photo">
-                        </div>
-                        <div>
-                            <form>
-                                <input type="text" id="comment" name="comment" placeholder="Write a comment...">
-                                <button type="submit">Comment</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="post">
-                <div>
-                    <div id="postOwner">
-                        <div>
-                            <!-- <p>No<br />Photo</p> -->
-                            <img src="~/img/profilePhoto.jpg" alt="post owner's profile photo">
-                        </div>
-                        <div>
-                            <a href="#">Farid Guluzade</a>
-                            <p>9 hours ago</p>
-                        </div>
-                    </div>
-                    <div id="postSettings">
-                        <a href="#"> <i class="fas fa-ellipsis-h"></i> </a>
-                    </div>
-                </div>
-                <div id="postContent">
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.</p>
-                </div>
-                <div id="postStatistics">
-                    <div>
-                        <div>
-                            <a href="#"> <i class="far fa-thumbs-up"></i> <span>34</span> </a>
-                            <a href="#"> <i class="far fa-thumbs-down"></i> <span>4</span> </a>
-                        </div>
-                        <div>
-                            <a href="#"> <i class="far fa-comment-alt"></i> <span>7</span> </a>
-                        </div>
-                    </div>
-                </div>
-                <div id="postOptions">
-                    <div>
-                        <div>
-                            <a href="#"> <i class="far fa-thumbs-up"></i>Like</a>
-                        </div>
-                        <div>
-                            <a href="#"> <i class="far fa-thumbs-down"></i> <span>Dislike</span> </a>
-                        </div>
-                        <div>
-                            <a href="#"> <i class="far fa-comment-alt"></i>Comment</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="postComments">
-                    <div class="comment">
-                        <div>
                             <div>
-                                <div>
-                                    <img src="~/img/profilePhoto.jpg" alt="comment author's profile photo">
-                                </div>
-                                <div>
-                                    <a href="#">Farid Guluzade</a>
-                                    <p>3 minutes ago</p>
-                                </div>
+                                <form asp-controller="Post" asp-action="WriteComment">
+                                    <input type="text" id="comment" name="comment" placeholder="Write a     comment...">
+                                    <button type="submit">Comment</button>
+                                </form>
                             </div>
-                            <div class="commentSettings">
-                                <a href="#"> <i class="fas fa-ellipsis-h"></i> </a>
-                            </div>
-                        </div>
-                        <div>
-                            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugiten, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi en lod nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur adipisci velit en lorem ipsum der.</p>
-                        </div>
-                    </div>
-                    <div class="comment">
-                        <div>
-                            <div>
-                                <div>
-                                    <img src="~/img/profilePhoto.jpg" alt="comment author's profile photo">
-                                </div>
-                                <div>
-                                    <a href="#">Farid Guluzade</a>
-                                    <p>3 minutes ago</p>
-                                </div>
-                            </div>
-                            <div class="commentSettings">
-                                <a href="#"> <i class="fas fa-ellipsis-h"></i> </a>
-                            </div>
-                        </div>
-                        <div>
-                            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugiten, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi en lod nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur adipisci velit en lorem ipsum der.</p>
-                        </div>
-                    </div>
-                    <div class="comment">
-                        <div>
-                            <div>
-                                <div>
-                                    <img src="~/img/profilePhoto.jpg" alt="comment author's profile photo">
-                                </div>
-                                <div>
-                                    <a href="#">Farid Guluzade</a>
-                                    <p>3 minutes ago</p>
-                                </div>
-                            </div>
-                            <div class="commentSettings">
-                                <a href="#"> <i class="fas fa-ellipsis-h"></i> </a>
-                            </div>
-                        </div>
-                        <div>
-                            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugiten, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi en lod nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur adipisci velit en lorem ipsum der.</p>
                         </div>
                     </div>
                 </div>
-                <div class="showMoreComments">
-                    <button type="submit">Show More Comments</button>
-                </div>
-                <div id="writeComment">
-                    <div>
-                        <div>
-                            <!-- <p>No<br />Photo</p> -->
-                            <img src="~/img/profilePhoto.jpg" alt="user's profile photo">
-                        </div>
-                        <div>
-                            <form>
-                                <input type="text" id="comment" name="comment" placeholder="Write a comment...">
-                                <button type="submit">Comment</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+            }
             </div>
         </section>
         <!-- posts section ends -->

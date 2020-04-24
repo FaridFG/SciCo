@@ -1688,11 +1688,19 @@ aside.left i {
     margin-right: 25px;
     border: 2px solid #cedfd1;
     padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #postOwner img {
     width: 100%;
     border-radius: 50%;
+}
+
+#postOwner > div:nth-child(1) p {
+    font-size: 14px;
+    text-align: center;
 }
 
 #postOwner a {
@@ -1738,12 +1746,15 @@ aside.left i {
     padding: 10px 0;
 }
 
-#postOptions a {
+#postOptions button {
     font-size: 20px;
+    background: transparent;
+    border: none;
 }
 
-#postOptions a:hover {
+#postOptions button:hover {
     text-decoration: underline;
+    cursor: pointer;
 }
 
 #postOptions i {
@@ -1772,11 +1783,18 @@ aside.left i {
     margin-right: 25px;
     border: 2px solid rgb(173, 175, 197);
     padding: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .comment img {
     width: 100%;
     border-radius: 50%;
+}
+
+.comment > div:nth-child(1) > div > div:nth-child(1) p {
+    text-align: center;
 }
 
 .comment a {
@@ -1839,11 +1857,19 @@ aside.left i {
     border-radius: 50%;
     border: 2px solid rgb(173, 175, 197);
     padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #writeComment > div > div:nth-child(1) img {
     width: 100%;
     border-radius: 50%;
+}
+
+#writeComment > div > div:nth-child(1) p {
+    text-align: center;
+    font-size: 12px;
 }
 
 #writeComment > div > div:nth-child(2) {
@@ -2833,3 +2859,63 @@ aside.left i {
     padding: 0 10px;
 }
 /* update profile and cover photos forms end */
+
+/* share new post section starts */
+#sharePost {
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 3px 3px 5px 3px rgba(50, 51, 63, 0.4);
+}
+
+#sharePost > div:nth-child(1) {
+    background-color: rgb(63, 66, 87);
+    border-radius: 5px 5px 0 0;
+    color: #fff;
+}
+
+#sharePost > div:nth-child(1) p {
+    text-align: center;
+    padding: 15px 0;
+    font-size: 20px;
+    letter-spacing: 1.5px;
+}
+
+#sharePost form {
+    width: 80%;
+    margin: 0 auto;
+    padding: 15px 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+#sharePost textarea {
+    border: thin solid rgb(173, 175, 197);
+    border-radius: 5px;
+    font-size: 18px;
+    resize: none;
+}
+
+#sharePost textarea[placeholder] {
+    padding: 15px;
+}
+
+#sharePost button {
+    background: transparent;
+    border: thin solid rgb(173, 175, 197);
+    color: rgb(63, 66, 87);
+    padding: 10px 35px;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+#sharePost button:hover {
+    border-color: #f30e66;
+    color: #f30e66;
+    cursor: pointer;
+}
+
+#sharePost button i {
+    padding-left: 15px;
+}
+/* share new post section ends */
