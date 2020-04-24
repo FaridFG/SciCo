@@ -1655,10 +1655,6 @@ aside.left i {
 /* account page ends */
 
 /* posts section starts */
-#posts {
-    border: 2px solid red;
-}
-
 .post {
     height: auto;
 }
@@ -1755,7 +1751,7 @@ aside.left i {
 }
 
 .comment {
-    margin: 10px 0;
+    margin: 25px 0;
 }
 
 .comment > div:nth-child(1) {
@@ -1769,25 +1765,57 @@ aside.left i {
     align-items: center;
 }
 
-.comment img {
-    width: 40px;
-    height: 40px;
+.comment > div:nth-child(1) > div > div:nth-child(1) {
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     margin-right: 25px;
+    border: 2px solid rgb(173, 175, 197);
+    padding: 3px;
+}
+
+.comment img {
+    width: 100%;
+    border-radius: 50%;
 }
 
 .comment a {
-    font-size: 12px;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 3px 0;
 }
 
 .comment p {
-    font-size: 10px;
+    font-size: 11px;
+    margin: 3px 0;
 }
 
 .comment > div:nth-child(2) > p {
-    font-size: 13px;
+    font-size: 14px;
     text-align: justify;
-    padding: 5px 0;
+    padding: 10px 0;
+}
+
+.showMoreComments {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.showMoreComments button {
+    border: thin solid rgb(201, 198, 198);
+    border-radius: 20px;
+    font-size: 14px;
+    padding: 10px 25px;
+    background: transparent;
+    color: rgb(63, 66, 87);
+    letter-spacing: 1px;
+}
+
+.showMoreComments button:hover {
+    border: thin solid #f30e66;
+    color: #f30e66;
+    cursor: pointer;
 }
 
 #writeComment {
