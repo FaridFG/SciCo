@@ -10,6 +10,14 @@
 @await  Component.InvokeAsync("_Profile", Model.Id)
 <!-- profile section ends -->
 
+<!-- about section starts -->
+<section id="posts">
+    <div class="post">
+
+    </div>
+</section>
+<!-- about section ends -->
+
 @await  Html.PartialAsync("_MessageBoxPartial", Model)
 
 @await  Html.PartialAsync("_PhotoPartial")

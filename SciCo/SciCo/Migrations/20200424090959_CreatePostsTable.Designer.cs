@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SciCo.Data;
 
 namespace SciCo.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200424090959_CreatePostsTable")]
+    partial class CreatePostsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -212,15 +214,11 @@ namespace SciCo.Migrations
 
                     b.Property<string>("Content");
 
-                    b.Property<int?>("PostId");
-
                     b.Property<DateTime>("Time");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CommenterId");
-
-                    b.HasIndex("PostId");
 
                     b.ToTable("Comments");
                 });
@@ -351,6 +349,8 @@ namespace SciCo.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("CommentsId");
+
                     b.Property<string>("Content");
 
                     b.Property<int>("Dislikes");
@@ -362,6 +362,8 @@ namespace SciCo.Migrations
                     b.Property<DateTime>("Time");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CommentsId");
 
                     b.HasIndex("PosterId");
 
@@ -419,11 +421,6 @@ namespace SciCo.Migrations
                         .WithMany()
                         .HasForeignKey("CommenterId")
                         .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("SciCo.Models.Post", "Post")
-                        .WithMany()
-                        .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("SciCo.Models.Friend", b =>
@@ -475,6 +472,11 @@ namespace SciCo.Migrations
 
             modelBuilder.Entity("SciCo.Models.Post", b =>
                 {
+                    b.HasOne("SciCo.Models.Comment", "Comments")
+                        .WithMany()
+                        .HasForeignKey("CommentsId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("SciCo.Models.AppUser", "Poster")
                         .WithMany()
                         .HasForeignKey("PosterId")

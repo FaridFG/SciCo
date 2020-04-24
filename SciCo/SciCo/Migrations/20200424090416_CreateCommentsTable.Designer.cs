@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SciCo.Data;
 
 namespace SciCo.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200424090416_CreateCommentsTable")]
+    partial class CreateCommentsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -212,15 +214,11 @@ namespace SciCo.Migrations
 
                     b.Property<string>("Content");
 
-                    b.Property<int?>("PostId");
-
                     b.Property<DateTime>("Time");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CommenterId");
-
-                    b.HasIndex("PostId");
 
                     b.ToTable("Comments");
                 });
@@ -345,29 +343,6 @@ namespace SciCo.Migrations
                     b.ToTable("Photos");
                 });
 
-            modelBuilder.Entity("SciCo.Models.Post", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Content");
-
-                    b.Property<int>("Dislikes");
-
-                    b.Property<int>("Likes");
-
-                    b.Property<string>("PosterId");
-
-                    b.Property<DateTime>("Time");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PosterId");
-
-                    b.ToTable("Posts");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
@@ -419,11 +394,6 @@ namespace SciCo.Migrations
                         .WithMany()
                         .HasForeignKey("CommenterId")
                         .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("SciCo.Models.Post", "Post")
-                        .WithMany()
-                        .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("SciCo.Models.Friend", b =>
@@ -470,14 +440,6 @@ namespace SciCo.Migrations
                     b.HasOne("SciCo.Models.AppUser", "user")
                         .WithMany()
                         .HasForeignKey("userId")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
-            modelBuilder.Entity("SciCo.Models.Post", b =>
-                {
-                    b.HasOne("SciCo.Models.AppUser", "Poster")
-                        .WithMany()
-                        .HasForeignKey("PosterId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618

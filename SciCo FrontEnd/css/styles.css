@@ -1654,6 +1654,209 @@ aside.left i {
 }
 /* account page ends */
 
+/* posts section starts */
+#posts {
+    border: 2px solid red;
+}
+
+.post {
+    height: auto;
+}
+
+.post a {
+    color: #2e2f31;
+    letter-spacing: .5px;
+    font-size: 14px;
+}
+
+.post > div {
+    height: auto;
+    padding: 10px 25px;
+}
+
+.post > div:nth-child(1) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#postOwner {
+    display: flex;
+    align-items: center;
+}
+
+#postOwner > div:nth-child(1) {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 25px;
+    border: 2px solid #cedfd1;
+    padding: 2px;
+}
+
+#postOwner img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+#postOwner a {
+    font-weight: bold;
+    margin: 3px 0;
+}
+
+#postOwner p {
+    font-size: 11px;
+    margin: 3px 0;
+}
+
+#postContent p {
+    text-align: justify;
+}
+
+#postStatistics > div {
+    display: flex;
+    justify-content: space-between;
+}
+
+#postStatistics a {
+    padding-left: 25px;
+}
+
+#postStatistics a:first-child {
+    padding-left: 0;
+}
+
+#postStatistics i {
+    padding-right: 5px;
+}
+
+#postStatistics a:hover {
+    text-decoration: underline;
+}
+
+#postOptions > div {
+    display: flex;
+    justify-content: space-evenly;
+    border-top: thin solid rgb(173, 175, 197);
+    border-bottom: thin solid rgb(173, 175, 197);
+    padding: 10px 0;
+}
+
+#postOptions a {
+    font-size: 20px;
+}
+
+#postOptions a:hover {
+    text-decoration: underline;
+}
+
+#postOptions i {
+    padding-right: 10px;
+}
+
+.comment {
+    margin: 10px 0;
+}
+
+.comment > div:nth-child(1) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.comment > div:nth-child(1) > div {
+    display: flex;
+    align-items: center;
+}
+
+.comment img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 25px;
+}
+
+.comment a {
+    font-size: 12px;
+}
+
+.comment p {
+    font-size: 10px;
+}
+
+.comment > div:nth-child(2) > p {
+    font-size: 13px;
+    text-align: justify;
+    padding: 5px 0;
+}
+
+#writeComment {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+#writeComment > div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgb(173, 175, 197);
+    padding: 15px 0;
+}
+
+#writeComment > div > div:nth-child(1) {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid rgb(173, 175, 197);
+    padding: 2px;
+}
+
+#writeComment > div > div:nth-child(1) img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+#writeComment > div > div:nth-child(2) {
+    width: 92%;
+}
+
+#writeComment form {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+#writeComment input {
+    width: 75%;
+    height: 40px;
+    font-size: 15px;
+    border-radius: 20px;
+    border: thin solid rgb(173, 175, 197);
+}
+
+#writeComment input[placeholder] {
+    padding-left: 20px;
+}
+
+#writeComment button {
+    height: 40px;
+    padding: 0 30px;
+    background: transparent;
+    border-radius: 20px;
+    border: thin solid rgb(173, 175, 197);
+    font-size: 16px;
+    color: rgb(63, 66, 87);
+}
+
+#writeComment button:hover {
+    cursor: pointer;
+    border-color: #f30e66;
+    color: #f30e66;
+}
+/* posts section ends */
+
 /* about section starts */
 #userInfo h1 {
     color: #f30e66;
