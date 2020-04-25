@@ -1,5 +1,6 @@
 ﻿@model AppUser
 @{ var user = await _userManager.GetUserAsync(User);}
+@{ System.Globalization.DateTimeFormatInfo date = new System.Globalization.DateTimeFormatInfo();}
 
 @{
     ViewData["Title"] = "Timeline";
@@ -7,136 +8,168 @@
 }
 
 <!-- profile section starts -->
-@await  Component.InvokeAsync("_Profile", Model.Id)
+@await Component.InvokeAsync("_Profile", Model.Id)
 <!-- profile section ends -->
-
 <!-- posts section starts -->
-        <section id="posts">
-            @foreach (Post post in _db.Posts.Where(p => p.Poster == Model))
-            {
-                <div class="post">
+<section id="posts">
+    @foreach (Post post in _db.Posts.Where(p => p.Poster == Model))
+    {
+        <div class="post">
+            <div>
+                <div id="postOwner">
+                    @if (!(_db.Photos.Any(p => p.user == Model && p.isProfilePhoto == true)))
+                    {
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <p>No<br />Photo</p>
+                        </div>
+                    }
+                    else
+                    {
+                        <div style="overflow: hidden;">
+                            @foreach (Photo photo in _db.Photos.Where(p => p.user == Model && p.isProfilePhoto == true).OrderByDescending(p => p.Id))
+                            {
+                                <img src="~/img/@photo.Link" alt="post owner's profile photo" />
+                            }
+                        </div>
+                    }
                     <div>
-                        <div id="postOwner">
-                            <div>
-                                @if(!(_db.Photos.Any(p => p.user == Model && p.isProfilePhoto == true)))
-                                {
-                                     <p>No<br />Photo</p>
-                                }
-                                else
-                                {
-                                    @foreach (Photo photo in _db.Photos.Where(p => p.user == Model && p.isProfilePhoto == true))
-                                    {
-                                        <img src="~/img/@photo.Link" alt="post owner's profile photo">
-                                    }
-                                }
-                            </div>
-                            <div>
-                                <a href="#">@Model.Name @Model.Surname</a>
-                                <p>@post.Time</p>
-                            </div>
-                        </div>
-                        <div id="postSettings">
-                            <a href="#"> <i class="fas fa-ellipsis-h"></i> </a>
-                        </div>
-                    </div>
-                    <div id="postContent">
-                        <p>@post.Content</p>
-                    </div>
-                    <div id="postStatistics">
-                        <div>
-                            <div>
-                                <a href="#"> <i class="far fa-thumbs-up"></i> <span>@_db.Likes.Where(l  => l.Post == post).Count()</span> </a>
-                                <a href="#"> <i class="far fa-thumbs-down"></i> <span>@_db.Dislikes.Where(d => d.Post == post).Count()</span> </a>
-                            </div>
-                            <div>
-                                <a href="#"> <i class="far fa-comment-alt"></i> <span>@_db.Comments.Where(c  => c.Post == post).Count()</span> </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="postOptions">
-                        <div>
-                            <div>
-                                <form asp-controller="Post" asp-action="Like">
-                                    <input type="hidden" value="@post.Id" name="postId" />
-                                    <button type="submit"> <i class="far fa-thumbs-up"></i>Like</button>
-                                </form>
-                            </div>
-                            <div>
-                                <form asp-controller="Post" asp-action="Dislike">
-                                    <input type="hidden" value="@post.Id" name="postId" />
-                                    <button type="submit"> <i class="far fa-thumbs-down"></i>Dislike</button>
-                                </form>
-                            </div>
-                            <div>
-                                <form>
-                                    <input type="hidden" />
-                                    <button type="submit"> <i class="far fa-comment-alt"></i>Comment</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="postComments">
-                        @foreach (Comment comment in _db.Comments.Where(c => c.Post == post))
+                        <a href="#">@Model.Name @Model.Surname</a>
+                        @if (post.Time.Minute < 10)
                         {
-                            <div class="comment">
-                                <div>
-                                    <div>
-                                        <div>
-                                            <img src="~/img/profilePhoto.jpg" alt="comment author's profile photo">
-                                        </div>
-                                        <div>
-                                            @*@foreach (AppUser commenter in _db.Users.Where(u => u == comment.Commenter))
-                                            {
-                                                <a href="#">@commenter.Name @commenter.Surname</a>
-                                            }*@
-                                            <a href="#">@user.Name @user.Surname</a>
-                                            <p>3 minutes ago</p>
-                                        </div>
-                                    </div>
-                                    <div class="commentSettings">
-                                        <a href="#"> <i class="fas fa-ellipsis-h"></i> </a>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p>@comment.Content</p>
-                                </div>
-                            </div>
+                            string minute = string.Concat("0", post.Time.Minute);
+                            <p>@post.Time.Day @date.GetMonthName(post.Time.Month).ToString() @post.Time.Hour@date.TimeSeparator@minute@date.TimeSeparator@post.Time.Second</p>
                         }
-                        
-                    </div>
-                    <div id="writeComment">
-                        <div>
-                            <div>
-                                @if(!(_db.Photos.Any(p => p.user == Model && p.isProfilePhoto == true)))
-                                {
-                                     <p>No<br />Photo</p> 
-                                }
-                                else
-                                {
-                                    @foreach (Photo photo in _db.Photos.Where(p => p.user == Model && p.isProfilePhoto == true))
-                                    {
-                                        <img src="~/img/@photo.Link" alt="user's profile photo" />
-                                    }
-                                }
-                            </div>
-                            <div>
-                                <form asp-controller="Post" asp-action="WriteComment">
-                                    <input type="text" id="comment" name="comment" placeholder="Write a     comment...">
-                                    <button type="submit">Comment</button>
-                                </form>
-                            </div>
-                        </div>
+                        else
+                        {
+                            <p>@post.Time.Day @date.GetMonthName(post.Time.Month).ToString() @post.Time.Hour@date.TimeSeparator@post.Time.Minute@date.TimeSeparator@post.Time.Second</p>
+                        }
                     </div>
                 </div>
-            }
+                <div id="postSettings">
+                    <a href="#"> <i class="fas fa-ellipsis-h"></i> </a>
+                </div>
             </div>
-        </section>
-        <!-- posts section ends -->
+            <div id="postContent">
+                <p>@post.Content</p>
+            </div>
+            <div id="postStatistics">
+                <div>
+                    <div>
+                        <a href="#"> <i class="far fa-thumbs-up"></i> <span>@_db.Likes.Where(l => l.Post == post).Count()</span> </a>
+                        <a href="#"> <i class="far fa-thumbs-down"></i> <span>@_db.Dislikes.Where(d => d.Post == post).Count()</span> </a>
+                    </div>
+                    <div>
+                        <a href="#"> <i class="far fa-comment-alt"></i> <span>@_db.Comments.Where(c => c.Post == post).Count()</span> </a>
+                    </div>
+                </div>
+            </div>
+            <div id="postOptions">
+                <div>
+                    <div>
+                        <form asp-controller="Post" asp-action="Like">
+                            <input type="hidden" value="@post.Id" name="postId" />
+                            <button type="submit"> <i class="far fa-thumbs-up"></i>Like</button>
+                        </form>
+                    </div>
+                    <div>
+                        <form asp-controller="Post" asp-action="Dislike">
+                            <input type="hidden" value="@post.Id" name="postId" />
+                            <button type="submit"> <i class="far fa-thumbs-down"></i>Dislike</button>
+                        </form>
+                    </div>
+                    <div>
+                        <form>
+                            <input type="hidden" />
+                            <button type="submit"> <i class="far fa-comment-alt"></i>Comment</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="postComments">
+                @foreach (Comment comment in _db.Comments.Where(c => c.Post == post))
+                {
+                    <div class="comment">
+                        <div>
+                            <div>
+                                @if (!(_db.Photos.Any(p => p.user == comment.Commenter && p.isProfilePhoto == true)))
+                                {
+                                    <div style="display: flex; justify-content: center; align-items: center;">
+                                        <p>No<br />Photo</p>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div style="overflow: hidden;">
+                                        @foreach (Photo photo in _db.Photos.Where(p => p.user == comment.Commenter && p.isProfilePhoto == true).OrderByDescending(p => p.Id))
+                                        {
+                                            <img src="~/img/@photo.Link" alt="post owner's profile photo" />
+                                        }
+                                    </div>
+                                }
+                                <div>
+                                    @foreach (AppUser commenter in _db.Users)
+                                    {
+                                        if (commenter == comment.Commenter)
+                                        {
+                                            <a href="#">@commenter.Name @commenter.Surname</a>
+                                        }
+                                    }
+                                    @if (comment.Time.Minute < 10)
+                                    {
+                                        string minute = string.Concat("0", comment.Time.Minute);
+                                        <p>@comment.Time.Day @date.GetMonthName(comment.Time.Month).ToString() @comment.Time.Hour@date.TimeSeparator@minute@date.TimeSeparator@comment.Time.Second</p>
+                                    }
+                                    else
+                                    {
+                                        <p>@comment.Time.Day @date.GetMonthName(comment.Time.Month).ToString() @comment.Time.Hour@date.TimeSeparator@comment.Time.Minute@date.TimeSeparator@comment.Time.Second</p>
+                                    }
+                                </div>
+                            </div>
+                            <div class="commentSettings">
+                                <a href="#"> <i class="fas fa-ellipsis-h"></i> </a>
+                            </div>
+                        </div>
+                        <div>
+                            <p>@comment.Content</p>
+                        </div>
+                    </div>
+                }
 
-@await  Html.PartialAsync("_MessageBoxPartial", Model)
+            </div>
+            <div id="writeComment">
+                <div>
+                    @if (!(_db.Photos.Any(p => p.user == user && p.isProfilePhoto == true)))
+                    {
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <p>No<br />Photo</p>
+                        </div>
+                    }
+                    else
+                    {
+                        <div style="overflow: hidden;">
+                            @foreach (Photo photo in _db.Photos.Where(p => p.user == user && p.isProfilePhoto == true).OrderByDescending(p => p.Id))
+                            {
+                                <img src="~/img/@photo.Link" alt="post owner's profile photo" />
+                            }
+                        </div>
+                    }
+                    <div>
+                        <form asp-controller="Post" asp-action="WriteComment">
+                            <input type="text" id="comment" name="comment" placeholder="Write a comment...">
+                            <button type="submit">Comment</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</section>
+<!-- posts section ends -->
 
-@await  Html.PartialAsync("_PhotoPartial")
+@await Html.PartialAsync("_MessageBoxPartial", Model)
 
-@await  Html.PartialAsync("_ProfilePhotoPartial")
+@await Html.PartialAsync("_PhotoPartial")
 
-@await  Html.PartialAsync("_CoverPhotoPartial")
+@await Html.PartialAsync("_ProfilePhotoPartial")
+
+@await Html.PartialAsync("_CoverPhotoPartial")

@@ -16,8 +16,6 @@ namespace SciCo.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     PosterId = table.Column<string>(nullable: true),
                     Content = table.Column<string>(nullable: true),
-                    Likes = table.Column<int>(nullable: false),
-                    Dislikes = table.Column<int>(nullable: false),
                     Time = table.Column<DateTime>(nullable: false),
                     CommentsId = table.Column<int>(nullable: true)
                 },

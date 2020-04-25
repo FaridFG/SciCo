@@ -1,0 +1,85 @@
+﻿@model PostVM
+@{ AppUser loggedUser = await _userManager.GetUserAsync(User);}
+@{ System.Globalization.DateTimeFormatInfo date = new System.Globalization.DateTimeFormatInfo();}
+
+@foreach (Post post in Model.Posts.Where(p => p.Poster == loggedUser))
+{
+    if ((Model.Comments.Any(c => c.Post == post) == false) && (Model.Likes.Any(l => l.Post == post) == false) && (Model.Dislikes.Any(d => d.Post == post) == false))
+    {
+        <a href="#" class="button"> <i class="fas fa-bell"></i> </a>
+    }
+    else
+    {
+        var totalNotification = Model.Comments.Where(c => c.Post == post).Count() + Model.Likes.Where(l => l.Post == post).Count() + Model.Dislikes.Where(d => d.Post == post).Count();
+        <a href="#" class="button"> <i class="fas fa-bell"></i> <span class="purpleBack">@totalNotification</span> </a>
+    }
+
+    <div id="notifications" class="subMenu">
+        @foreach (Comment comment in Model.Comments.Where(c => c.Post == post))
+        {
+            <div class="notification">
+                <div>
+                    @if (!(Model.Photos.Any(p => p.user == comment.Commenter && p.isProfilePhoto == true)))
+                    {
+                        <p>No<br />Photo</p>
+                    }
+                    else
+                    {
+                        @foreach (Photo photo in Model.Photos.Where(p => p.user == comment.Commenter && p.isProfilePhoto == true).TakeLast(1))
+                        {
+                            <img src="~/img/@photo.Link" alt="post owner's profile photo">
+                        }
+                    }
+                </div>
+                <div>
+                    @foreach (AppUser user in Model.Users.Where(u => u == comment.Commenter))
+                    {
+                        <p> <a asp-controller="Account" asp-action="Timeline" asp-route-id="@user.Id">@user.Name @user.Surname</a>commented on your new profile status.</p>
+                    }
+                    @if (comment.Time.Minute < 10)
+                    {
+                        string minute = string.Concat("0", comment.Time.Minute);
+                        <p>@comment.Time.Day @date.GetMonthName(comment.Time.Month).ToString()@comment.Time.Hour@date.TimeSeparator@minute@date.TimeSeparator@comment.Time.Second</p>
+                    }
+                    else
+                    {
+                        <p>@comment.Time.Day @date.GetMonthName(comment.Time.Month).ToString() @comment.Time.Hour@date.TimeSeparator@comment.Time.Minute@date.TimeSeparator@comment.Time.Second</p>
+                    }
+                </div>
+            </div>
+        }
+        @foreach (Like like in Model.Likes.Where(l => l.Post == post))
+        {
+            <div class="notification">
+                <div>
+                    @if (!(Model.Photos.Any(p => p.user == like.Liker && p.isProfilePhoto == true)))
+                    {
+                        <p>No<br />Photo</p>
+                    }
+                    else
+                    {
+                        @foreach (Photo photo in Model.Photos.Where(p => p.user == like.Liker && p.isProfilePhoto == true).TakeLast(1))
+                        {
+                            <img src="~/img/@photo.Link" alt="post owner's profile photo">
+                        }
+                    }
+                </div>
+                <div>
+                    @foreach (AppUser user in Model.Users.Where(u => u == like.Liker))
+                    {
+                        <p> <a asp-controller="Account" asp-action="Timeline" asp-route-id="@user.Id">@user.Name @user.Surname</a> liked your new profile status.</p>
+                    }
+                    @if (like.Time.Minute < 10)
+                    {
+                        string minute = string.Concat("0", like.Time.Minute);
+                        <p>@like.Time.Day @date.GetMonthName(like.Time.Month).ToString()@like.Time.Hour@date.TimeSeparator@minute@date.TimeSeparator@like.Time.Second</p>
+                    }
+                    else
+                    {
+                        <p>@like.Time.Day @date.GetMonthName(like.Time.Month).ToString() @like.Time.Hour@date.TimeSeparator@like.Time.Minute@date.TimeSeparator@like.Time.Second</p>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+}

@@ -353,10 +353,6 @@ namespace SciCo.Migrations
 
                     b.Property<string>("Content");
 
-                    b.Property<int>("Dislikes");
-
-                    b.Property<int>("Likes");
-
                     b.Property<string>("PosterId");
 
                     b.Property<DateTime>("Time");

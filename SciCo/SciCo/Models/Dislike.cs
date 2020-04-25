@@ -12,6 +12,8 @@ namespace SciCo.Models
         [Required]
         public AppUser Disliker { get; set; }
         [Required]
+        public DateTime Time { get; set; }
+        [Required]
         public Post Post { get; set; }
     }
 }

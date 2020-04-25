@@ -41,84 +41,7 @@
                     </div>
                 </li>
                 <li>
-                    <a href="#" class="button"> <i class="fas fa-bell"></i> <span class="purpleBack">3</span> </a>
-                    <div id="notifications" class="subMenu">
-                        <div class="notification">
-                            <div>
-                                <img src="~/img/profilePhoto.jpg" alt="user's profile photo">
-                            </div>
-                            <div>
-                                <p> <a href="#">Farid Guluzade</a> commented on your new profile status.</p>
-                                <p> <span>9</span> minutes ago</p>
-                            </div>
-                        </div>
-                        <div class="notification">
-                            <div>
-                                <img src="~/img/profilePhoto.jpg" alt="user's profile photo">
-                            </div>
-                            <div>
-                                <p> <a href="#">Farid Guluzade</a> commented on your new profile status.</p>
-                                <p> <span>9</span> minutes ago</p>
-                            </div>
-                        </div>
-                        <div class="notification">
-                            <div>
-                                <img src="~/img/profilePhoto.jpg" alt="user's profile photo">
-                            </div>
-                            <div>
-                                <p> <a href="#">Farid Guluzade</a> commented on your new profile status.</p>
-                                <p> <span>9</span> minutes ago</p>
-                            </div>
-                        </div>
-                        <div class="notification">
-                            <div>
-                                <img src="~/img/profilePhoto.jpg" alt="user's profile photo">
-                            </div>
-                            <div>
-                                <p> <a href="#">Farid Guluzade</a> commented on your new profile status.</p>
-                                <p> <span>9</span> minutes ago</p>
-                            </div>
-                        </div>
-                        <div class="notification">
-                            <div>
-                                <img src="~/img/profilePhoto.jpg" alt="user's profile photo">
-                            </div>
-                            <div>
-                                <p> <a href="#">Farid Guluzade</a> commented on your new profile status.</p>
-                                <p> <span>9</span> minutes ago</p>
-                            </div>
-                        </div>
-                        <div class="notification">
-                            <div>
-                                <img src="~/img/profilePhoto.jpg" alt="user's profile photo">
-                            </div>
-                            <div>
-                                <p> <a href="#">Farid Guluzade</a> commented on your new profile status.</p>
-                                <p> <span>9</span> minutes ago</p>
-                            </div>
-                        </div>
-                        <div class="notification">
-                            <div>
-                                <img src="~/img/profilePhoto.jpg" alt="user's profile photo">
-                            </div>
-                            <div>
-                                <p> <a href="#">Farid Guluzade</a> commented on your new profile status.</p>
-                                <p> <span>9</span> minutes ago</p>
-                            </div>
-                        </div>
-                        <div class="notification">
-                            <div>
-                                <img src="~/img/profilePhoto.jpg" alt="user's profile photo">
-                            </div>
-                            <div>
-                                <p> <a href="#">Farid Guluzade</a> commented on your new profile status.</p>
-                                <p> <span>9</span> minutes ago</p>
-                            </div>
-                        </div>
-                        <div id="allNotifications" class="viewAll purpleBack">
-                            <a href="#" role="button">View All Notifications</a>
-                        </div>
-                    </div>
+                    @await  Component.InvokeAsync("_Notifications")
                     <div class="subMenu">
                         <i class="fas fa-caret-up"></i>
                     </div>
@@ -129,7 +52,7 @@
             <div class="profilePhoto" style="overflow: hidden;">
                 @if (!(_db.Photos.Any(p => p.user == user && p.isProfilePhoto == true)))
                 {
-                    <span>No<br />Photo</span>
+                    <p>No<br />Photo</p>
                 }
                 else
                 {

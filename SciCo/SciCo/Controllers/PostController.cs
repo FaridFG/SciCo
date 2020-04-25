@@ -83,13 +83,17 @@ namespace SciCo.Controllers
 
             if (_db.Likes.Any(l => l.Post.Id == postId && l.Liker == user))
             {
-                return NotFound();
+                Like currentLike = _db.Likes.FirstOrDefault(l => l.Post.Id == postId && l.Liker == user);
+                _db.Likes.Remove(currentLike);
+                await _db.SaveChangesAsync();
+                return RedirectToAction("Newsfeed", "Account");
             }
 
             Like like = new Like
             {
                 Liker = user,
-                Post = await _db.Posts.FindAsync(postId)
+                Post = await _db.Posts.FindAsync(postId),
+                Time = DateTime.Now
             };
 
             if (like == null)
@@ -109,13 +113,17 @@ namespace SciCo.Controllers
 
             if (_db.Dislikes.Any(d => d.Post.Id == postId && d.Disliker == user))
             {
-                return NotFound();
+                Dislike currentDislike = _db.Dislikes.FirstOrDefault(d => d.Post.Id == postId && d.Disliker == user);
+                _db.Dislikes.Remove(currentDislike);
+                await _db.SaveChangesAsync();
+                return RedirectToAction("Newsfeed", "Account");
             }
 
             Dislike dislike = new Dislike
             {
                 Disliker = user,
-                Post = await _db.Posts.FindAsync(postId)
+                Post = await _db.Posts.FindAsync(postId),
+                Time = DateTime.Now
             };
 
             if (dislike == null)

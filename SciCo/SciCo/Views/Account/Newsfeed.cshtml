@@ -45,7 +45,15 @@
                         {
                             <a href="#">@user.Name @user.Surname</a>
                         }
-                        <p>@post.Time.Day @date.GetMonthName(post.Time.Month).ToString() @post.Time.Year @post.Time.Hour @date.TimeSeparator @{string minute = string.Concat("0", post.Time.Minute);} @date.TimeSeparator @post.Time.Second</p>
+                        @if (post.Time.Minute < 10)
+                        {
+                            string minute = string.Concat("0", post.Time.Minute);
+                            <p>@post.Time.Day @date.GetMonthName(post.Time.Month).ToString() @post.Time.Hour@date.TimeSeparator@minute@date.TimeSeparator@post.Time.Second</p>
+                        }
+                        else
+                        {
+                            <p>@post.Time.Day @date.GetMonthName(post.Time.Month).ToString() @post.Time.Hour@date.TimeSeparator@post.Time.Minute@date.TimeSeparator@post.Time.Second</p>
+                        }
                     </div>
                 </div>
                 <div id="postSettings">
@@ -71,13 +79,27 @@
                     <div>
                         <form asp-controller="Post" asp-action="Like">
                             <input type="hidden" value="@post.Id" name="postId" />
-                            <button type="submit"> <i class="far fa-thumbs-up"></i>Like</button>
+                            @if (Model.Likes.Any(l => l.Post == post && l.Liker == loggedUser))
+                            {
+                                <button type="submit"> <i class="far fa-thumbs-up"></i>Liked</button>
+                            }
+                            else
+                            {
+                                <button type="submit"> <i class="far fa-thumbs-up"></i>Like</button>
+                            }
                         </form>
                     </div>
                     <div>
                         <form asp-controller="Post" asp-action="Dislike">
                             <input type="hidden" value="@post.Id" name="postId" />
-                            <button type="submit"> <i class="far fa-thumbs-down"></i>Dislike</button>
+                            @if (Model.Dislikes.Any(d => d.Post == post && d.Disliker == loggedUser))
+                            {
+                                <button type="submit"> <i class="far fa-thumbs-down"></i>Disliked</button>
+                            }
+                            else
+                            {
+                                <button type="submit"> <i class="far fa-thumbs-down"></i>Dislike</button>
+                            }
                         </form>
                     </div>
                     <div>
@@ -112,7 +134,15 @@
                                     {
                                         <a href="#">@commenter.Name @commenter.Surname</a>
                                     }
-                                    <p>@comment.Time</p>
+                                    @if (comment.Time.Minute < 10)
+                                    {
+                                        string minute = string.Concat("0", comment.Time.Minute);
+                                        <p>@comment.Time.Day @date.GetMonthName(comment.Time.Month).ToString() @comment.Time.Hour@date.TimeSeparator@minute@date.TimeSeparator@comment.Time.Second</p>
+                                    }
+                                    else
+                                    {
+                                        <p>@comment.Time.Day @date.GetMonthName(comment.Time.Month).ToString() @comment.Time.Hour@date.TimeSeparator@comment.Time.Minute@date.TimeSeparator@comment.Time.Second</p>
+                                    }
                                 </div>
                             </div>
                             <div class="commentSettings">
@@ -127,19 +157,21 @@
             </div>
             <div id="writeComment">
                 <div>
-                    <div>
-                        @if (!(Model.Photos.Any(p => p.user == loggedUser && p.isProfilePhoto == true)))
-                        {
+                    @if (!(Model.Photos.Any(p => p.user == loggedUser && p.isProfilePhoto == true)))
+                    {
+                        <div style="display: flex; justify-content: center; align-items: center;">
                             <p>No<br />Photo</p>
-                        }
-                        else
-                        {
+                        </div>
+                    }
+                    else
+                    {
+                        <div>
                             @foreach (Photo photo in Model.Photos.Where(p => p.user == loggedUser && p.isProfilePhoto == true).TakeLast(1))
                             {
                                 <img src="~/img/@photo.Link" alt="user's profile photo">
                             }
-                        }
-                    </div>
+                        </div>
+                    }
                     <div>
                         <form asp-controller="Post" asp-action="WriteComment">
                             <input type="hidden" value="@post.Id" name="postId" />
