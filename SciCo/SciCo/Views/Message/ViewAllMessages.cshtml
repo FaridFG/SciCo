@@ -41,6 +41,34 @@
             </div>
         }
     </div>
-    <div id="chat"></div>
+    <div id="chat">
+        <div>
+            <div class="sent">
+                <p>This is from senderThis is from senderThis is from senderThis is from senderThis is from senderThis is from sender</p>
+            </div>
+            <div class="received">
+                <p>This is from receiverThis is from receiverThis is from receiverThis is from receiverThis is from receiver</p>
+            </div>
+            <div class="sent">
+                <p>This is from senderThis is from senderThis is from senderThis is from senderThis is from senderThis is from sender</p>
+            </div>
+            <div class="received">
+                <p>This is from receiverThis is from receiverThis is from receiverThis is from receiverThis is from receiver</p>
+            </div>
+            <div class="sent">
+                <p>This is from senderThis is from senderThis is from senderThis is from senderThis is from senderThis is from sender</p>
+            </div>
+            <div class="received">
+                <p>This is from receiverThis is from receiverThis is from receiverThis is from receiverThis is from receiver</p>
+            </div>
+        </div>
+        <div id="messageInput">
+            <form method="post" asp-controller="Message" asp-action="SendMessage">
+                <input type="hidden" name="ReceiverId" value="@Model.Receiver.Id" />
+                <textarea name="content" id="content" cols="50" rows="5" placeholder="Enter your message..."></textarea>
+                <button type="submit">Send<i class="fas fa-share-square"></i> </button>
+            </form>
+        </div>
+    </div>
 </section>
 <!-- chat section ends -->

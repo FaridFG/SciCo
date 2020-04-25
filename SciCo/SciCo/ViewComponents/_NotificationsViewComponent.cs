@@ -25,10 +25,10 @@ namespace SciCo.ViewComponents
             AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
             PostVM model = new PostVM()
             {
-                Posts = _db.Posts,
-                Comments = _db.Comments,
-                Likes = _db.Likes,
-                Dislikes = _db.Dislikes,
+                Posts = _db.Posts.Where(p => p.Poster == user),
+                Comments = _db.Comments.Where(c => c.Commenter != user),
+                Likes = _db.Likes.Where(l => l.Liker != user),
+                Dislikes = _db.Dislikes.Where(d => d.Disliker != user),
                 Users = _db.Users,
                 Photos = _db.Photos
             };

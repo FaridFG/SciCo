@@ -34,7 +34,7 @@
                 <div>
                     @foreach (AppUser user in Model.Users.Where(u => u == comment.Commenter))
                     {
-                        <p> <a asp-controller="Account" asp-action="Timeline" asp-route-id="@user.Id">@user.Name @user.Surname</a>commented on your new profile status.</p>
+                        <p> <a asp-controller="Account" asp-action="Timeline" asp-route-id="@user.Id">@user.Name @user.Surname</a> commented on your new profile status.</p>
                     }
                     @if (comment.Time.Minute < 10)
                     {
@@ -77,6 +77,39 @@
                     else
                     {
                         <p>@like.Time.Day @date.GetMonthName(like.Time.Month).ToString() @like.Time.Hour@date.TimeSeparator@like.Time.Minute@date.TimeSeparator@like.Time.Second</p>
+                    }
+                </div>
+            </div>
+        }
+        @foreach (Dislike dislike in Model.Dislikes.Where(d => d.Post == post))
+        {
+            <div class="notification">
+                <div>
+                    @if (!(Model.Photos.Any(p => p.user == dislike.Disliker && p.isProfilePhoto == true)))
+                    {
+                        <p>No<br />Photo</p>
+                    }
+                    else
+                    {
+                        @foreach (Photo photo in Model.Photos.Where(p => p.user == dislike.Disliker && p.isProfilePhoto == true).TakeLast(1))
+                        {
+                            <img src="~/img/@photo.Link" alt="post owner's profile photo">
+                        }
+                    }
+                </div>
+                <div>
+                    @foreach (AppUser user in Model.Users.Where(u => u == dislike.Disliker))
+                    {
+                        <p> <a asp-controller="Account" asp-action="Timeline" asp-route-id="@user.Id">@user.Name @user.Surname</a> disliked your new profile status.</p>
+                    }
+                    @if (dislike.Time.Minute < 10)
+                    {
+                        string minute = string.Concat("0", dislike.Time.Minute);
+                        <p>@dislike.Time.Day @date.GetMonthName(dislike.Time.Month).ToString()@dislike.Time.Hour@date.TimeSeparator@minute@date.TimeSeparator@dislike.Time.Second</p>
+                    }
+                    else
+                    {
+                        <p>@dislike.Time.Day @date.GetMonthName(dislike.Time.Month).ToString() @dislike.Time.Hour@date.TimeSeparator@dislike.Time.Minute@date.TimeSeparator@dislike.Time.Second</p>
                     }
                 </div>
             </div>
