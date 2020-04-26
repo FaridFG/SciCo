@@ -83,7 +83,7 @@ namespace SciCo
             {
                 routes.MapRoute(
                   name: "areas",
-                  template: "{area:exists}/{controller=Dasboard}/{action=Index}/{id?}"
+                  template: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}"
                 );
             });
 

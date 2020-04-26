@@ -1,0 +1,49 @@
+﻿@model IEnumerable<AppUser>
+@{ int num = 1;}
+@{ AppUser loggedUser = await _userManager.GetUserAsync(User); }
+
+@{
+    ViewData["Title"] = "Users";
+}
+
+<div class="col-12 mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="header-title">Progress Table</h4>
+            <div class="single-table">
+                <div class="table-responsive">
+                    <table class="table table-hover progress-table text-center">
+                        <thead class="text-uppercase">
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Id</th>
+                                <th scope="col">Fullname</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Username</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (AppUser user in Model)
+                            {
+                                <tr>
+                                    <td>@num</td>
+                                    <td>@user.Id</td>
+                                    <td>@user.Name @user.Surname</td>
+                                    <td>@user.Email</td>
+                                    <td>@user.UserName</td>
+                                    <td>
+                                        <ul class="d-flex justify-content-center">
+                                            <li class="mr-3"><a asp-controller="UserManagement" asp-action="Update" class="text-secondary"><i class="fa fa-edit"></i></a></li>
+                                            <li><a asp-controller="UserManagement" asp-action="Delete" asp-route-id="@user.Id" class="text-danger"><i class="ti-trash"></i></a></li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                { num++; }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
