@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SciCo.Areas.AdminPage.ViewModels;
 using SciCo.Data;
+using SciCo.Helpers;
 using SciCo.Models;
 
 namespace SciCo.Areas.AdminPage.Controllers
@@ -65,6 +66,7 @@ namespace SciCo.Areas.AdminPage.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = UserRoles.AdminRole)]
         public async Task<IActionResult> ShowMessages(string id)
         {
             AppUser user = await _db.Users.FindAsync(id);

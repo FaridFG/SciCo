@@ -36,7 +36,10 @@
             <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 50px;">
                 <a asp-controller="UserManagement" asp-action="ShowFriends" asp-route-id="@Model.Id" type="submit" class="btn btn-primary pl-3 pr-3 mr-3 h-100">Show friends</a>
                 <a asp-controller="UserManagement" asp-action="ShowPhotos" asp-route-id="@Model.Id" type="submit" class="btn btn-primary pl-3 pr-3 mr-3 h-100">Show photos</a>
-                <a asp-controller="UserManagement" asp-action="ShowMessages" asp-route-id="@Model.Id" type="submit" class="btn btn-primary pl-3 pr-3 mr-3 h-100">Show messages</a>
+                @if (User.IsInRole("Admin"))
+                {
+                    <a asp-controller="UserManagement" asp-action="ShowMessages" asp-route-id="@Model.Id" type="submit" class="btn btn-primary pl-3 pr-3 mr-3 h-100">Show messages</a>
+                }
                 <a asp-controller="UserManagement" asp-action="ShowComments" asp-route-id="@Model.Id" type="submit" class="btn btn-primary pl-3 pr-3 mr-3 h-100">Show comments</a>
                 <a asp-controller="UserManagement" asp-action="ShowLikes" asp-route-id="@Model.Id" type="submit" class="btn btn-primary pl-3 pr-3 mr-3 h-100">Show likes</a>
                 <a asp-controller="UserManagement" asp-action="ShowDislikes" asp-route-id="@Model.Id" type="submit" class="btn btn-primary pl-3 pr-3 h-100">Show dislikes</a>

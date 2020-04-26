@@ -128,7 +128,7 @@
                                     {
                                         if (commenter == comment.Commenter)
                                         {
-                                            <a href="#">@commenter.Name @commenter.Surname</a>
+                                            <a asp-controller="Account" asp-action="Timeline" asp-route-id="@commenter.Id">@commenter.Name @commenter.Surname</a>
                                         }
                                     }
                                     @if (comment.Time.Minute < 10)

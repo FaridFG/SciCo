@@ -261,4 +261,22 @@ $(function() {
         reader.readAsDataURL(input.files[0]);
     }
     // function for showing images in the divs and overriding fakepath error
+
+    // preventing empty inputs
+    $("#submitPhoto").click(function(ev){
+        if($("#newPhoto").val() == ""){
+            ev.preventDefault();
+        }
+    })
+    $("#submitProfilePhoto").click(function(ev){
+        if($("#pPhoto").val() == ""){
+            ev.preventDefault();
+        }
+    })
+    $("#submitCoverPhoto").click(function(ev){
+        if($("#cPhoto").val() == ""){
+            ev.preventDefault();
+        }
+    })
+    // preventing empty inputs
 })

@@ -56,7 +56,6 @@ C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Areas\Adm
 C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Areas\AdminPage\Views\Dashboard\Index.cshtml.g.cs
 C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Areas\AdminPage\Views\UserManagement\Info.cshtml.g.cs
 C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Areas\AdminPage\Views\UserManagement\ShowFriends.cshtml.g.cs
-C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\SciCo.csprojAssemblyReference.cache
 C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Areas\AdminPage\Views\UserManagement\ShowPhotos.cshtml.g.cs
 C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Areas\AdminPage\Views\UserManagement\ShowMessages.cshtml.g.cs
 C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Areas\AdminPage\Views\UserManagement\ShowComments.cshtml.g.cs

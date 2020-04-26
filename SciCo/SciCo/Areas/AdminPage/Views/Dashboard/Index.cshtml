@@ -1,7 +1,18 @@
-﻿
+﻿@{ AppUser user = await _userManager.GetUserAsync(User);}
+@{ var role = await _userManager.GetRolesAsync(user);}
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
+<div style="height: 700px; width: 70%; margin: 0 auto; padding-top: 75px;">
+    <h1 style="border-radius: 5px; background-color: #fff; box-shadow: 3px 3px 5px 3px rgba(50, 51, 63, 0.4); padding: 50px 0; line-height: 100px;" class="text-center">
+        Welcome <span style="border: 2px solid #212529; border-radius: 5px; color: #212529; padding: 0 5px;">@user.Name @user.Surname</span><br />
+    This is an Administration Page of <span style="border: 2px solid #212529; border-radius: 5px; color: #212529; padding: 0 5px; ">SciCo</span> <br />
+    Your role is <span style="border: 2px solid #212529; border-radius: 5px; color: #212529; padding: 0 5px;">
+        @foreach (var userRole in role)
+        {
+            @userRole
+        }
+           </span></h1>
+    <p style="padding: 75px 0; font-size: 35px; letter-spacing: 2px;" class="text-center font-weight-bold">Here in SciCo, we have more than <span style="border: 2px solid #212529; border-radius: 5px; color: #212529; padding: 0 5px; ">@_db.Users.Count() users</span> </p>
+</div>
