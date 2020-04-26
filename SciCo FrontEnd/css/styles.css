@@ -2007,6 +2007,7 @@ aside.left i {
     font-size: 50px;
     font-weight: bold;
     align-items: center;
+    text-align: center;
 }
 
 #noFriend strong {
@@ -2321,6 +2322,7 @@ aside.left i {
     font-size: 70px;
     font-weight: bold;
     letter-spacing: 2px;
+    text-align: center;
 }
 
 .requestResult > div:nth-child(1) {

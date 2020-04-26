@@ -1,0 +1,25 @@
+﻿@model ShowFriendVM
+
+@{
+    ViewData["Title"] = "ShowFriends";
+}
+
+    <div class="col-md-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title">Friends</h4>
+                <ul class="list-group list-group-flush">
+                    @foreach (AppUser user in Model.Users)
+                    {
+                        @foreach (Friend friend in Model.Friends)
+                        {
+                            if ((friend.User1 == user && friend.User2 == Model.MainUser) || (friend.User1 == Model.MainUser && friend.User2 == user))
+                            {
+                                <li class="list-group-item">@user.Name @user.Surname</li>
+                            }
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>

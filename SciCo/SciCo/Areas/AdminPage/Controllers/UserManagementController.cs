@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using SciCo.Areas.AdminPage.ViewModels;
 using SciCo.Data;
 using SciCo.Models;
 
@@ -30,43 +31,67 @@ namespace SciCo.Areas.AdminPage.Controllers
             return View(model);
         }
 
-        public IActionResult Update()
-        {
-            return View();
-        }
-
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Info(string id)
         {
             AppUser user = await _db.Users.FindAsync(id);
             return View(user);
         }
 
-        [HttpPost, ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeletePost(string id)
+        public async Task<IActionResult> ShowFriends(string id)
         {
             AppUser user = await _db.Users.FindAsync(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-            var role = _db.UserRoles.FirstOrDefault(ur => ur.UserId == user.Id);
-            if (role == null)
-            {
-                return NotFound();
-            }
 
-            foreach (FriendRequest request in _db.FriendRequests)
+            ShowFriendVM model = new ShowFriendVM
             {
-                if(request.ReceiverUser == user || request.RequestorUser == user)
-                {
-                    _db.FriendRequests.Remove(request);
-                }
-            }
+                MainUser = user,
+                Users = _db.Users,
+                Friends = _db.Friends
+            };
 
-            _db.UserRoles.Remove(role);
-            _db.Users.Remove(user);
-            await _db.SaveChangesAsync();
-            return RedirectToAction("Users");
+            return View(model);
+        }
+
+        public async Task<IActionResult> ShowPhotos(string id)
+        {
+            AppUser user = await _db.Users.FindAsync(id);
+
+            UserPhotoVM model = new UserPhotoVM
+            {
+                MainUser = user,
+                Photos = _db.Photos,
+                Users = _db.Users
+            };
+
+            return View(model);
+        }
+
+        public async Task<IActionResult> ShowMessages(string id)
+        {
+            AppUser user = await _db.Users.FindAsync(id);
+
+            ShowMessageVM model = new ShowMessageVM
+            {
+                MainUser = user,
+                Sender = _db.Users,
+                Messages = _db.Messages
+            };
+
+            return View(model);
+        }
+
+        public async Task<IActionResult> ShowComments(string id)
+        {
+            AppUser user = await _db.Users.FindAsync(id);
+
+            UserCommentsVM model = new UserCommentsVM
+            {
+                MainUser = user,
+                Comments = _db.Comments,
+                Posts = _db.Posts,
+                Users = _db.Users
+            };
+
+            return View(model);
         }
     }
 }

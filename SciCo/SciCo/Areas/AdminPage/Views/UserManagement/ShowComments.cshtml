@@ -1,0 +1,63 @@
+﻿@model UserCommentsVM
+@{ System.Globalization.DateTimeFormatInfo date = new System.Globalization.DateTimeFormatInfo();}
+
+@{
+    ViewData["Title"] = "ShowComments";
+}
+
+<div class="col-lg-12 mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="header-title">Thead Primary</h4>
+            <div class="single-table">
+                <div class="table-responsive">
+                    <table class="table text-center">
+                        <thead class="text-uppercase bg-primary">
+                            <tr class="text-white">
+                                <th scope="col">Commenter</th>
+                                <th scope="col">Comment</th>
+                                <th scope="col">Post</th>
+                                <th scope="col">Poster</th>
+                                <th scope="col">Comment Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Comment comment in Model.Comments.Where(c => c.Commenter == Model.MainUser))
+                            {
+                                <tr>
+                                    <td>@comment.Commenter.Name @comment.Commenter.Surname</td>
+                                    <td>@comment.Content</td>
+                                    @foreach (Post post in Model.Posts)
+                                    {
+                                        if(comment.Post == post)
+                                        {
+                                            <td>@post.Content</td>
+                                            <td>@post.Poster.Name @post.Poster.Surname</td>
+                                        }
+                                    }
+                                    <td>
+                                        @if (comment.Time.Minute < 10)
+                                            {
+                                                string minute = string.Concat("0", comment.Time.Minute);
+                                                <span>@comment.Time.Day </span>
+                                                <span>@date.GetMonthName(comment.Time.Month).ToString() </span>
+                                                <span class="mr-3">@comment.Time.Year</span>
+                                                <span>@comment.Time.Hour @date.TimeSeparator @minute @date.TimeSeparator @comment.Time.Second</span>
+                                            }
+                                            else
+                                            {
+                                                <span>@comment.Time.Day </span>
+                                                <span>@date.GetMonthName(comment.Time.Month).ToString() </span>
+                                                <span class="mr-3">@comment.Time.Year</span>
+                                                <span>@comment.Time.Hour @date.TimeSeparator @comment.Time.Minute @date.TimeSeparator @comment.Time.Second</span>
+                                            }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

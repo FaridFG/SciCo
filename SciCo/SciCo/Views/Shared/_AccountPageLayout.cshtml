@@ -75,6 +75,12 @@
                         <li>
                             <a id="delete" class="button" asp-controller="Account" asp-action="DeleteAccount"> <i class="fas fa-book-open"></i>Delete My Account</a>
                         </li>
+                        @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                        {
+                            <li>
+                                <a asp-area="AdminPage" asp-controller="Dashboard" asp-action="Index"> <i class="fas fa-user-lock"></i>Manage Users</a>
+                            </li>
+                        }
                         <li>
                             <a asp-controller="User" asp-action="LogOut"> <i class="fas fa-sign-out-alt"></i>Log Out</a>
                         </li>

@@ -24,12 +24,17 @@ using SciCo.Data;
 #line default
 #line hidden
 #line 4 "C:\Users\farid\Desktop\SciCo\SciCo\SciCo\Areas\AdminPage\Views\_ViewImports.cshtml"
+using SciCo.Areas.AdminPage.ViewModels;
+
+#line default
+#line hidden
+#line 5 "C:\Users\farid\Desktop\SciCo\SciCo\SciCo\Areas\AdminPage\Views\_ViewImports.cshtml"
 using Microsoft.AspNetCore.Identity;
 
 #line default
 #line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"83872c409543ed4b61aab2914e2bdaf7d37b1145", @"/Areas/AdminPage/Views/Dashboard/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"bdbab0029a56eba29f16a71b990b1aee19bd4b9d", @"/Areas/AdminPage/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"3aaef21511d7529d1b06ac937ccf77bf663014cd", @"/Areas/AdminPage/Views/_ViewImports.cshtml")]
     public class Areas_AdminPage_Views_Dashboard_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998
