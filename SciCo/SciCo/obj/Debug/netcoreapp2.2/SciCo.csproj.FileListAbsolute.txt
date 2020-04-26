@@ -61,3 +61,7 @@ C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Areas\Adm
 C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Areas\AdminPage\Views\UserManagement\ShowComments.cshtml.g.cs
 C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Areas\AdminPage\Views\UserManagement\ShowLikes.cshtml.g.cs
 C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Areas\AdminPage\Views\UserManagement\ShowDislikes.cshtml.g.cs
+C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Areas\AdminPage\Views\UpdateUser\Index.cshtml.g.cs
+C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Areas\AdminPage\Views\UpdateUser\UpdateUserInfo.cshtml.g.cs
+C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\Razor\Areas\AdminPage\Views\Shared\ErrorView.cshtml.g.cs
+C:\Users\farid\Desktop\SciCo\SciCo\SciCo\obj\Debug\netcoreapp2.2\SciCo.csprojAssemblyReference.cache

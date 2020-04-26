@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<AppUser>
 @{ int num = 1;}
 @{ AppUser loggedUser = await _userManager.GetUserAsync(User); }
+@{ var adminRole = _db.Roles.Where(r => r.Name == "Admin").FirstOrDefault().Id;}
 
 @{
     ViewData["Title"] = "Users";
@@ -25,16 +26,23 @@
                     <tbody>
                         @foreach (AppUser user in Model)
                         {
-                            <tr>
-                                <td>@num</td>
-                                <td>@user.Id</td>
-                                <td>
-                                    <a asp-controller="UserManagement" asp-action="Info" asp-route-id="@user.Id" class="text-danger">@user.Name @user.Surname</a>
-                                </td>
-                                <td>@user.Email</td>
-                                <td>@user.UserName</td>
-                                <td>@{ int age = DateTime.Now.Year - user.Birthday.Year; }@age</td>
-                            </tr>
+                            @foreach (var role in _db.UserRoles)
+                            {
+                                if(role.RoleId != adminRole && role.UserId == user.Id)
+                                {
+                                    <tr>
+                                        <td>@num</td>
+                                        <td>@user.Id</td>
+                                        <td>
+                                            <a asp-controller="UserManagement" asp-action="Info" asp-route-id="@user.Id" class="text-danger">@user.Name @user.Surname</a>
+                                        </td>
+                                        <td>@user.Email</td>
+                                        <td>@user.UserName</td>
+                                        <td>@{ int age = DateTime.Now.Year - user.Birthday.Year; }@age</td>
+                                    </tr>
+                                }
+                            }
+                            
                             { num++; }
                         }
                     </tbody>

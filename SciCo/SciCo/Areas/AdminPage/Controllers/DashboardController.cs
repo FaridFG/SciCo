@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace SciCo.Areas.AdminPage.Controllers
 {
     [Area("AdminPage")]
-    [Authorize]
+    [Authorize(Roles = "Admin, Manager")]
     public class DashboardController : Controller
     {
         public IActionResult Index()
