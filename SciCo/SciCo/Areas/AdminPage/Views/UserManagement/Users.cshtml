@@ -6,42 +6,39 @@
     ViewData["Title"] = "Users";
 }
 
-<div class="col-12 mt-5">
+<div class="col-12">
     <div class="card">
         <div class="card-body">
-            <h4 class="header-title">Progress Table</h4>
-            <div class="single-table">
-                <div class="table-responsive">
-                    <table class="table table-hover progress-table text-center">
-                        <thead class="text-uppercase">
+            <h1 class="header-title text-center">SciCo Users</h1>
+            <div class="data-tables datatable-dark">
+                <table id="dataTable3" style="width: 100%;">
+                    <thead class="text-capitalize">
+                        <tr>
+                            <th>No</th>
+                            <th>Id</th>
+                            <th>Fullname</th>
+                            <th>Email</th>
+                            <th>Username</th>
+                            <th>Age</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (AppUser user in Model)
+                        {
                             <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">Id</th>
-                                <th scope="col">Fullname</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Username</th>
+                                <td>@num</td>
+                                <td>@user.Id</td>
+                                <td>
+                                    <a asp-controller="UserManagement" asp-action="Info" asp-route-id="@user.Id" class="text-danger">@user.Name @user.Surname</a>
+                                </td>
+                                <td>@user.Email</td>
+                                <td>@user.UserName</td>
+                                <td>@{ int age = DateTime.Now.Year - user.Birthday.Year; }@age</td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (AppUser user in Model)
-                            {
-                                <tr>
-                                    <td>@num</td>
-                                    <td>@user.Id</td>
-                                    <td>@user.Name @user.Surname</td>
-                                    <td>@user.Email</td>
-                                    <td>@user.UserName</td>
-                                    <td>
-                                        <ul class="d-flex justify-content-center">
-                                            <li class="mr-3"><a asp-controller="UserManagement" asp-action="Info" asp-route-id="@user.Id" class="text-danger"><i class="fa fa-edit"></i></a></li>
-                                        </ul>
-                                    </td>
-                                </tr>
-                                { num++; }
-                            }
-                        </tbody>
-                    </table>
-                </div>
+                            { num++; }
+                        }
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

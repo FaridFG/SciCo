@@ -1,0 +1,84 @@
+﻿@model UserDislikeVM
+@{ System.Globalization.DateTimeFormatInfo date = new System.Globalization.DateTimeFormatInfo();}
+
+@{
+    ViewData["Title"] = "ShowDislikes";
+}
+
+<div class="col-lg-12 mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="header-title">Thead Primary</h4>
+            <div class="single-table">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="text-uppercase bg-primary">
+                            <tr class="text-white">
+                                <th scope="col">Disliker</th>
+                                <th scope="col">Post</th>
+                                <th scope="col">Poster</th>
+                                <th scope="col">Dislike time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Dislike dislike in Model.Dislikes.Where(d => d.Disliker == Model.MainUser))
+                            {
+                                <tr>
+                                    <td>@dislike.Disliker.Name @dislike.Disliker.Surname</td>
+                                    @foreach (Post post in Model.Posts)
+                                    {
+                                        if (dislike.Post == post)
+                                        {
+                                            <td>@post.Content</td>
+                                            @foreach (AppUser user in Model.Users)
+                                            {
+                                                if (post.Poster == user)
+                                                {
+                                                    <td>@user.Name @user.Surname</td>
+                                                }
+                                            }
+                                        }
+                                    }
+                                    <td>
+                                        @if (dislike.Time.Minute < 10)
+                                        {
+                                            string minute = string.Concat("0", dislike.Time.Minute);
+                                            <span>@dislike.Time.Day </span>
+                                            <span>@date.GetMonthName(dislike.Time.Month).ToString() </span>
+                                            <span class="mr-3">@dislike.Time.Year</span>
+                                            <span>@dislike.Time.Hour @date.TimeSeparator @minute @date.TimeSeparator @dislike.Time.Second</span>
+                                        }
+                                        else if (dislike.Time.Second < 10)
+                                        {
+                                            string second = string.Concat("0", dislike.Time.Second);
+                                            <span>@dislike.Time.Day </span>
+                                            <span>@date.GetMonthName(dislike.Time.Month).ToString() </span>
+                                            <span class="mr-3">@dislike.Time.Year</span>
+                                            <span>@dislike.Time.Hour @date.TimeSeparator @dislike.Time.Minute @date.TimeSeparator @second</span>
+                                        }
+                                        else if (dislike.Time.Minute < 10 && dislike.Time.Second < 10)
+                                        {
+                                            string minute = string.Concat("0", dislike.Time.Minute);
+                                            string second = string.Concat("0", dislike.Time.Second);
+                                            <span>@dislike.Time.Day </span>
+                                            <span>@date.GetMonthName(dislike.Time.Month).ToString() </span>
+                                            <span class="mr-3">@dislike.Time.Year</span>
+                                            <span>@dislike.Time.Hour @date.TimeSeparator @minute @date.TimeSeparator @second</span>
+                                        }
+                                        else
+                                        {
+                                            <span>@dislike.Time.Day </span>
+                                            <span>@date.GetMonthName(dislike.Time.Month).ToString() </span>
+                                            <span class="mr-3">@dislike.Time.Year</span>
+                                            <span>@dislike.Time.Hour @date.TimeSeparator @dislike.Time.Minute @date.TimeSeparator @dislike.Time.Second</span>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

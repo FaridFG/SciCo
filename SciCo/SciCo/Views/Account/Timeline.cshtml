@@ -102,20 +102,26 @@
                     <div class="comment">
                         <div>
                             <div>
-                                @if (!(_db.Photos.Any(p => p.user == comment.Commenter && p.isProfilePhoto == true)))
+                                @foreach (AppUser photoUsers in _db.Users)
                                 {
-                                    <div style="display: flex; justify-content: center; align-items: center;">
-                                        <p>No<br />Photo</p>
-                                    </div>
-                                }
-                                else
-                                {
-                                    <div style="overflow: hidden;">
-                                        @foreach (Photo photo in _db.Photos.Where(p => p.user == comment.Commenter && p.isProfilePhoto == true).OrderByDescending(p => p.Id))
+                                    if (comment.Commenter == photoUsers)
+                                    {
+                                        @if (!(_db.Photos.Any(p => p.user == photoUsers && p.isProfilePhoto == true)))
                                         {
-                                            <img src="~/img/@photo.Link" alt="post owner's profile photo" />
+                                            <div style="display: flex; justify-content: center; align-items: center;">
+                                                <p>No<br />Photo</p>
+                                            </div>
                                         }
-                                    </div>
+                                        else
+                                        {
+                                            <div style="overflow: hidden;">
+                                                @foreach (Photo photo in _db.Photos.Where(p => p.user == photoUsers && p.isProfilePhoto == true).OrderByDescending(p => p.Id))
+                                                {
+                                                    <img src="~/img/@photo.Link" alt="post owner's profile photo" />
+                                                }
+                                            </div>
+                                        }
+                                    }
                                 }
                                 <div>
                                     @foreach (AppUser commenter in _db.Users)

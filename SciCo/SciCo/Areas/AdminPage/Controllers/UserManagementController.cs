@@ -108,5 +108,20 @@ namespace SciCo.Areas.AdminPage.Controllers
 
             return View(model);
         }
+
+        public async Task<IActionResult> ShowDislikes(string id)
+        {
+            AppUser user = await _db.Users.FindAsync(id);
+
+            UserDislikeVM model = new UserDislikeVM
+            {
+                MainUser = user,
+                Users = _db.Users,
+                Posts = _db.Posts,
+                Dislikes = _db.Dislikes
+            };
+
+            return View(model);
+        }
     }
 }
