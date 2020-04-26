@@ -32,25 +32,48 @@
                                         if(comment.Post == post)
                                         {
                                             <td>@post.Content</td>
-                                            <td>@post.Poster.Name @post.Poster.Surname</td>
+                                            @foreach (AppUser user in Model.Users)
+                                            {
+                                                if(post.Poster == user)
+                                                {
+                                                    <td>@user.Name @user.Surname</td>
+                                                }
+                                            }
                                         }
                                     }
                                     <td>
                                         @if (comment.Time.Minute < 10)
-                                            {
+                                        {
                                                 string minute = string.Concat("0", comment.Time.Minute);
                                                 <span>@comment.Time.Day </span>
                                                 <span>@date.GetMonthName(comment.Time.Month).ToString() </span>
                                                 <span class="mr-3">@comment.Time.Year</span>
                                                 <span>@comment.Time.Hour @date.TimeSeparator @minute @date.TimeSeparator @comment.Time.Second</span>
-                                            }
-                                            else
-                                            {
-                                                <span>@comment.Time.Day </span>
-                                                <span>@date.GetMonthName(comment.Time.Month).ToString() </span>
-                                                <span class="mr-3">@comment.Time.Year</span>
-                                                <span>@comment.Time.Hour @date.TimeSeparator @comment.Time.Minute @date.TimeSeparator @comment.Time.Second</span>
-                                            }
+                                        }
+                                        else if (comment.Time.Second < 10)
+                                        {
+                                            string second = string.Concat("0", comment.Time.Second);
+                                            <span>@comment.Time.Day </span>
+                                            <span>@date.GetMonthName(comment.Time.Month).ToString() </span>
+                                            <span class="mr-3">@comment.Time.Year</span>
+                                            <span>@comment.Time.Hour @date.TimeSeparator @comment.Time.Minute @date.TimeSeparator @second</span>
+                                        }
+                                        else if (comment.Time.Minute < 10 && comment.Time.Second < 10)
+                                        {
+                                            string minute = string.Concat("0", comment.Time.Minute);
+                                            string second = string.Concat("0", comment.Time.Second);
+                                            <span>@comment.Time.Day </span>
+                                            <span>@date.GetMonthName(comment.Time.Month).ToString() </span>
+                                            <span class="mr-3">@comment.Time.Year</span>
+                                            <span>@comment.Time.Hour @date.TimeSeparator @minute @date.TimeSeparator @second</span>
+                                        }
+                                        else
+                                        {
+                                            <span>@comment.Time.Day </span>
+                                            <span>@date.GetMonthName(comment.Time.Month).ToString() </span>
+                                            <span class="mr-3">@comment.Time.Year</span>
+                                            <span>@comment.Time.Hour @date.TimeSeparator @comment.Time.Minute @date.TimeSeparator @comment.Time.Second</span>
+                                        }
                                     </td>
                                 </tr>
                             }

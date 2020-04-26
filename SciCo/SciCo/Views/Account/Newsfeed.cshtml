@@ -50,6 +50,17 @@
                             string minute = string.Concat("0", post.Time.Minute);
                             <p>@post.Time.Day @date.GetMonthName(post.Time.Month).ToString() @post.Time.Hour@date.TimeSeparator@minute@date.TimeSeparator@post.Time.Second</p>
                         }
+                        else if (post.Time.Second < 10)
+                        {
+                            string second = string.Concat("0", post.Time.Second);
+                            <p>@post.Time.Day @date.GetMonthName(post.Time.Month).ToString() @post.Time.Hour@date.TimeSeparator@post.Time.Minute@date.TimeSeparator@second</p>
+                        }
+                        else if (post.Time.Minute < 10 && post.Time.Second < 10)
+                        {
+                            string minute = string.Concat("0", post.Time.Minute);
+                            string second = string.Concat("0", post.Time.Second);
+                            <p>@post.Time.Day @date.GetMonthName(post.Time.Month).ToString() @post.Time.Hour@date.TimeSeparator@minute@date.TimeSeparator@second</p>
+                        }
                         else
                         {
                             <p>@post.Time.Day @date.GetMonthName(post.Time.Month).ToString() @post.Time.Hour@date.TimeSeparator@post.Time.Minute@date.TimeSeparator@post.Time.Second</p>
@@ -138,6 +149,17 @@
                                     {
                                         string minute = string.Concat("0", comment.Time.Minute);
                                         <p>@comment.Time.Day @date.GetMonthName(comment.Time.Month).ToString() @comment.Time.Hour@date.TimeSeparator@minute@date.TimeSeparator@comment.Time.Second</p>
+                                    }
+                                    else if (comment.Time.Second < 10)
+                                    {
+                                        string second = string.Concat("0", comment.Time.Second);
+                                        <p>@comment.Time.Day @date.GetMonthName(comment.Time.Month).ToString() @comment.Time.Hour@date.TimeSeparator@comment.Time.Minute@date.TimeSeparator@second</p>
+                                    }
+                                    else if (comment.Time.Minute < 10 && comment.Time.Second < 10)
+                                    {
+                                        string minute = string.Concat("0", comment.Time.Minute);
+                                        string second = string.Concat("0", comment.Time.Second);
+                                        <p>@comment.Time.Day @date.GetMonthName(comment.Time.Month).ToString() @comment.Time.Hour@date.TimeSeparator@minute@date.TimeSeparator@second</p>
                                     }
                                     else
                                     {

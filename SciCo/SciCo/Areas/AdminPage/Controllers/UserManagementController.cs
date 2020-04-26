@@ -93,5 +93,20 @@ namespace SciCo.Areas.AdminPage.Controllers
 
             return View(model);
         }
+
+        public async Task<IActionResult> ShowLikes(string id)
+        {
+            AppUser user = await _db.Users.FindAsync(id);
+
+            UserLikesVM model = new UserLikesVM
+            {
+                MainUser = user,
+                Users = _db.Users,
+                Posts = _db.Posts,
+                Likes = _db.Likes
+            };
+
+            return View(model);
+        }
     }
 }

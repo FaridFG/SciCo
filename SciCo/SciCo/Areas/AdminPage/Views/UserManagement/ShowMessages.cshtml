@@ -38,6 +38,23 @@
                                                 <span class="mr-3">@message.Time.Year</span>
                                                 <span>@message.Time.Hour @date.TimeSeparator @minute @date.TimeSeparator @message.Time.Second</span>
                                             }
+                                            else if (message.Time.Second < 10)
+                                            {
+                                                string second = string.Concat("0", message.Time.Second);
+                                                <span>@message.Time.Day </span>
+                                                <span>@date.GetMonthName(message.Time.Month).ToString() </span>
+                                                <span class="mr-3">@message.Time.Year</span>
+                                                <span>@message.Time.Hour @date.TimeSeparator @message.Time.Minute @date.TimeSeparator @second</span>
+                                            }
+                                            else if (message.Time.Minute < 10 && message.Time.Second < 10)
+                                            {
+                                                string minute = string.Concat("0", message.Time.Minute);
+                                                string second = string.Concat("0", message.Time.Second);
+                                                <span>@message.Time.Day </span>
+                                                <span>@date.GetMonthName(message.Time.Month).ToString() </span>
+                                                <span class="mr-3">@message.Time.Year</span>
+                                                <span>@message.Time.Hour @date.TimeSeparator @minute @date.TimeSeparator @second</span>
+                                            }
                                             else
                                             {
                                                 <span>@message.Time.Day </span>
