@@ -1336,9 +1336,13 @@ aside.left i {
     #search {
         font-size: 17px;
     }
+
+    #search input[placeholder]{
+        font-size: 20px;
+    }
     
     #search a {
-        top: 25px;
+        top: 16px;
         right: 15px;
     }
 
@@ -1997,20 +2001,20 @@ aside.left i {
     justify-content: space-between;
 }
 
-#noFriend {
+#noFriend, #noPhotos {
     height: 250px;
     justify-content: center !important;
     align-items: center;
 }
 
-#noFriend p {
+#noFriend p, #noPhotos p {
     font-size: 50px;
     font-weight: bold;
     align-items: center;
     text-align: center;
 }
 
-#noFriend strong {
+#noFriend strong, #noPhotos strong {
     color: #ff3e2f;
 }
 
@@ -2130,6 +2134,8 @@ aside.left i {
 
 /* photos section starts */
 #userPhotos > div {
+    height: auto;
+    padding: 25px 0 !important;
     display: grid;
     grid-template-columns: 50% 50%;
     justify-content: space-between;
@@ -2937,3 +2943,204 @@ aside.left i {
     padding-left: 15px;
 }
 /* share new post section ends */
+
+/* modal for opening image */
+#imageModal {
+    height: 450px;
+    width: 40%;
+    background-color: #fff;
+    box-shadow: 2px 2px 3px 3px rgba(66, 3, 82, 0.6), -2px -2px 3px 3px rgba(66, 3, 82, 0.6);
+    border-radius: 5px;
+    position: fixed;
+    z-index: 100;
+    left: 30%;
+    top: 150px;
+    display: none;
+}
+
+#imageModal > a {
+    color: #f30e66;
+    font-size: 30px;
+    position: absolute;
+    right: 5%;
+    top: 5px;
+}
+
+#imageModal > div {
+    width: 80%;
+    margin: 0 auto;
+}
+
+#imageModal > div:nth-child(2) {
+    height: 300px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#imageModal > div:nth-child(3) {
+    height: 100px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+#imageModal > div:nth-child(2) img {
+    width: 90%;
+    height: 90%;
+}
+
+#imageModal form {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#imageModal button {
+    border: 2px solid rgb(173, 175, 197);
+    background: transparent;
+    font-size: 25px;
+    width: 90%;
+    padding: 15px 0;
+    border-radius: 5px;
+    color: #f30e66;
+    letter-spacing: 2px;
+    margin-top: 5px;
+}
+
+#imageModal button:hover {
+    border: 2px solid #f30e66;
+    cursor: pointer;
+}
+
+#imageModal button i {
+    padding: 0 10px;
+}
+/* modal for opening image */
+
+/* responsive profile starts */
+@media only screen and (max-width: 1200px){
+    body > main section {
+        border: 2px solid red;
+    }
+
+    #posts > div, #userInfo > div, #userFriends > div, #userPhotos > div {
+        width: 90%;
+        margin: 25px auto;
+        border: 2px solid green;
+    }
+}
+
+@media only screen and (max-width: 768px){
+    #options > ul > li {
+        font-size: 12px;
+    }
+
+    #accountInfo {
+        transform: translateY(-35%);
+    }
+
+    #accountInfo > ul > li > a {
+        font-size: 13px !important;
+    }
+
+    #coverPhoto {
+        height: 180px;
+    }
+
+    #photoItem {
+        border: 2px solid green;
+        width: 100px;
+        height: 100px;
+    }
+
+    #userPhotos > div {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .images {
+        width: 100%;
+    }
+
+    #userInfo p {
+        font-size: 14px !important;
+    }
+
+    #userInfo form {
+        display: block;
+    }
+
+    #userInfo form input, #userInfo form button {
+        display: block;
+        width: 100% !important;
+        margin: 5px 0;
+    }
+
+    #postOptions button {
+        font-size: 13px;
+    }
+
+    .comment > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) {
+        width: 40px;
+        height: 40px;
+        margin-right: 5px;
+    }
+
+    .comment > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > a {
+        font-size: 12px;
+    }
+
+    .comment > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > p {
+        font-size: 10px;
+    }
+
+    #writeComment > div > div:nth-child(1) {
+        display: none;
+    }
+
+    #writeComment form {
+        display: block;
+        width: 100%;
+    }
+
+    #writeComment input {
+        display: block;
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    #writeComment button {
+        display: block;
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    #sharePost {
+        border: 2px solid green;
+        height: 250px;
+    }
+
+    #sharePost textarea {
+        height: 100px;
+        width: 200px;
+        margin-top: 20px;
+    }
+
+    #sharePost textarea[placeholder] {
+        font-size: 12px;
+    }
+
+    #sharePost button {
+        font-size: 12px;
+        height: 25px;
+        display: block;
+        padding: 5px 10px;
+    }
+
+    #sharePost button i {
+        padding-left: 5px;
+    }
+}
+/* responsive profile starts */

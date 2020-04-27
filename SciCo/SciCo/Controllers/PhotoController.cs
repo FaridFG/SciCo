@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -42,7 +43,7 @@ namespace SciCo.Controllers
                 return Content("please, select an image");
             }
 
-            if (image.LessThan(0.75))
+            if (image.LessThan(2.5))
             {
                 return Content("size is too large");
             }
@@ -76,7 +77,7 @@ namespace SciCo.Controllers
                 return Content("please, select an image");
             }
 
-            if (ProfileImage.LessThan(0.75))
+            if (ProfileImage.LessThan(2.5))
             {
                 return Content("size is too large");
             }
@@ -110,7 +111,7 @@ namespace SciCo.Controllers
                 return Content("please, select an image");
             }
 
-            if (CoverImage.LessThan(0.75))
+            if (CoverImage.LessThan(2.5))
             {
                 return Content("size is too large");
             }
@@ -128,6 +129,23 @@ namespace SciCo.Controllers
             await _db.Photos.AddAsync(coverPhoto);
             await _db.SaveChangesAsync();
             return RedirectToAction("Timeline", "Account", new { id = user.Id });
+        }
+
+        public async Task<IActionResult> DeletePhoto(int photoId)
+        {
+            Photo photo = await _db.Photos.FindAsync(photoId);
+            string path = Path.Combine(_env.WebRootPath, "img", photo.Link);
+
+            if (System.IO.File.Exists(path))
+            {
+                System.IO.File.Delete(path);
+            }
+
+            AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            _db.Photos.Remove(photo);
+            await _db.SaveChangesAsync();
+            return RedirectToAction("Photos", "Account", new { id = user.Id });
         }
     }
 }

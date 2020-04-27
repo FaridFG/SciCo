@@ -68,7 +68,7 @@ namespace SciCo.Controllers
                 return View(user);
             }
 
-            await _userManager.AddToRoleAsync(appUser, UserRoles.AdminRole);
+            await _userManager.AddToRoleAsync(appUser, UserRoles.MemberRole);
             await _signInManager.SignInAsync(appUser, true);
 
             return RedirectToAction("Newsfeed", "Account");

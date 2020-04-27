@@ -4,13 +4,47 @@
     ViewData["Title"] = "ShowPhotos";
 }
 
-<div class="row" style="width: 100%;">
-    <div class="col-lg-12 col-md-12" style="display: flex; justify-content: center; flex-wrap: wrap;">
-        @foreach (Photo photo in Model.Photos.Where(p => p.user == Model.MainUser))
-        {
-            <div class="card card-bordered" style="width: 350px; height: 250px; border: 3px solid black; border-radius: 5px; margin: 10px;">
-                <img class="card-img-top img-fluid" src="~/img/@photo.Link" alt="image" style="width: 100%; height: 100%; padding: 10px; border-radius: 5px;">
+    <div class="col-lg-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title">Thead Primary</h4>
+                <div class="single-table">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="text-uppercase bg-primary">
+                                <tr class="text-white">
+                                    <th scope="col">Photo Owner</th>
+                                    <th scope="col">Photo</th>
+                                    <th scope="col">Delete Photo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (Photo photo in Model.Photos.Where(p => p.user == Model.MainUser))
+                                {
+                                    <tr>
+                                        <td>@Model.MainUser</td>
+                                        <td>
+                                            <img class="card-img-top img-fluid" src="~/img/@photo.Link" alt="image" style="width: 300px; height: 250px; padding: 5px; border: 3px solid black; border-radius: 5px;">
+                                        </td>
+                                        <td>
+                                            <form asp-area="AdminPage" asp-controller="UserManagement" asp-action="DeletePhoto">
+                                                <input type="hidden" name="photoId" value="@photo.Id" />
+                                                @foreach (AppUser user in Model.Users)
+                                                {
+                                                    if (user == Model.MainUser)
+                                                    {
+                                                        <input type="hidden" name="userId" value="@user.Id" />
+                                                    }
+                                                }
+                                                <button type="submit" class="text-danger" style="font-size: 25px; background: transparent; border: none;"> <i class="ti-trash"></i> </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-        }
+        </div>
     </div>
-</div>

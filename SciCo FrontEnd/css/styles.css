@@ -2937,3 +2937,78 @@ aside.left i {
     padding-left: 15px;
 }
 /* share new post section ends */
+
+/* modal for opening image */
+#imageModal {
+    height: 450px;
+    width: 40%;
+    background-color: #fff;
+    box-shadow: 2px 2px 3px 3px rgba(66, 3, 82, 0.6), -2px -2px 3px 3px rgba(66, 3, 82, 0.6);
+    border-radius: 5px;
+    position: fixed;
+    z-index: 100;
+    left: 30%;
+    top: 150px;
+    display: none;
+}
+
+#imageModal > a {
+    color: #f30e66;
+    font-size: 30px;
+    position: absolute;
+    right: 5%;
+    top: 5px;
+}
+
+#imageModal > div {
+    width: 80%;
+    margin: 0 auto;
+}
+
+#imageModal > div:nth-child(2) {
+    height: 300px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#imageModal > div:nth-child(3) {
+    height: 100px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+#imageModal > div:nth-child(2) img {
+    width: 90%;
+    height: 90%;
+}
+
+#imageModal form {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#imageModal button {
+    border: 2px solid rgb(173, 175, 197);
+    background: transparent;
+    font-size: 25px;
+    width: 90%;
+    padding: 15px 0;
+    border-radius: 5px;
+    color: #f30e66;
+    letter-spacing: 2px;
+    margin-top: 5px;
+}
+
+#imageModal button:hover {
+    border: 2px solid #f30e66;
+    cursor: pointer;
+}
+
+#imageModal button i {
+    padding: 0 10px;
+}
+/* modal for opening image */

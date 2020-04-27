@@ -279,4 +279,39 @@ $(function() {
         }
     })
     // preventing empty inputs
+
+    // modal for opening an image
+    $(".photos").click(function(ev) {
+        ev.preventDefault();
+        $("#popup").fadeIn("fast");
+        $("#imageModal").fadeIn("fast");
+    })
+    $(".close").click(function(ev){
+        ev.preventDefault();
+        $("#popup").fadeOut("slow");
+        $("#imageModal").fadeOut("slow");
+    })
+
+    $("#openProfilePhoto").click(function(ev) {
+        ev.preventDefault();
+        $("#popup").fadeIn("fast");
+        $("#imageModal").fadeIn("fast");
+    })
+    $(".close").click(function(ev){
+        ev.preventDefault();
+        $("#popup").fadeOut("slow");
+        $("#imageModal").fadeOut("slow");
+    })
+
+    $("#openCoverPhoto").click(function(ev) {
+        ev.preventDefault();
+        $("#popup").fadeIn("fast");
+        $("#imageModal").fadeIn("fast");
+    })
+    $(".close").click(function(ev){
+        ev.preventDefault();
+        $("#popup").fadeOut("slow");
+        $("#imageModal").fadeOut("slow");
+    })
+    // modal for opening an image
 })

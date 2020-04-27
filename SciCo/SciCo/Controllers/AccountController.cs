@@ -129,21 +129,44 @@ namespace SciCo.Controllers
 
         public async Task<IActionResult> DeleteAccount()
         {
-            AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
-            var friends = _db.Friends.Where(f => f.User1 == user || f.User2 == user).Select(f => f.Id);
+            //AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
+            //var friends = _db.Friends.Where(f => f.User1 == user || f.User2 == user).Select(f => f.Id);
+            //foreach (int id in friends)
+            //{
+            //    Friend friend = await _db.Friends.FindAsync(id);
+            //    _db.Friends.Remove(friend);
+            //}
 
-            if (user == null)
-            {
-                return NotFound();
-            }
+            //var friendRequests = _db.FriendRequests.Where(r => r.ReceiverUser == user || r.RequestorUser == user);
+            //foreach (FriendRequest request in friendRequests)
+            //{
+            //    _db.FriendRequests.Remove(request);
+            //}
 
-            return Content($"user = {user.UserName}, friends = {friends}");
+            //var likes = _db.Likes.Where(l => l.Liker == user);
+            //foreach (Like like in likes)
+            //{
+            //    _db.Likes.Remove(like);
+            //}
+
+            //var dislikes = _db.Dislikes.Where(d => d.Disliker == user);
+            //foreach (Dislike dislike in dislikes)
+            //{
+            //    _db.Dislikes.Remove(dislike);
+            //}
+
+            //if (user == null)
+            //{
+            //    return NotFound();
+            //}
+
+            //return Content($"user = {user.UserName}, friends = {friends}");
 
             //await _signInManager.SignOutAsync();
             //_db.Users.Remove(user);
             //await _db.SaveChangesAsync();
 
-            //return RedirectToAction("Index", "User");
+            return RedirectToAction("Index", "User");
         }
     }
 }
